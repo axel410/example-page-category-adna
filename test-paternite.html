@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Paternité - Test ADN, Résultats Rapides | Adnà</title>
+    <!-- Use Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* Darker gray for better readability */
+        }
+        /* Define a custom olive-like color for consistency */
+        .color-adnà-green {
+            color: #9BA383;
+        }
+        .bg-adnà-green {
+            background-color: #9BA383;
+        }
+        .border-adnà-green {
+            border-color: #9BA383;
+        }
+        .hover\:bg-adnà-darker-green:hover {
+            background-color: #858C6D;
+        }
+        /* Define a custom background color to match the website */
+        .bg-adnà-bg {
+            background-color: #E6E6DE;
+        }
+        
+        /* Accordion styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-button svg {
+            transition: transform 0.2s ease-out;
+        }
+        .accordion-button.open svg {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-adnà-bg antialiased">
+
+    <!-- Note: User requested not to change the navigation. This is a placeholder for the existing header. -->
+    <header class="w-full h-16 bg-white shadow-sm flex items-center justify-between px-6 z-50 sticky top-0">
+        <span class="text-xl font-bold text-gray-800">Adnà</span>
+        <nav class="flex space-x-4 items-center">
+            <!-- Navigation links and icons go here -->
+            <a href="#" class="text-gray-600 hover:text-gray-900">Tests</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">Mode d'emploi</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">À propos</a>
+            <a href="#" class="text-gray-600 hover:text-gray-900">Journal</a>
+        </nav>
+    </header>
+
+    <!-- Above the Fold Section -->
+    <main class="w-full">
+        <section class="container mx-auto px-4 py-16 md:py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <!-- Product Media Section -->
+                <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl bg-gray-200">
+                    <img src="https://placehold.co/1280x720/e5e7eb/4b5563?text=Kit+de+Test+Adnà" alt="Kit de test de paternité Adnà" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button class="w-20 h-20 rounded-full bg-white bg-opacity-80 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
+                            <svg class="w-10 h-10 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Details and CTA Section -->
+                <div class="space-y-6">
+                    <span class="color-adnà-green text-sm font-semibold tracking-wide uppercase">Test de Filiation</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+                        Le <span class="color-adnà-green">meilleur test de paternité</span> pour votre tranquillité d'esprit
+                    </h1>
+                    <p class="text-lg text-gray-700">
+                        Notre <span class="font-semibold">test ADN paternité</span> est simple et indolore. Découvrez si vous êtes le père biologique avec une précision de 99,99%, pour des <span class="font-semibold">résultats rapides</span> et fiables. Commandez votre <span class="font-semibold">test de paternité en pharmacie</span> ou en ligne dès aujourd'hui et obtenez la clarté que vous recherchez.
+                    </p>
+
+                    <!-- Key Features/Trust Signals -->
+                    <div class="grid grid-cols-2 gap-4 text-sm font-medium text-gray-700">
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-6 h-6 color-adnà-green" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                            <span>Précision <span class="font-bold">99.9%</span></span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-6 h-6 color-adnà-green" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path></svg>
+                            <span>Résultats RAPIDES</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-6 h-6 color-adnà-green" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.381c1.865-.333 3.613.432 4.5 2.169.887 1.737.564 3.731-.572 5.09-1.295 1.547-3.138 2.197-4.755 1.625A10.871 10.871 0 0110 14c-1.393 0-2.735-.297-3.955-.845-.165-.072-.25-.236-.25-.407V8c0-.663-.263-1.299-.732-1.768A2.5 2.5 0 014 5.5c0-.853.647-1.5 1.5-1.5S7 4.647 7 5.5v1.232c0 .663.263 1.299.732 1.768C8.36 8.907 9.175 9 10 9s1.64-.093 2.268-.532A2.5 2.5 0 0113 7.5v-.5c0-.853-.647-1.5-1.5-1.5S10 5.147 10 6v.5c0 .276-.224.5-.5.5s-.5-.224-.5-.5V6c0-1.381 1.119-2.5 2.5-2.5zm0-2.5c-2.485 0-4.5 2.015-4.5 4.5v1.5c0 1.242.427 2.45 1.258 3.394C8.283 11.24 9.096 11.5 10 11.5c.904 0 1.717-.26 2.492-.706.831-.944 1.258-2.152 1.258-3.394V4.5c0-2.485-2.015-4.5-4.5-4.5zM10 14c-1.105 0-2-.895-2-2h-1c0 1.933 1.567 3.5 3.5 3.5s3.5-1.567 3.5-3.5h-1c0 1.105-.895 2-2 2z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                            <span>Prélèvement SANS DOULEUR</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <svg class="w-6 h-6 color-adnà-green" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V7.414l-4.293 4.293a1 1 0 01-1.414-1.414L14.586 7H12z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M3 13a1 1 0 112 0v2.586l4.293-4.293a1 1 0 111.414 1.414L6.414 15H9a1 1 0 110 2H5a1 1 0 01-1-1v-4z" clip-rule="evenodd"></path></svg>
+                            <span><span class="font-bold">22</span> Marqueurs ADN</span>
+                        </div>
+                    </div>
+
+                    <!-- Product Options -->
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex-1">
+                            <label for="legal-value" class="block text-sm font-medium text-gray-700 mb-1">Valeur légale</label>
+                            <select id="legal-value" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-adnà-green transition duration-200">
+                                <option>Non légal</option>
+                                <option>Légal</option>
+                            </select>
+                        </div>
+                        <div class="flex-1">
+                            <label for="participants" class="block text-sm font-medium text-gray-700 mb-1">Nombre de participant(s)</label>
+                            <select id="participants" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-adnà-green transition duration-200">
+                                <option>Père présumé et 1 enfant</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Price and Add to Cart -->
+                    <div class="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-6">
+                        <p class="text-3xl font-bold text-gray-900">
+                            À partir de <span class="color-adnà-green">199 $</span>
+                        </p>
+                        <button class="w-full sm:w-auto px-8 py-4 bg-adnà-green text-white font-bold rounded-full shadow-lg hover:bg-adnà-darker-green transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-adnà-green focus:ring-opacity-50">
+                            AJOUTER AU PANIER
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Information Section -->
+        <section class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="space-y-6 max-w-prose">
+                    <h2 class="text-3xl font-bold text-gray-900">Informations additionnelles</h2>
+                    <p class="text-lg text-gray-700">
+                        Le Test de Paternité d'Adna offre une analyse certifiée pour déterminer avec une précision de 99.9% si un homme est le père biologique d'un enfant.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-gray-900 pt-4">Pourquoi choisir le Test de Paternité d'Adnà?</h3>
+                    <p class="text-gray-700">
+                        Que vous ayez besoin d'une vérification confidentielle, d'une confirmation d'un doute ou d'une preuve scientifique, notre test de paternité vous assure des résultats précis et fiables. Optez pour la solution qui répond à vos besoins et obtenez des réponses claires avec la plus haute précision.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-gray-900 pt-4">Processus Simplifié:</h3>
+                    <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                        <li>Commandez votre test et recevez une trousse contenant 3 écouvillons (pour l'enfant, la mère et le père présumé). La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</li>
+                        <li>Suivez les instructions de prélèvement incluses dans la trousse et prélevez les échantillons.</li>
+                        <li>Enregistrez votre trousse et vos informations personnelles sur votre portail client Adnà.</li>
+                        <li>Renvoyez les échantillons avec l'étiquette de retour incluse dans votre trousse pour analyse au laboratoire.</li>
+                        <li>Recevez une notification par courriel lorsque votre rapport est disponible dans votre portail client.</li>
+                    </ol>
+                    <p class="text-gray-600 text-sm italic">Les résultats sont normalement prêts dans les cinq jours suivant la réception au laboratoire.</p>
+                </div>
+                <!-- Trust Badges & How-to Video Column -->
+                <div class="space-y-8">
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div class="bg-adnà-bg p-6 rounded-2xl text-center shadow-sm">
+                            <h4 class="font-semibold text-gray-800">Livraison rapide</h4>
+                            <p class="text-sm text-gray-600">Commande experte le jour même</p>
+                        </div>
+                        <div class="bg-adnà-bg p-6 rounded-2xl text-center shadow-sm">
+                            <h4 class="font-semibold text-gray-800">Fiabilité maximale</h4>
+                            <p class="text-sm text-gray-600">Test standard 22 Loci</p>
+                        </div>
+                        <div class="bg-adnà-bg p-6 rounded-2xl text-center shadow-sm">
+                            <h4 class="font-semibold text-gray-800">Certifications</h4>
+                            <p class="text-sm text-gray-600">ISO 9001 & 17025</p>
+                        </div>
+                    </div>
+                    <!-- How-to Video -->
+                    <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl bg-gray-200">
+                        <img src="https://placehold.co/1280x720/e0e0e0/4b5563?text=Vidéo+de+Prélèvement" alt="Comment faire le prélèvement" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-16 h-16 rounded-full bg-white bg-opacity-80 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
+                                <svg class="w-8 h-8 text-gray-700" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="bg-adnà-bg py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Témoignages</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg space-y-4">
+                        <div class="flex text-yellow-400">
+                            <!-- Star icons -->
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                        <p class="text-gray-700">"Super entreprise que j'ai découverte en cherchant un test ADN de filiation. Très bel accueil et content de mon expérience. Je recommande fortement."</p>
+                        <p class="font-semibold text-gray-900">- François</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg space-y-4">
+                        <div class="flex text-yellow-400">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                        <p class="text-gray-700">"Très professionnel et vraiment intéressant. Merci!"</p>
+                        <p class="font-semibold text-gray-900">- Etienne</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg space-y-4">
+                        <div class="flex text-yellow-400">
+                            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                        </div>
+                        <p class="text-gray-700">"Je recommande fortement cette compagnie québécoise qui offre des tests ADN santé et très fiables pour tous, quel que soit votre besoin."</p>
+                        <p class="font-semibold text-gray-900">- Anne</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Des questions ?</h2>
+                <div class="space-y-6">
+                    <!-- Accordion Item 1 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Résultats et Rapports</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                            <h4 class="font-semibold">En combien de temps puis-je m'attendre à recevoir mes résultats?</h4>
+                            <p>Le temps requis pour le traitement et l'analyse de votre échantillon dépend du type de rapport que vous avez commandé. Une fois arrivé au laboratoire, les délais de traitement sont les suivants:</p>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Les tests de paternité et autres tests de filiation sont traités et expédiés dans un délai de 24 heures. Une fois votre échantillon retourné par la poste, les résultats sont généralement disponibles dans un délai de 2 jours suivant la réception au laboratoire.</li>
+                                <li>Les tests de biomarqueurs sont traités en 7 à 14 jours ouvrables.</li>
+                                <li>Les tests d'ascendance, sport & performance, etc., sont traités en 30 à 60 jours.</li>
+                            </ul>
+                            <h4 class="font-semibold">Comment les résultats me seront-ils communiqués?</h4>
+                            <p>Vous recevrez une notification courriel vous disant que votre rapport d'analyse est bien arrivé sur le portail d'Adna. Vous n'aurez qu'à vous connecter à votre compte.</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 2 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Confidentialité et Sécurité des Données</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                            <h4 class="font-semibold">À quoi servent les informations que vous collectez?</h4>
+                            <p>Nous recueillons vos renseignements personnels pour la création de comptes, fournir les services, améliorer l'expérience, communiquer avec vous, et se conformer aux lois.</p>
+                            <h4 class="font-semibold">Avec qui sont partagés nos renseignements personnels?</h4>
+                            <p>Vos renseignements sont partagés avec les prestataires de paiement, services informatiques, laboratoires partenaires, et organismes gouvernementaux tel que permis par la loi.</p>
+                            <h4 class="font-semibold">Comment assurez-vous la confidentialité et la sécurité de mes données génétiques?</h4>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Nous utilisons un cryptage de pointe pour protéger vos données.</li>
+                                <li>Nous respectons strictly les lois relatives à la confidentialité.</li>
+                                <li>Nous nous assurons d'anonymiser vos informations génétiques.</li>
+                            </ul>
+                            <h4 class="font-semibold">Mes données génétiques seront-elles partagées ou vendues à des tiers?</h4>
+                            <p>Vos données ne seront jamais partagées ou vendues à des tiers.</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 3 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Acceptez-vous les échantillons non-standards?</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                            <p>Oui, pour les tests de filiation, notre laboratoire partenaire peut effectuer l'analyse sur des échantillons non-standards comme une brosse à dents ou du sang, par exemple. Le prix est plus élevé (750$ à 550$) et le délai est plus long.</p>
+                            <h4 class="font-semibold">Taux de succès: 90% ou plus</h4>
+                            <p>Sperme, Salive, Sang entier, Brosse à dents, etc.</p>
+                            <h4 class="font-semibold">Taux de succès: 60% - 90%</h4>
+                            <p>Tache de sang sur tissu, Ongles coupés, Mégots de cigarette, etc.</p>
+                            <h4 class="font-semibold">Taux de succès: 60% ou moins</h4>
+                            <p>Cheveux avec racines, Rasoir jetable, Chewing-gum, etc.</p>
+                        </div>
+                    </div>
+                    <!-- Accordion Item 4 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Les tests ADN de paternité sont-ils légaux au Canada?</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                            <p>Au Canada, les tests ADN de filiation sont légaux et largement utilisés à des fins personnelles, médicales ou légales. Cependant, il est recommandé de consulter un professionnel du droit pour comprendre les implications légales spécifiques à votre situation. Notez également que le consentement de tous les participants est requis pour procéder à un test de filiation avec Adnà.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Legal Partner Section -->
+        <section class="bg-adnà-bg py-16 md:py-24">
+            <div class="container mx-auto px-4 max-w-4xl text-center">
+                 <span class="color-adnà-green text-sm font-semibold tracking-wide uppercase">Partenaires Juridiques</span>
+                 <h2 class="text-3xl font-bold text-gray-900 mt-2 mb-6">Besoin d'accompagnement légal?</h2>
+                 <p class="text-lg text-gray-700 max-w-prose mx-auto mb-8">
+                    Chez Adnà, nous savons que certaines situations liées à la filiation peuvent soulever des enjeux juridiques importants. C'est pourquoi nous collaborons avec des partenaires juridiques de confiance.
+                 </p>
+                 <div class="bg-white p-8 rounded-2xl shadow-lg inline-block text-left">
+                    <span class="text-xl font-bold">JURISEO <span class="font-light">Avocats | Lawyers</span></span>
+                    <p class="text-gray-600 mt-2">Partenaire officiel - Droit familial, Médiation-Filiation</p>
+                    <p class="text-gray-600">227, boul des Braves, Suite 101, Terrebonne (Québec)</p>
+                    <a href="#" class="color-adnà-green font-semibold hover:underline">www.juriseo.ca</a> | <span class="text-gray-800">(450) 231-2332</span>
+                 </div>
+            </div>
+        </section>
+
+        <!-- About Our Tests Section -->
+         <section class="bg-white py-16 md:py-24">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">À propos de nos tests</h2>
+                <div class="space-y-6">
+                    <!-- About Accordion Item 1 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Quels types de tests génétiques proposez-vous?</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                           <p>Nos tests se divisent en plusieurs catégories : tests de filiation, tests de bien-être, tests de santé, tests de microbiote, et tests de biomarqueurs.</p>
+                        </div>
+                    </div>
+                    <!-- About Accordion Item 2 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Quelles sont les limites de vos tests?</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                           <p>Nous vous offrons des tests à fins informatives et éducatives. Nos tests ne sont pas destinés à être utilisés comme outil de diagnostic. Vos différents traits ne sont pas uniquement influencés par la génétique mais bien par de nombreux facteurs.</p>
+                        </div>
+                    </div>
+                    <!-- About Accordion Item 3 -->
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="accordion-button flex justify-between items-center w-full text-left">
+                            <span class="text-xl font-semibold text-gray-900">Sur quelle base scientifique se fondent vos tests?</span>
+                            <svg class="w-6 h-6 text-adnà-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content mt-4 text-gray-700 space-y-4">
+                           <p>Un test de filiation utilise l'ADN pour établir des liens familiaux. Il analyse les marqueurs génétiques pour identifier les relations biologiques. Nos tests de filiation offrent un pourcentage d'exactitude proche de 99.9%.</p>
+                           <p>En ce qui concerne nos tests de bien-être et de santé, ils se basent sur une combinaison de technologies de pointe (Illumina) et d'études scientifiques reconnues internationalement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-adnà-green py-16">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Abonnez-vous à notre infolettre</h2>
+            <p class="text-lg text-white mb-8">Obtenez les dernières nouvelles à propos des services d'Adnà.</p>
+            <form class="flex flex-col sm:flex-row max-w-lg mx-auto gap-4">
+                <input type="email" placeholder="Votre courriel" class="flex-grow p-4 rounded-full border-none outline-none text-gray-800" />
+                <button type="submit" class="bg-gray-800 text-white font-bold py-4 px-8 rounded-full hover:bg-gray-700 transition duration-300">
+                    JE M'ABONNE
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-adnà-bg pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-8 mb-12">
+                <!-- Column 1: Brand -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="text-2xl font-bold text-gray-800">Adnà</h3>
+                    <p class="text-lg text-gray-700">Votre ADN a des réponses.</p>
+                    <!-- Social Icons -->
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-gray-900">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.039c-5.522 0-10 4.477-10 10s4.478 10 10 10 10-4.477 10-10-4.478-10-10-10zm0 18.061c-4.45 0-8.061-3.611-8.061-8.061s3.611-8.061 8.061-8.061 8.061 3.611 8.061 8.061-3.611 8.061-8.061 8.061zm-2.021-12.061h4.042v-2h-4.042v2zm0 4h4.042v-2h-4.042v2zm0 4h4.042v-2h-4.042v2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <!-- Column 2: Popular Tests -->
+                <div>
+                    <h4 class="font-semibold text-gray-800 mb-4">Tests populaires</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Test de paternité</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Test d'ascendance</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Prédispositions génétiques</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Test de nutrition</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Resources -->
+                 <div>
+                    <h4 class="font-semibold text-gray-800 mb-4">Ressources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Mode d'emploi</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Mon compte</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Protection des données</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Enterprise -->
+                 <div>
+                    <h4 class="font-semibold text-gray-800 mb-4">Entreprise</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Notre engagement</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Journal</a></li>
+                    </ul>
+                </div>
+                 <!-- Column 5: Journal -->
+                 <div>
+                    <h4 class="font-semibold text-gray-800 mb-4">À la une</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Nouvelles</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Témoignages</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-gray-900">Dossiers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-300 pt-8 flex flex-col sm:flex-row justify-between text-sm text-gray-600">
+                <p>&copy; 2025 Adnà. Tous droits réservés.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-gray-900">Post-légal</a>
+                    <a href="#" class="hover:text-gray-900">Termes et conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Accordion Script
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    button.classList.toggle('open');
+                    
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
