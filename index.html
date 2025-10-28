@@ -1,384 +1,127 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tests de Filiation - Adnà</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom styles to match the adnalacarte.com aesthetic */
-        body {
-            background-color: #F5F3ED; /* Main background color from the example */
-            font-family: 'Inter', sans-serif;
-            color: #373A36; /* Main text color */
-        }
-        .btn-primary {
-            background-color: #6B7468; /* Button color from the example */
-            color: white;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #5A6357; /* A slightly darker shade for hover */
-        }
-        .card-container {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        /* Simple styling for the FAQ accordion */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
-        }
-        details > summary::after {
-            content: '+';
-            float: right;
-            font-size: 1.5em;
-            font-weight: 300;
-            line-height: 1;
-            transition: transform 0.2s ease-in-out;
-        }
-        details[open] > summary::after {
-           transform: rotate(45deg);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a; /* dark navy */
+      color: #f8fafc;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 1rem;
+      padding: 2rem 2rem 2.5rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #fff;
+      margin: 0 0 0.5rem;
+    }
+
+    p.desc {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #94a3b8;
+      margin: 0 0 1.5rem;
+    }
+
+    .links {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .link-card {
+      display: block;
+      background: #1e2537;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      text-align: left;
+      text-decoration: none;
+      color: #f8fafc;
+      transition: all 0.16s ease;
+    }
+
+    .link-card:hover {
+      background: #1e293b;
+      border-color: #38bdf8;
+      box-shadow: 0 12px 30px rgba(56,189,248,0.3);
+    }
+
+    .link-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .link-title span.chevron {
+      font-size: 0.9rem;
+      color: #38bdf8;
+    }
+
+    .link-desc {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #94a3b8;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #475569;
+    }
+  </style>
 </head>
-<body class="antialiased">
+<body>
+  <main class="wrapper">
+    <h1>Welcome</h1>
+    <p class="desc">Choose a page below:</p>
 
-    <!-- Simplified Header to give context -->
-    <header class="bg-transparent py-6 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-tight text-[#373A36]">Adnà</h1>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#" class="text-sm font-medium hover:text-gray-700">Tests</a>
-                <a href="#" class="text-sm font-medium hover:text-gray-700">Mode d'emploi</a>
-                <a href="#" class="text-sm font-medium hover:text-gray-700">À propos</a>
-                <a href="#" class="text-sm font-medium hover:text-gray-700">Journal</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <span class="text-sm font-medium">EN</span>
-                <!-- User Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-            </div>
-        </div>
-    </header>
+    <div class="links">
+      <a class="link-card" href="page-categorie.html">
+        <p class="link-title">
+          <span>Page Catégorie</span>
+          <span class="chevron">→</span>
+        </p>
+        <p class="link-desc">Browse the category page.</p>
+      </a>
 
-    <!-- Main Content -->
-    <main class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a class="link-card" href="test-paternite.html">
+        <p class="link-title">
+          <span>Test Paternité</span>
+          <span class="chevron">→</span>
+        </p>
+        <p class="link-desc">View the paternity test page.</p>
+      </a>
+    </div>
 
-            <!-- Page Title and Introduction -->
-            <div class="text-center mb-16">
-                <h1 class="text-4xl font-bold tracking-tight text-[#373A36] sm:text-5xl">Tests de Filiation</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                    Découvrez les liens biologiques qui vous unissent. Nos tests de filiation offrent des réponses claires et précises pour toutes vos questions familiales, avec une fiabilité de 99,9%.
-                </p>
-            </div>
-
-            <!-- Grid of Filiation Tests -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Paternity Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test de Paternité</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 199 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Confirmez le lien biologique entre un père présumé et un enfant avec une certitude scientifique inégalée.
-                        </p>
-                    </div>
-                    <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-                <!-- Maternity Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test de Maternité</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 199 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Vérifiez le lien biologique entre une mère présumée et un enfant, souvent utilisé dans les cas d'adoption ou de FIV.
-                        </p>
-                    </div>
-                     <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-                <!-- Twin Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test de Gémellité</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 229 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Déterminez si des jumeaux sont identiques (monozygotes) ou fraternels (dizygotes) avec notre analyse comparative d'ADN.
-                        </p>
-                    </div>
-                    <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-                <!-- Sibling Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test de Fraternité</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 249 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Établissez la probabilité que deux individus partagent un ou deux parents en commun (frères/sœurs, demi-frères/sœurs).
-                        </p>
-                    </div>
-                    <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-                <!-- Grandparent Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                         <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test Grands-Parents</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 249 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Utilisé lorsque le père présumé n'est pas disponible, ce test détermine un lien de parenté entre un enfant et ses grands-parents paternels.
-                        </p>
-                    </div>
-                    <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-                <!-- Aunt/Uncle Test Card -->
-                <div class="card-container bg-white rounded-lg p-6 flex flex-col">
-                    <div class="flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h2 class="text-xl font-semibold text-[#373A36]">Test Oncle et Tante</h2>
-                            <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 249 $</p>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Une autre option indirecte pour vérifier la filiation paternelle en comparant l'ADN d'un enfant avec celui du frère ou de la sœur du père.
-                        </p>
-                    </div>
-                    <a href="#" class="w-full text-center py-2 px-4 rounded-md font-semibold btn-primary mt-4">Commander</a>
-                </div>
-            </div>
-
-            <!-- Why Choose Us Section -->
-            <section class="mt-20 py-16 bg-white rounded-lg">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center text-[#373A36] mb-12">Pourquoi choisir Adnà?</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                        <div class="flex flex-col items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4 text-[#6B7468]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <h3 class="text-lg font-semibold mb-2">Précision 99.9%+</h3>
-                            <p class="text-gray-600 text-sm">Analyse de 22 marqueurs génétiques pour des résultats d'une fiabilité maximale.</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4 text-[#6B7468]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <h3 class="text-lg font-semibold mb-2">Prélèvement Simple</h3>
-                            <p class="text-gray-600 text-sm">Notre kit de prélèvement buccal est rapide, indolore et peut être fait à la maison.</p>
-                        </div>
-                        <div class="flex flex-col items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4 text-[#6B7468]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <h3 class="text-lg font-semibold mb-2">Résultats Rapides</h3>
-                            <p class="text-gray-600 text-sm">Recevez vos résultats confidentiels en ligne en seulement 3 à 5 jours ouvrables.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- How It Works Section -->
-            <section class="mt-20">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center text-[#373A36] mb-12">Comment ça fonctionne</h2>
-                    <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8">
-                        <div class="text-center">
-                            <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-white rounded-full shadow-md text-2xl font-bold text-[#6B7468]">1</div>
-                            <h3 class="text-lg font-semibold">Commandez</h3>
-                            <p class="text-sm text-gray-600">Choisissez votre test et recevez votre kit à domicile.</p>
-                        </div>
-                        <div class="flex-1 hidden md:block border-t-2 border-dashed border-gray-300"></div>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-white rounded-full shadow-md text-2xl font-bold text-[#6B7468]">2</div>
-                            <h3 class="text-lg font-semibold">Prélevez</h3>
-                             <p class="text-sm text-gray-600">Suivez les instructions simples pour recueillir les échantillons.</p>
-                        </div>
-                         <div class="flex-1 hidden md:block border-t-2 border-dashed border-gray-300"></div>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-white rounded-full shadow-md text-2xl font-bold text-[#6B7468]">3</div>
-                            <h3 class="text-lg font-semibold">Envoyez</h3>
-                             <p class="text-sm text-gray-600">Retournez les échantillons au laboratoire avec l'enveloppe prépayée.</p>
-                        </div>
-                        <div class="flex-1 hidden md:block border-t-2 border-dashed border-gray-300"></div>
-                        <div class="text-center">
-                            <div class="flex items-center justify-center h-16 w-16 mx-auto mb-4 bg-white rounded-full shadow-md text-2xl font-bold text-[#6B7468]">4</div>
-                            <h3 class="text-lg font-semibold">Découvrez</h3>
-                            <p class="text-sm text-gray-600">Accédez à votre rapport détaillé via notre portail sécurisé.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Comparison Table Section -->
-            <section class="mt-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center text-[#373A36] mb-12">Comparez nos tests de filiation</h2>
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm text-left">
-                                <thead class="bg-gray-50 border-b border-gray-200">
-                                    <tr>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm">Test</th>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm">Participants</th>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm">Usage</th>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm">Délai*</th>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm">Légal</th>
-                                        <th scope="col" class="px-3 py-3 font-semibold text-gray-700 uppercase tracking-wider text-xs sm:text-sm text-right">Prix</th>
-                                        <th scope="col" class="px-3 py-3"></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Paternité</td>
-                                        <td class="px-3 py-4 text-gray-600">Enfant + Père présumé</td>
-                                        <td class="px-3 py-4 text-gray-600">Confirmer père biologique</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">199 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Maternité</td>
-                                        <td class="px-3 py-4 text-gray-600">Enfant + Mère présumée</td>
-                                        <td class="px-3 py-4 text-gray-600">Confirmer mère biologique</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">199 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Gémellité</td>
-                                        <td class="px-3 py-4 text-gray-600">2 Jumeaux</td>
-                                        <td class="px-3 py-4 text-gray-600">Jumeaux identiques/fraternels</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">229 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                     <tr>
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Fraternité</td>
-                                        <td class="px-3 py-4 text-gray-600">2 Frères/Sœurs (+ Mère)</td>
-                                        <td class="px-3 py-4 text-gray-600">Lien de fratrie</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">249 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Grands-Parents</td>
-                                        <td class="px-3 py-4 text-gray-600">Grand(s)-parent(s) + Enfant</td>
-                                        <td class="px-3 py-4 text-gray-600">Lignage paternel/maternel</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">249 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                    <tr class="border-b">
-                                        <td class="px-3 py-4 whitespace-nowrap font-medium text-gray-900">Oncle / Tante</td>
-                                        <td class="px-3 py-4 text-gray-600">Oncle/Tante + Enfant</td>
-                                        <td class="px-3 py-4 text-gray-600">Relation si parent absent</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">3-5 j.</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-600">Oui</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-gray-900 font-medium text-right">249 $</td>
-                                        <td class="px-3 py-4 whitespace-nowrap text-right"><a href="#" class="font-semibold btn-primary rounded-md py-2 px-3 text-xs sm:text-sm">Commander</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="p-4 text-xs text-gray-500 bg-gray-50">
-                            * Les délais sont des estimations pour la structure filaire. Remplacer par les SLA réels du laboratoire.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="mt-20">
-                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-3xl font-bold text-center text-[#373A36] mb-12">Questions fréquentes</h2>
-                    <div class="space-y-4">
-                        <details class="bg-white p-6 rounded-lg shadow-sm">
-                            <summary class="font-semibold cursor-pointer">Le test peut-il être utilisé à des fins légales?</summary>
-                            <p class="text-gray-600 mt-4 text-sm">Pour qu'un test soit reconnu légalement, le prélèvement des échantillons doit être effectué par un tiers neutre et une chaîne de possession doit être établie. Contactez-nous pour organiser un test à valeur légale.</p>
-                        </details>
-                        <details class="bg-white p-6 rounded-lg shadow-sm">
-                            <summary class="font-semibold cursor-pointer">Quelle est la différence entre un test de paternité et un test de fraternité?</summary>
-                            <p class="text-gray-600 mt-4 text-sm">Un test de paternité compare directement l'ADN d'un enfant à celui du père présumé. Un test de fraternité est utilisé lorsque le père n'est pas disponible; il détermine la probabilité que deux individus soient frères et sœurs en comparant leurs profils ADN.</p>
-                        </details>
-                         <details class="bg-white p-6 rounded-lg shadow-sm">
-                            <summary class="font-semibold cursor-pointer">La confidentialité de mes résultats est-elle garantie?</summary>
-                            <p class="text-gray-600 mt-4 text-sm">Absolument. Nous prenons votre vie privée très au sérieux. Vos résultats ne sont accessibles que par vous via un portail en ligne sécurisé et ne sont jamais partagés avec des tiers sans votre consentement explicite.</p>
-                        </details>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </main>
-    
-    <!-- Expanded Footer -->
-    <footer class="bg-white mt-20 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                <div class="col-span-2 lg:col-span-1">
-                    <h2 class="text-2xl font-bold">Adnà</h2>
-                    <p class="text-sm text-gray-500 mt-2">La science au service de vos liens.</p>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold tracking-wider uppercase">Tests ADN</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Filiation</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Origines</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Santé</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Bien-être</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold tracking-wider uppercase">Support</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Contactez-nous</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">FAQ</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Mode d'emploi</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-sm font-semibold tracking-wider uppercase">Légal</h3>
-                    <ul class="mt-4 space-y-2">
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Confidentialité</a></li>
-                        <li><a href="#" class="text-sm text-gray-600 hover:text-black">Termes & Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="col-span-2 md:col-span-4 lg:col-span-1">
-                     <h3 class="text-sm font-semibold tracking-wider uppercase">Suivez-nous</h3>
-                     <div class="flex space-x-4 mt-4">
-                        <a href="#"><svg class="h-6 w-6 text-gray-500 hover:text-black" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                        <a href="#"><svg class="h-6 w-6 text-gray-500 hover:text-black" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
-                        <a href="#"><svg class="h-6 w-6 text-gray-500 hover:text-black" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm0 1.623c-2.387 0-2.721.01-3.667.053-1.002.046-1.57.2-2.028.385a3.278 3.278 0 00-1.18 1.18c-.186.458-.338 1.026-.384 2.028-.044.946-.053 1.28-.053 3.667s.01 2.721.053 3.667c.046 1.002.2 1.57.384 2.028a3.278 3.278 0 001.18 1.18c.458.185 1.026.338 2.028.384.946.044 1.28.053 3.667.053s2.721-.01 3.667-.053c1.002-.046 1.57-.2 2.028-.384a3.278 3.278 0 001.18-1.18c.185-.458.338-1.026.384-2.028.044-.946.053-1.28.053-3.667s-.01-2.721-.053-3.667c-.046-1.002-.2-1.57-.384-2.028a3.278 3.278 0 00-1.18-1.18c-.458-.186-1.026-.338-2.028-.384C15.036 3.633 14.7 3.623 12.315 3.623zM12 8.118a3.882 3.882 0 100 7.764 3.882 3.882 0 000-7.764zm0 6.138a2.256 2.256 0 110-4.512 2.256 2.256 0 010 4.512zm5.338-6.04a.96.96 0 100-1.92.96.96 0 000 1.92z" clip-rule="evenodd" /></svg></a>
-                     </div>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-gray-200 pt-8 text-center">
-                <p class="text-sm text-gray-500">&copy; 2024 Adnà. Tous droits réservés.</p>
-            </div>
-        </div>
+    <footer>
+      <!-- optional small text -->
+      © 2025
     </footer>
-
-
+  </main>
 </body>
 </html>
-
-
-
