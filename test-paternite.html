@@ -50,15 +50,43 @@
 <body class="bg-adnà-bg antialiased">
 
     <!-- Note: User requested not to change the navigation. This is a placeholder for the existing header. -->
-    <header class="w-full h-16 bg-white shadow-sm flex items-center justify-between px-6 z-50 sticky top-0">
-        <span class="text-xl font-bold text-gray-800">Adnà</span>
-        <nav class="flex space-x-4 items-center">
-            <!-- Navigation links and icons go here -->
-            <a href="#" class="text-gray-600 hover:text-gray-900">Tests</a>
-            <a href="#" class="text-gray-600 hover:text-gray-900">Mode d'emploi</a>
-            <a href="#" class="text-gray-600 hover:text-gray-900">À propos</a>
-            <a href="#" class="text-gray-600 hover:text-gray-900">Journal</a>
-        </nav>
+    <header class="w-full bg-adnà-bg">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-4xl font-bold color-adnà-green" aria-label="Adnà Home">Adnà</a>
+    
+            <!-- Centered Nav Links -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="#" class="bg-gray-800 text-white font-semibold rounded-full px-5 py-2 flex items-center space-x-2 hover:bg-gray-700 transition duration-200">
+                    <span>Tests</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <a href="#" class="text-gray-700 font-medium hover:text-gray-900">Mode d'emploi</a>
+                <a href="#" class="text-gray-700 font-medium hover:text-gray-900">À propos</a>
+                <a href="#" class="text-gray-700 font-medium hover:text-gray-900">Journal</a>
+            </nav>
+    
+            <!-- Right Side Icons & Phone -->
+            <div class="hidden md:flex flex-col items-end">
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-gray-700 font-medium hover:text-gray-900 text-sm">EN</a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900" aria-label="Mon compte">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-gray-900 relative" aria-label="Panier">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </a>
+                </div>
+                <span class="text-sm text-gray-700 font-medium mt-1">(514) 233-5456</span>
+            </div>
+    
+            <!-- Mobile Nav Toggle -->
+            <div class="md:hidden">
+                <button class="text-gray-700" aria-label="Ouvrir le menu">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
     </header>
 
     <!-- Above the Fold Section -->
@@ -459,4 +487,5 @@
 
 </body>
 </html>
+
 
