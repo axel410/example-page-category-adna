@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Adnà (Wireframe UI/UX)</title>
+  <!-- Tailwind CSS CDN for quick wireframing -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
+    /* Summary focus & disclosure caret */
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary .caret { transform: rotate(90deg); }
+    .caret { transition: transform .15s ease; }
+    .srch-hide { display:none !important; }
+    .sticky-top { position: sticky; top: 1rem; }
+  </style>
+</head>
+<body class="bg-[#f8f9fb] text-[#1c1c1c]">
+  <!-- Page header -->
+  <header id="top" class="border-b bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Foire aux questions (FAQ)</h1>
+          <p class="mt-1 text-sm text-gray-600">Trouvez rapidement des réponses. Utilisez la recherche ou naviguez par grandes catégories.</p>
+        </div>
+        <div class="w-full md:w-[420px]">
+          <label for="faq-search" class="block text-xs font-medium text-gray-500">Recherche dans la FAQ</label>
+          <div class="mt-1 relative">
+            <input id="faq-search" type="search" placeholder="Rechercher un mot-clé (ex. paternité, livraison, pharmacogénomique)" class="w-full rounded-xl border border-gray-300 bg-white px-4 py-2.5 pr-10 text-[15px] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" />
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">⌘K</span>
+          </div>
+          <p id="search-count" class="mt-1 text-xs text-gray-500"> </p>
+        </div>
+      </div>
+
+      <!-- Quick anchors -->
+      <div class="mt-4 flex flex-wrap gap-2">
+        <a href="#livraison-processus" class="inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 text-xs font-medium">Livraison & Processus</a>
+        <a href="#commande-trousse" class="chip">Commande & Trousse</a>
+        <a href="#resultats-rapports" class="chip">Résultats & Rapports</a>
+        <a href="#confidentialite" class="chip">Confidentialité</a>
+        <a href="#paternite-filiation" class="chip">Paternité & Filiation</a>
+        <a href="#pharmacogenomique" class="chip">Pharmacogénomique</a>
+        <a href="#microbiome" class="chip">Microbiome</a>
+        <a href="#nutrition" class="chip">Nutrition</a>
+        <a href="#sportif" class="chip">Profil sportif</a>
+        <a href="#talents-traits" class="chip">Talents & Traits</a>
+        <a href="#addictions" class="chip">Comportements addictifs</a>
+        <a href="#paiement" class="chip">Paiement & Remboursement</a>
+        <a href="#support" class="chip">Support</a>
+        <a href="#prelevements-speciaux" class="chip">Prélèvements spéciaux</a>
+        <a href="#rubrique-legale" class="chip">Rubrique légale</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Content -->
+    <section class="space-y-12">
+
+      <!-- 1) Livraison & Comment ça marche (requested first) -->
+      <section id="livraison-processus" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold">Livraison & Comment ça marche</h2>
+            <p class="mt-1 text-sm text-gray-600">Vos questions sur les zones desservies, les délais, le retour de la trousse et le déroulement du test.</p>
+          </div>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <!-- Q1 -->
+          <details class="group py-3" data-faq>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Quelles zones sont desservies par Adnà&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p>Adnà expédie ses trousses partout au Québec et partout au Canada. Les analyses sont réalisées dans un laboratoire au Québec.</p>
+            </div>
+          </details>
+          <!-- Q2 -->
+          <details class="group py-3" data-faq>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Combien de temps prend la livraison de la trousse&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p>Le délai d’expédition est généralement de 3 à 5 jours ouvrables après la commande (selon votre région, un court délai additionnel peut s’appliquer).</p>
+            </div>
+          </details>
+          <!-- Q3 -->
+          <details class="group py-3" data-faq>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment fonctionne la livraison et le retour&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p>La trousse est expédiée par la poste (Postes Canada) partout au pays.</p>
+              <p>Une étiquette de retour préaffranchie est incluse&nbsp;:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>Placez les échantillons dans l’enveloppe, scellez‑la.</li>
+                <li>Déposez l’enveloppe dans une boîte aux lettres.</li>
+              </ul>
+              <p>Des notifications de suivi sont envoyées par courriel.</p>
+            </div>
+          </details>
+          <!-- Q4 -->
+          <details class="group py-3" data-faq>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">En combien de temps vais-je recevoir mes résultats&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Filiation (paternité, etc.)</strong>&nbsp;: traitement en ~24&nbsp;h au labo&nbsp;; résultats en ~2 jours après réception des échantillons.</li>
+                <li><strong>Biomarqueurs</strong>&nbsp;: 7 à 14 jours ouvrables.</li>
+                <li><strong>Ascendance, sport & performance, nutrition, peau, talent & personnalité, microbiote, prédispositions génétiques, pharmacogénétique</strong>&nbsp;: traitement ~24&nbsp;h, rapport généralement sous 30 à 60 jours après la commande.</li>
+              </ul>
+            </div>
+          </details>
+          <!-- Q5 (How it works steps) -->
+          <details class="group py-3" data-faq open>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment fonctionne le test, étape par étape&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-4">
+              <ol class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 list-none pl-0">
+                <li class="rounded-xl border border-gray-200 p-3"><strong>1. Commander en ligne</strong><br><span class="text-gray-600">Choisissez votre test et passez commande.</span></li>
+                <li class="rounded-xl border border-gray-200 p-3"><strong>2. Recevoir & enregistrer</strong><br><span class="text-gray-600">Recevez la trousse et enregistrez‑la dans votre portail.</span></li>
+                <li class="rounded-xl border border-gray-200 p-3"><strong>3. Prélever</strong><br><span class="text-gray-600">3 écouvillons&nbsp;: enfant, mère – recommandée, père présumé.</span></li>
+                <li class="rounded-xl border border-gray-200 p-3"><strong>4. Retour par la poste</strong><br><span class="text-gray-600">Étiquette incluse&nbsp;: scellez et déposez l’enveloppe.</span></li>
+                <li class="rounded-xl border border-gray-200 p-3"><strong>5. Analyse au laboratoire (Québec)</strong><br><span class="text-gray-600">Traitement des échantillons.</span></li>
+                <li class="rounded-xl border border-gray-200 p-3"><strong>6. Notification & rapport</strong><br><span class="text-gray-600">Notification par courriel et rapport dans votre portail.</span></li>
+              </ol>
+              <p class="text-xs text-gray-500">Note : ce contenu est un wireframe. Remplacer par vos libellés définitifs et guides détaillés. Ne remplace pas un avis médical.</p>
+            </div>
+          </details>
+          <!-- Q6 -->
+          <details class="group py-3" data-faq>
+            <summary class="flex w-full items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Puis-je commander pour quelqu’un d’autre ? Peut-on ajouter plusieurs rapports&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700 space-y-2">
+              <p>Oui, vous pouvez offrir la trousse en cadeau et la faire livrer directement à la personne concernée.</p>
+              <p>Il est possible d’ajouter plusieurs rapports à une même trousse (tarifs dégressifs affichés lors de l’achat).</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 2) Commande & réception de la trousse -->
+      <section id="commande-trousse" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Commande & réception de la trousse</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Est-il facile de procéder au test génétique d’Adnà&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Décrire la simplicité : contenu de la trousse, guide, activation.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment s’enregistrer pour un test de paternité ou de filiation&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Étapes d’activation / enregistrement et documents requis.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 3) Résultats & Rapports -->
+      <section id="resultats-rapports" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Résultats & Rapports</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">À quel point les résultats des tests d’Adnà sont‑ils précis&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Précisions par type de test et marges d’incertitude.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Sur quoi est fondé ce rapport&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Méthodologie, bases de données, références scientifiques.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 4) Confidentialité & Sécurité -->
+      <section id="confidentialite" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Confidentialité & Sécurité des données</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment Adnà assure‑t‑elle la confidentialité et la sécurité de mes informations génétiques&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Chiffrement, stockage, accès restreint, durée de conservation.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Mes données génétiques seront‑elles communiquées à des tiers&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Politique de partage, consentements, exigences légales.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 5) Paternité & Filiation -->
+      <section id="paternite-filiation" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Paternité & Filiation</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          <div class="divide-y divide-gray-200">
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Les tests ADN de paternité sont‑ils légaux au Canada&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Cadre légal, utilisation en justice, consentement.</p></div>
+            </details>
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Quelle est la différence entre un test de gémellité et un test de fraternité&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Définitions et cas d’usage.</p></div>
+            </details>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Comment fonctionne un test de filiation de grands‑parents&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Principe, échantillons requis, limites.</p></div>
+            </details>
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Acceptez‑vous des échantillons non‑standards pour les tests de filiation&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Liste des échantillons alternatifs et conditions.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6) Pharmacogénomique -->
+      <section id="pharmacogenomique" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Pharmacogénomique</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Le test pharmacogénomique d’Adnà peut‑il prédire toutes mes réactions aux médicaments&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Portée et limites ; importance de consulter un professionnel de santé.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment utiliser les résultats pharmacogénétiques dans mes soins&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Avec un clinicien ; ne pas modifier un traitement sans avis médical.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Mes recommandations de médicaments peuvent‑elles changer avec le temps&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Évolutions des lignes directrices et nouvelles données.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 7) Microbiome -->
+      <section id="microbiome" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Microbiome</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Y a‑t‑il des conditions ou symptômes pour envisager une analyse du microbiome&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Indications générales (sans allégations médicales).</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Les changements d’alimentation ou de mode de vie influencent‑ils mon microbiome&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Facteurs influents et prudence d’interprétation.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Les informations du rapport microbiome sont‑elles applicables à ma famille&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Variabilité individuelle, ne pas extrapoler sans avis pro.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">À quelle fréquence refaire le test du microbiome&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Périodicité suggérée et cas d’usage.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Le microbiome buccal est‑il lié au microbiome intestinal&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->État des connaissances (sans allégations).</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8) Nutrition -->
+      <section id="nutrition" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Nutrition</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Ce test est‑il identique aux tests d’intolérance alimentaire&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Différences entre génétique, allergies, intolérances.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Dois‑je changer mon régime alimentaire selon mes résultats&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Prudence : consulter un professionnel avant tout changement.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Mon alimentation dépend‑elle entièrement de mes gènes&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Interaction gènes‑environnement, habitudes de vie.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Sur quels éléments ce rapport nutrition est‑il basé&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Méthodes, sources et limites.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 9) Profil Sportif -->
+      <section id="sportif" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Profil sportif</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Que peut‑on apprendre du profil sportif génétique&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Indicateurs potentiels et prudence d’interprétation.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">À quel point ces analyses sont‑elles précises&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Portée, limites et variabilité individuelle.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment utiliser ces renseignements pour améliorer mes performances&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Conseils généraux non médicaux ; accompagnement professionnel recommandé.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 10) Talents & Traits -->
+      <section id="talents-traits" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Talents & Traits</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">La génétique peut‑elle influencer mes talents et capacités&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Facteurs génétiques et environnementaux.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Ce rapport peut‑il prédire mon état de santé futur ou mes traits de personnalité&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Précautions d’usage ; pas de déterminisme absolu.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 11) Addictions -->
+      <section id="addictions" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Comportements addictifs</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">À quel point les informations génétiques relatives aux comportements addictifs sont‑elles exactes&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Contexte scientifique, limites et éthique.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Apporter des changements sur la base de ce rapport améliorera‑t‑il ma qualité de vie&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Conseils généraux non médicaux ; consulter des professionnels.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 12) Paiement & Remboursement (placeholders) -->
+      <section id="paiement" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Paiement & Remboursement</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <p class="mt-3 text-sm text-gray-500">Placeholders à compléter selon vos politiques (modes de paiement, taxes, remboursements).</p>
+      </section>
+
+      <!-- 13) Support -->
+      <section id="support" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Support & Service à la clientèle</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <p class="mt-3 text-sm text-gray-500">Placeholders à compléter (heures, canaux de contact, délais de réponse).</p>
+      </section>
+
+      <!-- 14) Prélèvements spéciaux -->
+      <section id="prelevements-speciaux" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Prélèvements spéciaux</h2>
+        </div>
+        <div class="mt-4 grid gap-4 md:grid-cols-2">
+          <div class="divide-y divide-gray-200">
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">À partir de combien de semaines de grossesse puis‑je faire le test&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Seuil recommandé, précautions, encadrement.</p></div>
+            </details>
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Le test est‑il fiable s’il est fait à la maison&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Conditions de prélèvement et bonnes pratiques.</p></div>
+            </details>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <details class="group py-3" data-faq>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="font-medium text-[15px]">Que se passe‑t‑il si le laboratoire ne détecte pas assez d’ADN fœtal&nbsp;?</h3>
+                <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+              </summary>
+              <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Re‑prélèvement, délais, politique de reprise.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15) Rubrique légale -->
+      <section id="rubrique-legale" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">Rubrique légale</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Partenaires juridiques</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Liste des partenaires / références légales.</p></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 16) À propos de nos tests / Générales -->
+      <section id="a-propos-tests" class="bg-white border border-gray-200 rounded-2xl p-6">
+        <div class="flex items-start justify-between">
+          <h2 class="text-xl sm:text-2xl font-bold">À propos de nos tests (général)</h2>
+          <a href="#top" class="text-xs text-emerald-700 hover:underline">Haut de page ↑</a>
+        </div>
+        <div class="mt-4 divide-y divide-gray-200">
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Les méthodes de test et la technologie d’Adnà sont‑elles conformes aux dernières recherches&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Mises à jour scientifiques, accréditations, QA/QC.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Quelles mesures garantissent la qualité et la pureté des échantillons&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Procédures de contrôle et rejets possibles.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Quelles informations sur mon ascendance puis‑je obtenir&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Types d’insights et limites.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Comment Adnà traite‑t‑elle les origines ethniques multiples&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Méthodologie et représentation statistique.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Puis‑je utiliser mes résultats pour construire mon arbre généalogique&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Export, formats, plateformes tierces.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Mes gènes déterminent‑ils tous les aspects de ma santé&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+            </summary>
+            <div class="mt-2 text-sm text-gray-700"><p><!-- TODO -->Rôle de l’environnement et du mode de vie.</p></div>
+          </details>
+          <details class="group py-3" data-faq>
+            <summary class="flex items-center justify-between cursor-pointer">
+              <h3 class="font-medium text-[15px]">Si une mutation est détectée, cela confirme‑t‑il la maladie&nbsp;? Et si aucune n’est détectée&nbsp;?</h3>
+              <svg class="caret w-4 h-4 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path d="M6 6l6 4-6 4V6z"/></svg>
+     
