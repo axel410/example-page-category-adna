@@ -1,455 +1,639 @@
-import { ShoppingCart, Package, ClipboardCheck, UserRound, Mail, Beaker, CheckCircle2, Clock, Bell, ShieldCheck, Info, DollarSign, Dna, Leaf, Smartphone, BarChart3 } from "lucide-react";
+# Create a standalone HTML file that works on GitHub Pages (no build step)
+# Uses Tailwind CDN + Font Awesome CDN + Google Fonts (Inter).
+html = r"""<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADNA – Modules « Comment ça marche »</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f8f8f6; color: #333; }
+    .adna-accent { color: #707C6D; }
+    .adna-dot { background: #eaf0e9; color: #707C6D; }
+  </style>
+</head>
+<body class="p-4 sm:p-8">
+  <main class="max-w-5xl mx-auto space-y-12">
+    <!-- Header -->
+    <header class="text-center">
+      <h1 class="text-3xl font-bold">Suggestions de modules « Comment ça marche »</h1>
+      <p class="text-gray-600 mt-2 max-w-3xl mx-auto">
+        Le Test de Paternité d’Adnà offre une analyse certifiée pour déterminer avec une précision de 99.9% si un homme est le père biologique d'un enfant.
+      </p>
+    </header>
 
-export default function HowItWorksModulesFR() {
-  const accent = "#707C6D"; // ADNA muted green/gray
+    <!-- Suggestion 1: Timeline horizontale compacte (7 étapes) -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 1 : Timeline horizontale compacte</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <ol class="grid grid-cols-1 md:grid-cols-7 gap-6">
+          <!-- Items -->
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-cart-shopping text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">1</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Commandez votre test</p>
+              <p class="text-sm text-gray-600 md:mt-1">Passez votre commande sécurisée en ligne.</p>
+            </div>
+          </li>
 
-  const steps = [
-    {
-      icon: ShoppingCart,
-      title: "Commandez votre test",
-      desc: "Passez votre commande sécurisée en ligne.",
-    },
-    {
-      icon: Package,
-      title: "Recevez la trousse",
-      desc: "Trousse avec 3 écouvillons (enfant, mère, père présumé).",
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Prélevez les échantillons",
-      desc: "Suivez les instructions de prélèvement incluses.",
-    },
-    {
-      icon: UserRound,
-      title: "Enregistrez votre trousse",
-      desc: "Créez/ouvrez votre portail client Adnà et associez votre trousse.",
-    },
-    {
-      icon: Mail,
-      title: "Retour par la poste",
-      desc: "Renvoyez les échantillons avec l'étiquette de retour incluse.",
-    },
-    {
-      icon: Beaker,
-      title: "Analyse au laboratoire",
-      desc: "Traitement et validation des résultats.",
-    },
-    {
-      icon: Bell,
-      title: "Notification & rapport",
-      desc: "Vous êtes avisé par courriel; consultez le rapport dans votre portail.",
-    },
-  ];
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-box-open text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">2</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Recevez la trousse</p>
+              <p class="text-sm text-gray-600 md:mt-1">3 écouvillons (enfant, mère, père présumé).</p>
+            </div>
+          </li>
 
-  return (
-    <div className="bg-[#f8f8f6] font-sans text-[#333] p-4 sm:p-8">
-      <div className="max-w-5xl mx-auto space-y-12">
-        {/* Header */}
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Suggestions de modules « Comment ça marche »</h1>
-          <p className="text-gray-600 mt-2 max-w-3xl mx-auto">
-            Le Test de Paternité d’Adnà offre une analyse certifiée pour déterminer avec une précision de 99.9% si un homme est le père biologique d'un enfant.
-          </p>
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-clipboard-check text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">3</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Prélevez les échantillons</p>
+              <p class="text-sm text-gray-600 md:mt-1">Suivez les instructions incluses.</p>
+            </div>
+          </li>
+
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-user text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">4</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Enregistrez votre trousse</p>
+              <p class="text-sm text-gray-600 md:mt-1">Associez-la à votre portail client.</p>
+            </div>
+          </li>
+
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-envelope text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">5</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Retour par la poste</p>
+              <p class="text-sm text-gray-600 md:mt-1">Étiquette de retour incluse.</p>
+            </div>
+          </li>
+
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-vial text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">6</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Analyse au laboratoire</p>
+              <p class="text-sm text-gray-600 md:mt-1">Traitement et validation.</p>
+            </div>
+          </li>
+
+          <li class="flex md:flex-col items-start md:items-center gap-3 text-center">
+            <div class="relative">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+                <i class="fa-solid fa-bell text-lg"></i>
+              </div>
+              <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">7</span>
+            </div>
+            <div class="md:mt-2">
+              <p class="font-semibold">Notification & rapport</p>
+              <p class="text-sm text-gray-600 md:mt-1">Accédez au rapport dans le portail.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+          <i class="fa-regular fa-clock text-sm"></i>
+          <span>Résultats normalement prêts dans les cinq jours suivant la réception au laboratoire.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestion 1.1: Timeline horizontale compacte (5 étapes) -->
+    <section>
+      <h3 class="text-lg font-semibold mb-4">Suggestion 1.1 : Timeline horizontale compacte (5 étapes)</h3>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <div class="relative hidden md:block">
+          <div class="absolute left-[7%] right-[7%] top-6 h-px bg-gray-200" aria-hidden></div>
+          <ol class="grid grid-cols-5 gap-4">
+            <!-- five compact steps -->
+            <li class="flex flex-col items-center text-center">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">1</span>
+              </div>
+              <p class="mt-2 text-sm font-medium leading-snug">Commandez</p>
+              <p class="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">Achat en ligne (paiement sécurisé).</p>
+            </li>
+            <li class="flex flex-col items-center text-center">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                  <i class="fa-solid fa-box-open"></i>
+                </div>
+                <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">2</span>
+              </div>
+              <p class="mt-2 text-sm font-medium leading-snug">Recevez & enregistrez</p>
+              <p class="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">Encodez la trousse dans votre portail Adnà.</p>
+            </li>
+            <li class="flex flex-col items-center text-center">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">3</span>
+              </div>
+              <p class="mt-2 text-sm font-medium leading-snug">Prélevez</p>
+              <p class="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">Auto‑prélèvement (3 écouvillons).</p>
+            </li>
+            <li class="flex flex-col items-center text-center">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">4</span>
+              </div>
+              <p class="mt-2 text-sm font-medium leading-snug">Retour par la poste</p>
+              <p class="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">Étiquette incluse (Postes Canada).</p>
+            </li>
+            <li class="flex flex-col items-center text-center">
+              <div class="relative">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                  <i class="fa-solid fa-vial"></i>
+                </div>
+                <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">5</span>
+              </div>
+              <p class="mt-2 text-sm font-medium leading-snug">Analyse & rapport</p>
+              <p class="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">Notification par courriel; rapport en ligne.</p>
+            </li>
+          </ol>
+        </div>
+        <!-- Mobile -->
+        <div class="md:hidden">
+          <div class="flex items-start gap-4 overflow-x-auto py-2">
+            <div class="flex-shrink-0 flex flex-col items-center text-center">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+              </div>
+              <p class="mt-1 text-xs font-semibold">Commandez</p>
+              <p class="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">Commande en ligne.</p>
+              <span class="text-[10px] mt-0.5 adna-accent">1</span>
+            </div>
+            <div class="flex-shrink-0 flex flex-col items-center text-center">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                <i class="fa-solid fa-box-open text-sm"></i>
+              </div>
+              <p class="mt-1 text-xs font-semibold">Recevez & enregistrez</p>
+              <p class="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">Enregistrement portail.</p>
+              <span class="text-[10px] mt-0.5 adna-accent">2</span>
+            </div>
+            <div class="flex-shrink-0 flex flex-col items-center text-center">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                <i class="fa-solid fa-clipboard-check text-sm"></i>
+              </div>
+              <p class="mt-1 text-xs font-semibold">Prélevez</p>
+              <p class="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">Auto-prélèvement guidé.</p>
+              <span class="text-[10px] mt-0.5 adna-accent">3</span>
+            </div>
+            <div class="flex-shrink-0 flex flex-col items-center text-center">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                <i class="fa-solid fa-envelope text-sm"></i>
+              </div>
+              <p class="mt-1 text-xs font-semibold">Retour</p>
+              <p class="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">Retour prépayé.</p>
+              <span class="text-[10px] mt-0.5 adna-accent">4</span>
+            </div>
+            <div class="flex-shrink-0 flex flex-col items-center text-center">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                <i class="fa-solid fa-vial text-sm"></i>
+              </div>
+              <p class="mt-1 text-xs font-semibold">Analyse & rapport</p>
+              <p class="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">Notification + rapport.</p>
+              <span class="text-[10px] mt-0.5 adna-accent">5</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+          <i class="fa-regular fa-clock text-sm"></i>
+          <span>Résultats habituellement prêts en ∼5 jours après réception au laboratoire.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestion 2: Étapes détaillées -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 2 : Étapes détaillées (liste verticale)</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <ol class="space-y-6">
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold adna-dot">1</span>
+            <div>
+              <p class="font-semibold">Commandez votre test et recevez la trousse</p>
+              <p class="text-sm text-gray-600">3 écouvillons (enfant, mère, père présumé). <span class="inline-flex items-center gap-1 text-gray-700"><i class="fa-solid fa-circle-info"></i> Mère recommandée pour un taux de précision de 99.9%, non obligatoire.</span></p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold adna-dot">2</span>
+            <div>
+              <p class="font-semibold">Procédez à l’auto‑prélèvement</p>
+              <p class="text-sm text-gray-600">Suivez les instructions illustrées; replacez les échantillons dans les enveloppes prévues.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold adna-dot">3</span>
+            <div>
+              <p class="font-semibold">Enregistrez votre trousse</p>
+              <p class="text-sm text-gray-600">Connectez‑vous à votre portail client Adnà et entrez le code d’activation.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold adna-dot">4</span>
+            <div>
+              <p class="font-semibold">Retournez la trousse par la poste</p>
+              <p class="text-sm text-gray-600">Utilisez l’étiquette de retour incluse.</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold adna-dot">5</span>
+            <div>
+              <p class="font-semibold">Analyse & résultats</p>
+              <p class="text-sm text-gray-600">Courriel quand le rapport est prêt (~5 jours ouvrables après réception).</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Suggestion 3: Bande Pourquoi choisir Adnà -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 3 : Bande « Pourquoi choisir Adnà »</h2>
+      <div class="bg-gray-800 text-white rounded-xl shadow-lg p-6">
+        <p class="text-center max-w-3xl mx-auto">
+          Vérification confidentielle, confirmation d'un doute ou preuve scientifique : test de paternité précis et fiable.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mt-6">
+          <div class="flex flex-col items-center">
+            <i class="fa-solid fa-user-shield text-xl mb-2"></i>
+            <p class="font-semibold">Confidentiel & sécurisé</p>
+            <p class="text-sm text-gray-300">Portail protégé; données traitées avec soin.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <i class="fa-solid fa-circle-check text-xl mb-2"></i>
+            <p class="font-semibold">Précision annoncée 99.9%</p>
+            <p class="text-sm text-gray-300">Résultats clairs et faciles à comprendre.</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <i class="fa-regular fa-clock text-xl mb-2"></i>
+            <p class="font-semibold">Délai habituel ≈ 5 jours</p>
+            <p class="text-sm text-gray-300">À compter de la réception au laboratoire.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestion 4: Participants & écouvillons -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 4 : Bande « Participants & écouvillons »</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div>
+            <div class="mx-auto w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+              <i class="fa-solid fa-child"></i>
+            </div>
+            <p class="mt-2 font-semibold">Enfant</p>
+            <p class="text-sm text-gray-600">1 écouvillon</p>
+          </div>
+          <div>
+            <div class="mx-auto w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+              <i class="fa-solid fa-person-dress"></i>
+            </div>
+            <p class="mt-2 font-semibold">Mère <span class="text-xs font-normal text-gray-600">(recommandée)</span></p>
+            <p class="text-sm text-gray-600">1 écouvillon</p>
+          </div>
+          <div>
+            <div class="mx-auto w-12 h-12 rounded-full flex items-center justify-center adna-dot">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <p class="mt-2 font-semibold">Père présumé</p>
+            <p class="text-sm text-gray-600">1 écouvillon</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-700 mt-4"><i class="fa-solid fa-circle-info mr-1"></i>La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</p>
+      </div>
+    </section>
+
+    <!-- Suggestion 4b: Bannière horizontale — Test d’ascendance -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 4b : Bannière horizontale — Test d’ascendance</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="md:max-w-md">
+            <div class="inline-flex items-center gap-2 mb-2 adna-accent">
+              <i class="fa-solid fa-dna"></i>
+              <span class="font-semibold text-[#333]">Exploration de vos racines</span>
+            </div>
+            <p class="text-sm text-gray-700">Adnà vous accompagne dans l’exploration de vos racines avec rigueur scientifique et respect de vos données. Commandez, suivez la collecte de salive, et recevez un rapport clair dans votre portail client.</p>
+          </div>
+          <div class="relative flex-1">
+            <div class="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden></div>
+            <ol class="grid grid-cols-5 gap-4">
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">1</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Commander</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Achat en ligne</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-vial"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">2</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Collecte salive</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Suivre le guide</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">3</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Enregistrer</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Portail Adnà</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">4</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Retour</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Étiquette incluse</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-circle-check"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">5</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Rapport</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Dans le portail</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestion 4c: Bannière horizontale — Test du microbiome (Injoy) -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 4c : Bannière horizontale — Test du microbiome (Injoy)</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div class="md:max-w-md">
+            <div class="inline-flex items-center gap-2 mb-2 adna-accent">
+              <i class="fa-solid fa-leaf"></i>
+              <span class="font-semibold text-[#333]">Suivi holistique & conseils</span>
+            </div>
+            <p class="text-sm text-gray-700">Kit de test du microbiome (3 échantillons) + Bathroom Beacon pour un suivi quotidien. Conseils personnalisés (~20 biomarqueurs) et accès de 3 mois à l’application Injoy.</p>
+          </div>
+          <div class="relative flex-1">
+            <div class="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden></div>
+            <ol class="grid grid-cols-5 gap-4">
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">1</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Commander</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Trousse + Beacon</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-vial"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">2</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Collecter ×3</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Échantillons microbiome</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">3</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Activer</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Beacon + App 3 mois</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">4</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Retour</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Analyse labo</p>
+              </li>
+              <li class="flex flex-col items-center text-center">
+                <div class="relative">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot">
+                    <i class="fa-solid fa-chart-bar"></i>
+                  </div>
+                  <span class="absolute -top-2 -right-2 text-xs font-semibold adna-accent">5</span>
+                </div>
+                <p class="mt-2 text-sm font-medium leading-snug">Insights</p>
+                <p class="mt-1 text-xs text-gray-600 leading-snug">Conseils personnalisés</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suggestion 5: Sommaire des échantillons acceptés -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 5 : Sommaire des échantillons acceptés</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full adna-dot">
+            <i class="fa-solid fa-vial text-xs"></i> Échantillons non‑standards acceptés (tests de filiation)
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+            <i class="fa-solid fa-dollar-sign text-xs"></i> Prix indicatif : 750 $ – 850 $
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+            <i class="fa-regular fa-clock text-xs"></i> Délai plus long (extraction adaptée)
+          </span>
+        </div>
+        <p class="text-sm text-gray-700">
+          Certains échantillons peuvent contenir très peu d’ADN ou un ADN dégradé; l’acceptation reste à l’évaluation du laboratoire.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 90%+ -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold">Taux de succès : 90 % ou plus</p>
+              <div class="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                <div class="h-full" style="width: 95%; background: #707C6D;"></div>
+              </div>
+            </div>
+            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+              <li>Sperme entier : flacon congelé, écouvillon frais ou tissu</li>
+              <li>Salive entière : tube (de préférence avec conservateur)</li>
+              <li>Sang entier : tube vacutainer bouchon lavande</li>
+              <li>Sang/Salive sur papier buvard : idéalement &lt; 60 jours</li>
+              <li>Moelle osseuse : fraîche ou congelée</li>
+              <li>Mucus / expectorations : mouchoir, serviette en papier</li>
+              <li>Brosse à dents : laisser sécher 30 min avant emballage</li>
+            </ul>
+          </div>
+
+          <!-- 60–90% -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold">Taux de succès : 60 % à 90 %</p>
+              <div class="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                <div class="h-full" style="width: 75%; background: #707C6D;"></div>
+              </div>
+            </div>
+            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+              <li>Taches de sang/sperme/salive sur tissu (indiquer la zone)</li>
+              <li>Tache inconnue sur tissu</li>
+              <li>Ongles coupés : 5–10 recommandés</li>
+              <li>Bandelettes de test diabétique : plusieurs</li>
+              <li>Écouvillon auriculaire (Q‑tip)</li>
+              <li>Cordon ombilical : séché (+ échantillon de la mère)</li>
+              <li>Mégots de cigarette : plusieurs recommandés</li>
+              <li>Tampon / serviette hygiénique : parfois non viable</li>
+              <li>Paille, fil dentaire, sperme ≥200 µl (congelé)</li>
+              <li>Tissu musculaire/organique (non embaumé)</li>
+              <li>Fœtus mort‑né : échantillon de la mère requis</li>
+            </ul>
+          </div>
+
+          <!-- ≤60% -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold">Taux de succès : 60 % ou moins</p>
+              <div class="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                <div class="h-full" style="width: 40%; background: #707C6D;"></div>
+              </div>
+            </div>
+            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+              <li>Cheveux avec racines visibles : 7–10 mèches</li>
+              <li>Rasoir jetable / peigne / brosse (avec débris)</li>
+              <li>Tabac à chiquer (&lt; 3 jours)</li>
+              <li>Bijoux, chewing‑gum</li>
+              <li>Canette / verre (entier préférable)</li>
+              <li>Vêtements : chapeaux, casquettes, bandanas</li>
+              <li>Enveloppes / timbres léchés</li>
+              <li>Préservatif : entier, intérieur et extérieur testés</li>
+              <li>Tissu inclus en paraffine : bloc ou lames</li>
+            </ul>
+          </div>
+
+          <!-- N/A -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-semibold">Taux de succès : N/A</p>
+              <div class="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                <div class="h-full" style="width: 0%; background: #707C6D;"></div>
+              </div>
+            </div>
+            <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+              <li>Dents : molaires préférées</li>
+              <li>Os : fémur, humérus ou métacarpien</li>
+              <li>Fèces : sac scellé + glace sèche / packs réfrigérants</li>
+            </ul>
+          </div>
         </div>
 
-        {/* Suggestion 1: Timeline horizontale compacte */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 1 : Timeline horizontale compacte</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <ol className="grid grid-cols-1 md:grid-cols-7 gap-6">
-              {steps.map(({ icon: Icon, title, desc }, idx) => (
-                <li key={title} className="flex md:flex-col items-start md:items-center gap-3 text-center">
-                  <div className="relative">
-                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                      <Icon className="w-6 h-6" aria-hidden />
-                    </div>
-                    <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
-                  </div>
-                  <div className="md:mt-2">
-                    <p className="font-semibold">{title}</p>
-                    <p className="text-sm text-gray-600 md:mt-1">{desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
-              <Clock className="w-4 h-4" aria-hidden />
-              <span>Résultats normalement prêts dans les cinq jours suivant la réception au laboratoire.</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggestion 1.1: Timeline horizontale compacte (5 étapes) */}
-        <section>
-          <h3 className="text-lg font-semibold mb-4">Suggestion 1.1 : Timeline horizontale compacte (5 étapes)</h3>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <div className="relative hidden md:block">
-              <div className="absolute left-[7%] right-[7%] top-6 h-px bg-gray-200" aria-hidden />
-              <ol className="grid grid-cols-5 gap-4">
-                {[
-                  { Icon: ShoppingCart, title: "Commandez", desc: "Achetez le test en ligne (paiement sécurisé)." },
-                  { Icon: Package, title: "Recevez & enregistrez", desc: "Recevez la trousse et enregistrez-la dans votre portail Adnà (code d’activation inclus)." },
-                  { Icon: ClipboardCheck, title: "Prélevez", desc: "Auto-prélèvement des 3 écouvillons (enfant, mère recommandée, père présumé)." },
-                  { Icon: Mail, title: "Retour par la poste", desc: "Collez l’étiquette de retour incluse et déposez à Postes Canada." },
-                  { Icon: Beaker, title: "Analyse & rapport", desc: "Analyse en laboratoire; notification courriel et rapport dans votre portail." },
-                ].map(({ Icon, title, desc }, idx) => (
-                  <li key={title} className="flex flex-col items-center text-center">
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                        <Icon className="w-5 h-5" aria-hidden />
-                      </div>
-                      <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
-                    </div>
-                    <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
-                    <p className="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">{desc}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-
-            {/* Mobile layout */}
-            <div className="md:hidden">
-              <div className="flex items-start gap-4 overflow-x-auto py-2">
-                {[
-                  { Icon: ShoppingCart, title: "Commandez", desc: "Commande en ligne." },
-                  { Icon: Package, title: "Recevez & enregistrez", desc: "Enregistrez la trousse dans votre portail." },
-                  { Icon: ClipboardCheck, title: "Prélevez", desc: "Auto-prélèvement guidé." },
-                  { Icon: Mail, title: "Retour par la poste", desc: "Retour prépayé." },
-                  { Icon: Beaker, title: "Analyse & rapport", desc: "Notification + rapport en ligne." },
-                ].map(({ Icon, title, desc }, idx) => (
-                  <div key={title} className="flex-shrink-0 flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                      <Icon className="w-5 h-5" aria-hidden />
-                    </div>
-                    <p className="mt-1 text-xs font-semibold">{title}</p>
-                    <p className="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">{desc}</p>
-                    <span className="text-[10px] mt-0.5" style={{ color: accent }}>{idx + 1}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
-              <Clock className="w-4 h-4" aria-hidden />
-              <span>Résultats habituellement prêts en ∼5 jours après réception au laboratoire.</span>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggestion 2: Étapes détaillées (liste verticale) */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 2 : Étapes détaillées (liste verticale)</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <ol className="space-y-6">
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>1</span>
-                <div>
-                  <p className="font-semibold">Commandez votre test et recevez la trousse</p>
-                  <p className="text-sm text-gray-600">La trousse inclut 3 écouvillons (enfant, mère, père présumé). <span className="inline-flex items-center gap-1 text-gray-700"><Info className="w-4 h-4" aria-hidden />La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</span></p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>2</span>
-                <div>
-                  <p className="font-semibold">Procédez à l’auto‑prélèvement</p>
-                  <p className="text-sm text-gray-600">Suivez les instructions illustrées; prélevez les échantillons et replacez‑les dans les enveloppes prévues.</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>3</span>
-                <div>
-                  <p className="font-semibold">Enregistrez votre trousse</p>
-                  <p className="text-sm text-gray-600">Connectez‑vous à votre portail client Adnà et entrez le code d’activation indiqué dans la trousse.</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>4</span>
-                <div>
-                  <p className="font-semibold">Retournez la trousse par la poste</p>
-                  <p className="text-sm text-gray-600">Utilisez l’étiquette de retour incluse; déposez au comptoir ou boîte postale selon les indications.</p>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>5</span>
-                <div>
-                  <p className="font-semibold">Analyse & résultats</p>
-                  <p className="text-sm text-gray-600">Le laboratoire traite vos échantillons. Vous recevrez un courriel quand le rapport est prêt (délai habituel : ~5 jours ouvrables après réception).</p>
-                </div>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        {/* Suggestion 3: Bande « Pourquoi choisir Adnà » */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 3 : Bande « Pourquoi choisir Adnà »</h2>
-          <div className="bg-gray-800 text-white rounded-xl shadow-lg p-6">
-            <p className="text-center max-w-3xl mx-auto">
-              Que vous ayez besoin d’une vérification confidentielle, d'une confirmation d'un doute ou d'une preuve scientifique, notre test de paternité vous assure des résultats précis et fiables.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mt-6">
-              <div className="flex flex-col items-center">
-                <ShieldCheck className="w-8 h-8 mb-2" />
-                <p className="font-semibold">Confidentiel & sécurisé</p>
-                <p className="text-sm text-gray-300">Gestion via un portail protégé; données traitées avec soin.</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <CheckCircle2 className="w-8 h-8 mb-2" />
-                <p className="font-semibold">Précision annoncée 99.9%</p>
-                <p className="text-sm text-gray-300">Résultats clairs et faciles à comprendre.</p>
-              </div>
-              <div className="flex flex-col items-center">
-                <Clock className="w-8 h-8 mb-2" />
-                <p className="font-semibold">Délai habituel ≈ 5 jours</p>
-                <p className="text-sm text-gray-300">À compter de la réception au laboratoire.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggestion 4: Bande « Participants » */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 4 : Bande « Participants & écouvillons »</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                  <UserRound className="w-6 h-6" aria-hidden />
-                </div>
-                <p className="mt-2 font-semibold">Enfant</p>
-                <p className="text-sm text-gray-600">1 écouvillon</p>
-              </div>
-              <div>
-                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                  <UserRound className="w-6 h-6" aria-hidden />
-                </div>
-                <p className="mt-2 font-semibold">Mère <span className="text-xs font-normal text-gray-600">(recommandée)</span></p>
-                <p className="text-sm text-gray-600">1 écouvillon</p>
-              </div>
-              <div>
-                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                  <UserRound className="w-6 h-6" aria-hidden />
-                </div>
-                <p className="mt-2 font-semibold">Père présumé</p>
-                <p className="text-sm text-gray-600">1 écouvillon</p>
-              </div>
-            </div>
-            <p className="text-sm text-gray-700 mt-4 inline-flex items-center gap-2"><Info className="w-4 h-4" aria-hidden />La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</p>
-          </div>
-        </section>
-
-        {/* Suggestion 4b: Bannière horizontale — Test d’ascendance */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 4b : Bannière horizontale — Test d’ascendance</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="md:max-w-md">
-                <div className="inline-flex items-center gap-2 mb-2" style={{ color: accent }}>
-                  <Dna className="w-5 h-5" aria-hidden />
-                  <span className="font-semibold text-[#333]">Exploration de vos racines</span>
-                </div>
-                <p className="text-sm text-gray-700">Adnà vous accompagne dans l’exploration de vos racines avec rigueur scientifique et respect de vos données. Commandez, suivez la collecte de salive, et recevez un rapport clair dans votre portail client.</p>
-              </div>
-
-              {/* Timeline horizontale compacte */}
-              <div className="relative flex-1">
-                <div className="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden />
-                <ol className="grid grid-cols-5 gap-4">
-                  {[
-                    { Icon: ShoppingCart, title: "Commander", desc: "Achat en ligne" },
-                    { Icon: Beaker, title: "Collecte salive", desc: "Suivre le guide" },
-                    { Icon: ClipboardCheck, title: "Enregistrer", desc: "Portail Adnà" },
-                    { Icon: Mail, title: "Retour", desc: "Étiquette incluse" },
-                    { Icon: CheckCircle2, title: "Rapport", desc: "Dans le portail" },
-                  ].map(({ Icon, title, desc }, idx) => (
-                    <li key={title} className="flex flex-col items-center text-center">
-                      <div className="relative">
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                          <Icon className="w-5 h-5" aria-hidden />
-                        </div>
-                        <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
-                      </div>
-                      <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
-                      <p className="mt-1 text-xs text-gray-600 leading-snug">{desc}</p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggestion 4c: Bannière horizontale — Test du microbiome (Injoy) */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 4c : Bannière horizontale — Test du microbiome (Injoy)</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              <div className="md:max-w-md">
-                <div className="inline-flex items-center gap-2 mb-2" style={{ color: accent }}>
-                  <Leaf className="w-5 h-5" aria-hidden />
-                  <span className="font-semibold text-[#333]">Suivi holistique & conseils</span>
-                </div>
-                <p className="text-sm text-gray-700">Combinez le kit de test du microbiome (3 échantillons) et la Bathroom Beacon pour un suivi quotidien. Recevez des conseils personnalisés basés sur ~20 biomarqueurs et un accès de 3 mois à l’application Injoy.</p>
-              </div>
-
-              {/* Timeline horizontale compacte */}
-              <div className="relative flex-1">
-                <div className="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden />
-                <ol className="grid grid-cols-5 gap-4">
-                  {[
-                    { Icon: ShoppingCart, title: "Commander", desc: "Trousse + Beacon" },
-                    { Icon: Beaker, title: "Collecter ×3", desc: "Échantillons microbiome" },
-                    { Icon: Smartphone, title: "Activer", desc: "Beacon + App 3 mois" },
-                    { Icon: Mail, title: "Retour", desc: "Analyse labo" },
-                    { Icon: BarChart3, title: "Insights", desc: "Conseils personnalisés" },
-                  ].map(({ Icon, title, desc }, idx) => (
-                    <li key={title} className="flex flex-col items-center text-center">
-                      <div className="relative">
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                          <Icon className="w-5 h-5" aria-hidden />
-                        </div>
-                        <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
-                      </div>
-                      <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
-                      <p className="mt-1 text-xs text-gray-600 leading-snug">{desc}</p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Suggestion 5: Sommaire des échantillons acceptés */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 5 : Sommaire des échantillons acceptés</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
-            <div className="flex flex-wrap items-center gap-3 text-sm">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                <Beaker className="w-4 h-4" aria-hidden /> Échantillons non‑standards acceptés (tests de filiation)
-              </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
-                <DollarSign className="w-4 h-4" aria-hidden /> Prix indicatif : 750 $ – 850 $
-              </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
-                <Clock className="w-4 h-4" aria-hidden /> Délai plus long (extraction adaptée)
-              </span>
-            </div>
-            <p className="text-sm text-gray-700">
-              Certains échantillons peuvent contenir très peu d’ADN ou un ADN dégradé; l’acceptation reste à l’évaluation du laboratoire.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Tier 90%+ */}
-              <div className="border border-gray-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="font-semibold">Taux de succès : 90 % ou plus</p>
-                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
-                    <div className="h-full" style={{ width: "95%", backgroundColor: accent }} />
-                  </div>
-                </div>
-                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                  <li>Sperme entier : flacon congelé, écouvillon frais ou tissu</li>
-                  <li>Salive entière : tube (de préférence avec conservateur)</li>
-                  <li>Sang entier : tube vacutainer bouchon lavande</li>
-                  <li>Sang/Salive sur papier buvard : idéalement &lt; 60 jours</li>
-                  <li>Moelle osseuse : fraîche ou congelée</li>
-                  <li>Mucus / expectorations : mouchoir, serviette en papier</li>
-                  <li>Brosse à dents : laisser sécher 30 min avant emballage</li>
-                </ul>
-              </div>
-
-              {/* Tier 60–90% */}
-              <div className="border border-gray-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="font-semibold">Taux de succès : 60 % à 90 %</p>
-                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
-                    <div className="h-full" style={{ width: "75%", backgroundColor: accent }} />
-                  </div>
-                </div>
-                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                  <li>Taches de sang/sperme/salive sur tissu (indiquer la zone)</li>
-                  <li>Tache inconnue sur tissu</li>
-                  <li>Ongles coupés : 5–10 recommandés</li>
-                  <li>Bandelettes de test diabétique : plusieurs</li>
-                  <li>Écouvillon auriculaire (Q‑tip)</li>
-                  <li>Cordon ombilical : séché (+ échantillon de la mère)</li>
-                  <li>Mégots de cigarette : plusieurs recommandés</li>
-                  <li>Tampon / serviette hygiénique : parfois non viable</li>
-                  <li>Paille, fil dentaire, sperme ≥200 µl (congelé)</li>
-                  <li>Tissu musculaire/organique (non embaumé)</li>
-                  <li>Fœtus mort‑né : échantillon de la mère requis</li>
-                </ul>
-              </div>
-
-              {/* Tier ≤60% */}
-              <div className="border border-gray-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="font-semibold">Taux de succès : 60 % ou moins</p>
-                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
-                    <div className="h-full" style={{ width: "40%", backgroundColor: accent }} />
-                  </div>
-                </div>
-                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                  <li>Cheveux avec racines visibles : 7–10 mèches</li>
-                  <li>Rasoir jetable / peigne / brosse (avec débris)</li>
-                  <li>Tabac à chiquer (&lt; 3 jours)</li>
-                  <li>Bijoux, chewing‑gum</li>
-                  <li>Canette / verre (entier préférable)</li>
-                  <li>Vêtements : chapeaux, casquettes, bandanas</li>
-                  <li>Enveloppes / timbres léchés</li>
-                  <li>Préservatif : entier, intérieur et extérieur testés</li>
-                  <li>Tissu inclus en paraffine : bloc ou lames</li>
-                </ul>
-              </div>
-
-              {/* Tier N/A */}
-              <div className="border border-gray-200 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="font-semibold">Taux de succès : N/A</p>
-                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
-                    <div className="h-full" style={{ width: "0%", backgroundColor: accent }} />
-                  </div>
-                </div>
-                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
-                  <li>Dents : molaires préférées</li>
-                  <li>Os : fémur, humérus ou métacarpien</li>
-                  <li>Fèces : sac scellé + glace sèche / packs réfrigérants</li>
-                </ul>
-              </div>
-            </div>
-
-            <p className="text-xs text-gray-600 mt-3">
-              <Info className="w-4 h-4 inline mr-1" aria-hidden /> Remarques : prix et délais indicatifs; l’acceptabilité dépend de la qualité du matériel et des procédures du laboratoire.
-            </p>
-          </div>
-        </section>
-
-        {/* Suggestion 6: Bande « Statut & notifications » */}
-        <section>
-          <h2 className="text-xl font-semibold mb-4">Suggestion 6 : Bande « Statut & notifications »</h2>
-          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center items-center">
-              {["Commande", "Prélèvement", "Retour", "Analyse", "Résultats"].map((label, i) => (
-                <div key={label} className="flex flex-col items-center">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2" style={{ backgroundColor: "#eaf0e9", color: accent }}>
-                    {i === 0 && <ShoppingCart className="w-5 h-5" aria-hidden />}
-                    {i === 1 && <ClipboardCheck className="w-5 h-5" aria-hidden />}
-                    {i === 2 && <Mail className="w-5 h-5" aria-hidden />}
-                    {i === 3 && <Beaker className="w-5 h-5" aria-hidden />}
-                    {i === 4 && <CheckCircle2 className="w-5 h-5" aria-hidden />}
-                  </div>
-                  <p className="text-sm font-medium">{label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
-              <Clock className="w-4 h-4" aria-hidden />
-              <span>Résultats habituellement prêts en ~5 jours après réception au laboratoire. Notification par courriel incluse.</span>
-            </div>
-          </div>
-        </section>
+        <p class="text-xs text-gray-600 mt-3">
+          <i class="fa-solid fa-circle-info mr-1"></i> Remarques : prix et délais indicatifs; l’acceptabilité dépend de la qualité du matériel et des procédures du laboratoire.
+        </p>
       </div>
-    </div>
-  );
-}
+    </section>
+
+    <!-- Suggestion 6: Statut & notifications -->
+    <section>
+      <h2 class="text-xl font-semibold mb-4">Suggestion 6 : Bande « Statut & notifications »</h2>
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center items-center">
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 adna-dot">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <p class="text-sm font-medium">Commande</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 adna-dot">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <p class="text-sm font-medium">Prélèvement</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 adna-dot">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <p class="text-sm font-medium">Retour</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 adna-dot">
+              <i class="fa-solid fa-vial"></i>
+            </div>
+            <p class="text-sm font-medium">Analyse</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 adna-dot">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <p class="text-sm font-medium">Résultats</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+          <i class="fa-regular fa-clock text-sm"></i>
+          <span>Résultats habituellement prêts en ~5 jours après réception au laboratoire. Notification par courriel incluse.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>"""
+open("/mnt/data/adna_comment_ca_marche.html", "w", encoding="utf-8").write(html)
+print("Saved to /mnt/data/adna_comment_ca_marche.html")
