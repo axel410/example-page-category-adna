@@ -1,0 +1,455 @@
+import { ShoppingCart, Package, ClipboardCheck, UserRound, Mail, Beaker, CheckCircle2, Clock, Bell, ShieldCheck, Info, DollarSign, Dna, Leaf, Smartphone, BarChart3 } from "lucide-react";
+
+export default function HowItWorksModulesFR() {
+  const accent = "#707C6D"; // ADNA muted green/gray
+
+  const steps = [
+    {
+      icon: ShoppingCart,
+      title: "Commandez votre test",
+      desc: "Passez votre commande sécurisée en ligne.",
+    },
+    {
+      icon: Package,
+      title: "Recevez la trousse",
+      desc: "Trousse avec 3 écouvillons (enfant, mère, père présumé).",
+    },
+    {
+      icon: ClipboardCheck,
+      title: "Prélevez les échantillons",
+      desc: "Suivez les instructions de prélèvement incluses.",
+    },
+    {
+      icon: UserRound,
+      title: "Enregistrez votre trousse",
+      desc: "Créez/ouvrez votre portail client Adnà et associez votre trousse.",
+    },
+    {
+      icon: Mail,
+      title: "Retour par la poste",
+      desc: "Renvoyez les échantillons avec l'étiquette de retour incluse.",
+    },
+    {
+      icon: Beaker,
+      title: "Analyse au laboratoire",
+      desc: "Traitement et validation des résultats.",
+    },
+    {
+      icon: Bell,
+      title: "Notification & rapport",
+      desc: "Vous êtes avisé par courriel; consultez le rapport dans votre portail.",
+    },
+  ];
+
+  return (
+    <div className="bg-[#f8f8f6] font-sans text-[#333] p-4 sm:p-8">
+      <div className="max-w-5xl mx-auto space-y-12">
+        {/* Header */}
+        <div className="text-center">
+          <h1 className="text-3xl font-bold">Suggestions de modules « Comment ça marche »</h1>
+          <p className="text-gray-600 mt-2 max-w-3xl mx-auto">
+            Le Test de Paternité d’Adnà offre une analyse certifiée pour déterminer avec une précision de 99.9% si un homme est le père biologique d'un enfant.
+          </p>
+        </div>
+
+        {/* Suggestion 1: Timeline horizontale compacte */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 1 : Timeline horizontale compacte</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <ol className="grid grid-cols-1 md:grid-cols-7 gap-6">
+              {steps.map(({ icon: Icon, title, desc }, idx) => (
+                <li key={title} className="flex md:flex-col items-start md:items-center gap-3 text-center">
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                      <Icon className="w-6 h-6" aria-hidden />
+                    </div>
+                    <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
+                  </div>
+                  <div className="md:mt-2">
+                    <p className="font-semibold">{title}</p>
+                    <p className="text-sm text-gray-600 md:mt-1">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+              <Clock className="w-4 h-4" aria-hidden />
+              <span>Résultats normalement prêts dans les cinq jours suivant la réception au laboratoire.</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Suggestion 1.1: Timeline horizontale compacte (5 étapes) */}
+        <section>
+          <h3 className="text-lg font-semibold mb-4">Suggestion 1.1 : Timeline horizontale compacte (5 étapes)</h3>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <div className="relative hidden md:block">
+              <div className="absolute left-[7%] right-[7%] top-6 h-px bg-gray-200" aria-hidden />
+              <ol className="grid grid-cols-5 gap-4">
+                {[
+                  { Icon: ShoppingCart, title: "Commandez", desc: "Achetez le test en ligne (paiement sécurisé)." },
+                  { Icon: Package, title: "Recevez & enregistrez", desc: "Recevez la trousse et enregistrez-la dans votre portail Adnà (code d’activation inclus)." },
+                  { Icon: ClipboardCheck, title: "Prélevez", desc: "Auto-prélèvement des 3 écouvillons (enfant, mère recommandée, père présumé)." },
+                  { Icon: Mail, title: "Retour par la poste", desc: "Collez l’étiquette de retour incluse et déposez à Postes Canada." },
+                  { Icon: Beaker, title: "Analyse & rapport", desc: "Analyse en laboratoire; notification courriel et rapport dans votre portail." },
+                ].map(({ Icon, title, desc }, idx) => (
+                  <li key={title} className="flex flex-col items-center text-center">
+                    <div className="relative">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                        <Icon className="w-5 h-5" aria-hidden />
+                      </div>
+                      <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
+                    </div>
+                    <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
+                    <p className="mt-1 text-xs text-gray-600 leading-snug max-w-[12rem]">{desc}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Mobile layout */}
+            <div className="md:hidden">
+              <div className="flex items-start gap-4 overflow-x-auto py-2">
+                {[
+                  { Icon: ShoppingCart, title: "Commandez", desc: "Commande en ligne." },
+                  { Icon: Package, title: "Recevez & enregistrez", desc: "Enregistrez la trousse dans votre portail." },
+                  { Icon: ClipboardCheck, title: "Prélevez", desc: "Auto-prélèvement guidé." },
+                  { Icon: Mail, title: "Retour par la poste", desc: "Retour prépayé." },
+                  { Icon: Beaker, title: "Analyse & rapport", desc: "Notification + rapport en ligne." },
+                ].map(({ Icon, title, desc }, idx) => (
+                  <div key={title} className="flex-shrink-0 flex flex-col items-center text-center">
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                      <Icon className="w-5 h-5" aria-hidden />
+                    </div>
+                    <p className="mt-1 text-xs font-semibold">{title}</p>
+                    <p className="mt-0.5 text-[11px] text-gray-600 max-w-[10rem]">{desc}</p>
+                    <span className="text-[10px] mt-0.5" style={{ color: accent }}>{idx + 1}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+              <Clock className="w-4 h-4" aria-hidden />
+              <span>Résultats habituellement prêts en ∼5 jours après réception au laboratoire.</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Suggestion 2: Étapes détaillées (liste verticale) */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 2 : Étapes détaillées (liste verticale)</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <ol className="space-y-6">
+              <li className="flex gap-4">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>1</span>
+                <div>
+                  <p className="font-semibold">Commandez votre test et recevez la trousse</p>
+                  <p className="text-sm text-gray-600">La trousse inclut 3 écouvillons (enfant, mère, père présumé). <span className="inline-flex items-center gap-1 text-gray-700"><Info className="w-4 h-4" aria-hidden />La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</span></p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>2</span>
+                <div>
+                  <p className="font-semibold">Procédez à l’auto‑prélèvement</p>
+                  <p className="text-sm text-gray-600">Suivez les instructions illustrées; prélevez les échantillons et replacez‑les dans les enveloppes prévues.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>3</span>
+                <div>
+                  <p className="font-semibold">Enregistrez votre trousse</p>
+                  <p className="text-sm text-gray-600">Connectez‑vous à votre portail client Adnà et entrez le code d’activation indiqué dans la trousse.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>4</span>
+                <div>
+                  <p className="font-semibold">Retournez la trousse par la poste</p>
+                  <p className="text-sm text-gray-600">Utilisez l’étiquette de retour incluse; déposez au comptoir ou boîte postale selon les indications.</p>
+                </div>
+              </li>
+              <li className="flex gap-4">
+                <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: "#eaf0e9", color: accent }}>5</span>
+                <div>
+                  <p className="font-semibold">Analyse & résultats</p>
+                  <p className="text-sm text-gray-600">Le laboratoire traite vos échantillons. Vous recevrez un courriel quand le rapport est prêt (délai habituel : ~5 jours ouvrables après réception).</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        {/* Suggestion 3: Bande « Pourquoi choisir Adnà » */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 3 : Bande « Pourquoi choisir Adnà »</h2>
+          <div className="bg-gray-800 text-white rounded-xl shadow-lg p-6">
+            <p className="text-center max-w-3xl mx-auto">
+              Que vous ayez besoin d’une vérification confidentielle, d'une confirmation d'un doute ou d'une preuve scientifique, notre test de paternité vous assure des résultats précis et fiables.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mt-6">
+              <div className="flex flex-col items-center">
+                <ShieldCheck className="w-8 h-8 mb-2" />
+                <p className="font-semibold">Confidentiel & sécurisé</p>
+                <p className="text-sm text-gray-300">Gestion via un portail protégé; données traitées avec soin.</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <CheckCircle2 className="w-8 h-8 mb-2" />
+                <p className="font-semibold">Précision annoncée 99.9%</p>
+                <p className="text-sm text-gray-300">Résultats clairs et faciles à comprendre.</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <Clock className="w-8 h-8 mb-2" />
+                <p className="font-semibold">Délai habituel ≈ 5 jours</p>
+                <p className="text-sm text-gray-300">À compter de la réception au laboratoire.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Suggestion 4: Bande « Participants » */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 4 : Bande « Participants & écouvillons »</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+              <div>
+                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                  <UserRound className="w-6 h-6" aria-hidden />
+                </div>
+                <p className="mt-2 font-semibold">Enfant</p>
+                <p className="text-sm text-gray-600">1 écouvillon</p>
+              </div>
+              <div>
+                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                  <UserRound className="w-6 h-6" aria-hidden />
+                </div>
+                <p className="mt-2 font-semibold">Mère <span className="text-xs font-normal text-gray-600">(recommandée)</span></p>
+                <p className="text-sm text-gray-600">1 écouvillon</p>
+              </div>
+              <div>
+                <div className="mx-auto w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                  <UserRound className="w-6 h-6" aria-hidden />
+                </div>
+                <p className="mt-2 font-semibold">Père présumé</p>
+                <p className="text-sm text-gray-600">1 écouvillon</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-700 mt-4 inline-flex items-center gap-2"><Info className="w-4 h-4" aria-hidden />La participation de la mère est recommandée pour un taux de précision de 99.9%, mais non obligatoire.</p>
+          </div>
+        </section>
+
+        {/* Suggestion 4b: Bannière horizontale — Test d’ascendance */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 4b : Bannière horizontale — Test d’ascendance</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="md:max-w-md">
+                <div className="inline-flex items-center gap-2 mb-2" style={{ color: accent }}>
+                  <Dna className="w-5 h-5" aria-hidden />
+                  <span className="font-semibold text-[#333]">Exploration de vos racines</span>
+                </div>
+                <p className="text-sm text-gray-700">Adnà vous accompagne dans l’exploration de vos racines avec rigueur scientifique et respect de vos données. Commandez, suivez la collecte de salive, et recevez un rapport clair dans votre portail client.</p>
+              </div>
+
+              {/* Timeline horizontale compacte */}
+              <div className="relative flex-1">
+                <div className="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden />
+                <ol className="grid grid-cols-5 gap-4">
+                  {[
+                    { Icon: ShoppingCart, title: "Commander", desc: "Achat en ligne" },
+                    { Icon: Beaker, title: "Collecte salive", desc: "Suivre le guide" },
+                    { Icon: ClipboardCheck, title: "Enregistrer", desc: "Portail Adnà" },
+                    { Icon: Mail, title: "Retour", desc: "Étiquette incluse" },
+                    { Icon: CheckCircle2, title: "Rapport", desc: "Dans le portail" },
+                  ].map(({ Icon, title, desc }, idx) => (
+                    <li key={title} className="flex flex-col items-center text-center">
+                      <div className="relative">
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                          <Icon className="w-5 h-5" aria-hidden />
+                        </div>
+                        <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
+                      </div>
+                      <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
+                      <p className="mt-1 text-xs text-gray-600 leading-snug">{desc}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Suggestion 4c: Bannière horizontale — Test du microbiome (Injoy) */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 4c : Bannière horizontale — Test du microbiome (Injoy)</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div className="md:max-w-md">
+                <div className="inline-flex items-center gap-2 mb-2" style={{ color: accent }}>
+                  <Leaf className="w-5 h-5" aria-hidden />
+                  <span className="font-semibold text-[#333]">Suivi holistique & conseils</span>
+                </div>
+                <p className="text-sm text-gray-700">Combinez le kit de test du microbiome (3 échantillons) et la Bathroom Beacon pour un suivi quotidien. Recevez des conseils personnalisés basés sur ~20 biomarqueurs et un accès de 3 mois à l’application Injoy.</p>
+              </div>
+
+              {/* Timeline horizontale compacte */}
+              <div className="relative flex-1">
+                <div className="absolute left-[5%] right-[5%] top-5 h-px bg-gray-200" aria-hidden />
+                <ol className="grid grid-cols-5 gap-4">
+                  {[
+                    { Icon: ShoppingCart, title: "Commander", desc: "Trousse + Beacon" },
+                    { Icon: Beaker, title: "Collecter ×3", desc: "Échantillons microbiome" },
+                    { Icon: Smartphone, title: "Activer", desc: "Beacon + App 3 mois" },
+                    { Icon: Mail, title: "Retour", desc: "Analyse labo" },
+                    { Icon: BarChart3, title: "Insights", desc: "Conseils personnalisés" },
+                  ].map(({ Icon, title, desc }, idx) => (
+                    <li key={title} className="flex flex-col items-center text-center">
+                      <div className="relative">
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-sm" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                          <Icon className="w-5 h-5" aria-hidden />
+                        </div>
+                        <span className="absolute -top-2 -right-2 text-xs font-semibold" style={{ color: accent }}>{idx + 1}</span>
+                      </div>
+                      <p className="mt-2 text-sm font-medium leading-snug">{title}</p>
+                      <p className="mt-1 text-xs text-gray-600 leading-snug">{desc}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Suggestion 5: Sommaire des échantillons acceptés */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 5 : Sommaire des échantillons acceptés</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-4">
+            <div className="flex flex-wrap items-center gap-3 text-sm">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                <Beaker className="w-4 h-4" aria-hidden /> Échantillons non‑standards acceptés (tests de filiation)
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+                <DollarSign className="w-4 h-4" aria-hidden /> Prix indicatif : 750 $ – 850 $
+              </span>
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-gray-700">
+                <Clock className="w-4 h-4" aria-hidden /> Délai plus long (extraction adaptée)
+              </span>
+            </div>
+            <p className="text-sm text-gray-700">
+              Certains échantillons peuvent contenir très peu d’ADN ou un ADN dégradé; l’acceptation reste à l’évaluation du laboratoire.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Tier 90%+ */}
+              <div className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-semibold">Taux de succès : 90 % ou plus</p>
+                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                    <div className="h-full" style={{ width: "95%", backgroundColor: accent }} />
+                  </div>
+                </div>
+                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                  <li>Sperme entier : flacon congelé, écouvillon frais ou tissu</li>
+                  <li>Salive entière : tube (de préférence avec conservateur)</li>
+                  <li>Sang entier : tube vacutainer bouchon lavande</li>
+                  <li>Sang/Salive sur papier buvard : idéalement &lt; 60 jours</li>
+                  <li>Moelle osseuse : fraîche ou congelée</li>
+                  <li>Mucus / expectorations : mouchoir, serviette en papier</li>
+                  <li>Brosse à dents : laisser sécher 30 min avant emballage</li>
+                </ul>
+              </div>
+
+              {/* Tier 60–90% */}
+              <div className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-semibold">Taux de succès : 60 % à 90 %</p>
+                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                    <div className="h-full" style={{ width: "75%", backgroundColor: accent }} />
+                  </div>
+                </div>
+                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                  <li>Taches de sang/sperme/salive sur tissu (indiquer la zone)</li>
+                  <li>Tache inconnue sur tissu</li>
+                  <li>Ongles coupés : 5–10 recommandés</li>
+                  <li>Bandelettes de test diabétique : plusieurs</li>
+                  <li>Écouvillon auriculaire (Q‑tip)</li>
+                  <li>Cordon ombilical : séché (+ échantillon de la mère)</li>
+                  <li>Mégots de cigarette : plusieurs recommandés</li>
+                  <li>Tampon / serviette hygiénique : parfois non viable</li>
+                  <li>Paille, fil dentaire, sperme ≥200 µl (congelé)</li>
+                  <li>Tissu musculaire/organique (non embaumé)</li>
+                  <li>Fœtus mort‑né : échantillon de la mère requis</li>
+                </ul>
+              </div>
+
+              {/* Tier ≤60% */}
+              <div className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-semibold">Taux de succès : 60 % ou moins</p>
+                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                    <div className="h-full" style={{ width: "40%", backgroundColor: accent }} />
+                  </div>
+                </div>
+                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                  <li>Cheveux avec racines visibles : 7–10 mèches</li>
+                  <li>Rasoir jetable / peigne / brosse (avec débris)</li>
+                  <li>Tabac à chiquer (&lt; 3 jours)</li>
+                  <li>Bijoux, chewing‑gum</li>
+                  <li>Canette / verre (entier préférable)</li>
+                  <li>Vêtements : chapeaux, casquettes, bandanas</li>
+                  <li>Enveloppes / timbres léchés</li>
+                  <li>Préservatif : entier, intérieur et extérieur testés</li>
+                  <li>Tissu inclus en paraffine : bloc ou lames</li>
+                </ul>
+              </div>
+
+              {/* Tier N/A */}
+              <div className="border border-gray-200 rounded-lg p-4">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="font-semibold">Taux de succès : N/A</p>
+                  <div className="w-32 h-2 rounded bg-gray-100 overflow-hidden">
+                    <div className="h-full" style={{ width: "0%", backgroundColor: accent }} />
+                  </div>
+                </div>
+                <ul className="list-disc ml-5 text-sm text-gray-700 space-y-1">
+                  <li>Dents : molaires préférées</li>
+                  <li>Os : fémur, humérus ou métacarpien</li>
+                  <li>Fèces : sac scellé + glace sèche / packs réfrigérants</li>
+                </ul>
+              </div>
+            </div>
+
+            <p className="text-xs text-gray-600 mt-3">
+              <Info className="w-4 h-4 inline mr-1" aria-hidden /> Remarques : prix et délais indicatifs; l’acceptabilité dépend de la qualité du matériel et des procédures du laboratoire.
+            </p>
+          </div>
+        </section>
+
+        {/* Suggestion 6: Bande « Statut & notifications » */}
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Suggestion 6 : Bande « Statut & notifications »</h2>
+          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center items-center">
+              {["Commande", "Prélèvement", "Retour", "Analyse", "Résultats"].map((label, i) => (
+                <div key={label} className="flex flex-col items-center">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2" style={{ backgroundColor: "#eaf0e9", color: accent }}>
+                    {i === 0 && <ShoppingCart className="w-5 h-5" aria-hidden />}
+                    {i === 1 && <ClipboardCheck className="w-5 h-5" aria-hidden />}
+                    {i === 2 && <Mail className="w-5 h-5" aria-hidden />}
+                    {i === 3 && <Beaker className="w-5 h-5" aria-hidden />}
+                    {i === 4 && <CheckCircle2 className="w-5 h-5" aria-hidden />}
+                  </div>
+                  <p className="text-sm font-medium">{label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+              <Clock className="w-4 h-4" aria-hidden />
+              <span>Résultats habituellement prêts en ~5 jours après réception au laboratoire. Notification par courriel incluse.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
