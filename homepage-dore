@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnà - Tests ADN à Domicile | Conçu au Québec</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --adna-bg: #F4F2EE;          /* Warm, soft background */
+            --adna-surface: #FFFFFF;     /* Card/section surface */
+            --adna-soft: #E4EBE7;        /* Subtle secondary background */
+            --adna-text: #1F2933;        /* Ink text */
+            --adna-muted-text: #4B5563;  /* Muted text */
+            --adna-primary: #2F4858;     /* Deep teal/ink */
+            --adna-primary-dark: #233643;/* Darker hover */
+            --adna-accent: #D8A94A;      /* Soft gold accent (logo) */
+            --adna-accent-dark: #C4953F; /* Darker gold hover */
+            --adna-muted: #8FB6A3;       /* Sage/teal supporting */
+        }
+
+        /* Brand font + global colors */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--adna-bg);
+            color: var(--adna-text);
+        }
+
+        .bg-adnà-bg {
+            background-color: var(--adna-bg);
+        }
+
+        .text-adnà-green {
+            color: var(--adna-muted);
+        }
+        
+        .bg-adnà-green {
+            background-color: var(--adna-muted);
+        }
+
+        .border-adnà-green {
+            border-color: var(--adna-muted);
+        }
+        
+        .hover\:bg-adnà-darker-green:hover {
+            background-color: #6F9683; /* Slightly darker muted green */
+        }
+
+        /* Gold accent used more sparingly */
+        .text-adnà-yellow {
+            color: var(--adna-accent);
+        }
+        .bg-adnà-yellow {
+            background-color: var(--adna-accent);
+        }
+        .border-adnà-yellow {
+            border-color: var(--adna-accent);
+        }
+        .hover\:text-adnà-yellow-darker:hover {
+            color: var(--adna-accent-dark);
+        }
+        .hover\:bg-adnà-yellow-darker:hover {
+            background-color: var(--adna-accent-dark);
+        }
+
+        /* Primary CTA style: deep ink-teal */
+        .btn-primary {
+            background-color: var(--adna-primary);
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--adna-primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--adna-primary);
+            border: 2px solid var(--adna-primary);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: var(--adna-primary);
+            color: white;
+            border-color: var(--adna-primary);
+        }
+
+        .btn-dark {
+            background-color: #111827;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-dark:hover {
+            background-color: #020617;
+        }
+
+        /* Newsletter strip: deep brand band */
+        .bg-adnà-newsletter {
+            background-color: var(--adna-primary);
+        }
+
+        /* Icon circles / numbered dots */
+        .adna-dot-bg { 
+            background: var(--adna-soft);
+            color: var(--adna-primary);
+        }
+
+        .card-container {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER -->
+    <header class="bg-adnà-bg sticky top-0 z-50 border-b border-gray-200/80 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-4xl font-bold text-adnà-yellow tracking-tight">Adnà</a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-sm font-semibold text-gray-800 hover:text-black">Tests</a>
+                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-black">Mode d'emploi</a>
+                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-black">À propos</a>
+                    <a href="#" class="text-sm font-medium text-gray-700 hover:text-black">Journal</a>
+                </nav>
+
+                <!-- Desktop Right Side: Phone, Lang, Icons -->
+                <div class="hidden md:flex items-center space-x-5">
+                    <a href="tel:514-233-5456" class="flex items-center space-x-2 text-gray-900 group">
+                        <i class="fa-solid fa-phone text-adnà-yellow group-hover:text-adnà-yellow-darker transition-colors"></i>
+                        <span class="text-lg font-bold group-hover:text-black transition-colors">(514) 233-5456</span>
+                    </a>
+                    <span class="text-sm font-medium text-gray-700 hover:text-black cursor-pointer">EN</span>
+                    <a href="#" aria-label="Mon compte" class="text-gray-600 hover:text-black">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A1.5 1.5 0 0118 21.75H6a1.5 1.5 0 01-1.499-1.632z" /></svg>
+                    </a>
+                    <a href="#" aria-label="Panier" class="text-gray-600 hover:text-black">
+                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-adnà-green" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Ouvrir le menu principal</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 bg-gray-100">Tests</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Mode d'emploi</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">À propos</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Journal</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-200 bg-white/95">
+                <div class="flex items-center px-5">
+                    <a href="tel:514-233-5456" class="flex items-center space-x-2 text-gray-900 group">
+                        <i class="fa-solid fa-phone text-adnà-yellow"></i>
+                        <span class="text-base font-bold">(514) 233-5456</span>
+                    </a>
+                </div>
+                <div class="mt-3 px-2 space-y-1">
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Mon compte</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Panier</a>
+                    <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">EN</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Text Content -->
+                    <div class="space-y-6">
+                        <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                            Votre ADN <span class="text-adnà-yellow">a des réponses.</span>
+                        </h1>
+                        <p class="text-lg text-gray-700 max-w-lg">
+                            Tests ADN à domicile fiables, rapides et confidentiels. Conçus au Québec pour vous offrir la tranquillité d'esprit que vous recherchez.
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <a href="#popular-tests" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold btn-primary shadow-lg transform hover:scale-105 transition-all duration-300 text-center">
+                                Voir tous les tests
+                            </a>
+                            <a href="#how-it-works" class="w-full sm:w-auto px-8 py-4 rounded-full font-semibold btn-secondary text-center">
+                                Comment ça marche
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Image/Video Content -->
+                    <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl" style="background: radial-gradient(circle at top left, #E4EBE7, #CBD5E1);">
+                        <img src="https://placehold.co/1280x720/F4F2EE/2F4858?text=Adn%C3%A0" 
+                             alt="Kit de test ADN Adnà" class="w-full h-full object-cover mix-blend-multiply">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-white/60 via-transparent to-white/30"></div>
+                        <!-- Optional: Play button -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button class="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200" aria-label="Jouer la vidéo">
+                                <svg class="w-10 h-10 text-gray-700" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCALIZATION / TRUST BAR -->
+        <section class="bg-gray-900 text-gray-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                    <div class="flex flex-col items-center sm:flex-row sm:text-left sm:items-center sm:justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+                        <i class="fa-solid fa-map-pin text-2xl text-adnà-yellow"></i>
+                        <div>
+                            <h4 class="font-semibold text-white">Conçu au Québec</h4>
+                            <p class="text-sm text-gray-300">Laboratoire et service local</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center sm:flex-row sm:text-left sm:items-center sm:justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+                        <i class="fa-solid fa-truck-fast text-2xl text-adnà-yellow"></i>
+                        <div>
+                            <h4 class="font-semibold text-white">Livraison Rapide</h4>
+                            <p class="text-sm text-gray-300">Expédié via Postes Canada</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center sm:flex-row sm:text-left sm:items-center sm:justify-center space-y-2 sm:space-y-0 sm:space-x-3">
+                        <i class="fa-solid fa-dollar-sign text-2xl text-adnà-yellow"></i>
+                        <div>
+                            <h4 class="font-semibold text-white">Prix en Dollars Canadiens</h4>
+                            <p class="text-sm text-gray-300">Aucuns frais de change cachés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POPULAR TESTS (E-COMMERCE) -->
+        <section id="popular-tests" class="bg-adnà-bg text-gray-700 py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold tracking-tight text-adnà-yellow sm:text-4xl">Nos tests les plus populaires</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700">
+                        Commencez votre parcours vers la clarté avec nos tests les plus demandés.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Paternity Test Card -->
+                    <div class="card-container bg-white rounded-lg p-6 flex flex-col shadow-lg">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold text-gray-800">Test de Paternité</h3>
+                                <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 199 $</p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Confirmez le lien biologique entre un père présumé et un enfant avec une certitude scientifique inégalée.
+                            </p>
+                        </div>
+                        <a href="#" class="w-full text-center py-3 px-4 rounded-full font-semibold btn-primary mt-4">Commander</a>
+                    </div>
+                    <!-- Maternity Test Card -->
+                    <div class="card-container bg-white rounded-lg p-6 flex flex-col shadow-lg">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold text-gray-800">Test de Maternité</h3>
+                                <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 199 $</p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Vérifiez le lien biologique entre une mère présumée et un enfant, souvent utilisé dans les cas d'adoption ou de FIV.
+                            </p>
+                        </div>
+                        <a href="#" class="w-full text-center py-3 px-4 rounded-full font-semibold btn-primary mt-4">Commander</a>
+                    </div>
+                    <!-- Ancestry Test Card -->
+                    <div class="card-container bg-white rounded-lg p-6 flex flex-col shadow-lg">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-semibold text-gray-800">Test d'Ascendance</h3>
+                                <p class="text-lg font-medium text-gray-700 whitespace-nowrap">dès 149 $</p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Découvrez vos origines ethniques et retracez votre histoire familiale à travers les continents.
+                            </p>
+                        </div>
+                        <a href="#" class="w-full text-center py-3 px-4 rounded-full font-semibold btn-primary mt-4">Commander</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" class="bg-white py-16 sm:py-24">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold tracking-tight text-adnà-yellow sm:text-4xl">Obtenez vos résultats en 5 étapes simples</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700">
+                        Notre processus est conçu pour être simple, rapide et entièrement confidentiel.
+                    </p>
+                </div>
+                
+                <div class="relative hidden md:block">
+                  <div class="absolute left-[10%] right-[10%] top-6 h-px bg-gray-200" aria-hidden></div>
+                  <ol class="grid grid-cols-5 gap-4">
+                    <li class="flex flex-col items-center text-center">
+                      <div class="relative">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-sm adna-dot-bg">
+                          <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <span class="absolute -top-2 -right-2 text-xs font-semibold adna-dot-bg rounded-full px-1.5 py-0.5 border border-white">1</span>
+                      </div>
+                      <p class="mt-3 text-base font-medium leading-snug">Commandez</p>
+                      <p class="mt-1 text-sm text-gray-600 leading-snug max-w-[12rem]">Achat en ligne sécurisé</p>
+                    </li>
+                    <li class="flex flex-col items-center text-center">
+                      <div class="relative">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-sm adna-dot-bg">
+                          <i class="fa-solid fa-box-open"></i>
+                        </div>
+                        <span class="absolute -top-2 -right-2 text-xs font-semibold adna-dot-bg rounded-full px-1.5 py-0.5 border border-white">2</span>
+                      </div>
+                      <p class="mt-3 text-base font-medium leading-snug">Recevez & Enregistrez</p>
+                      <p class="mt-1 text-sm text-gray-600 leading-snug max-w-[12rem]">Encodez la trousse dans votre portail</p>
+                    </li>
+                    <li class="flex flex-col items-center text-center">
+                      <div class="relative">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-sm adna-dot-bg">
+                          <i class="fa-solid fa-clipboard-check"></i>
+                        </div>
+                        <span class="absolute -top-2 -right-2 text-xs font-semibold adna-dot-bg rounded-full px-1.5 py-0.5 border border-white">3</span>
+                      </div>
+                      <p class="mt-3 text-base font-medium leading-snug">Prélevez</p>
+                      <p class="mt-1 text-sm text-gray-600 leading-snug max-w-[12rem]">Auto-prélèvement simple et indolore</p>
+                    </li>
+                    <li class="flex flex-col items-center text-center">
+                      <div class="relative">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-sm adna-dot-bg">
+                          <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <span class="absolute -top-2 -right-2 text-xs font-semibold adna-dot-bg rounded-full px-1.5 py-0.5 border border-white">4</span>
+                      </div>
+                      <p class="mt-3 text-base font-medium leading-snug">Retour par la poste</p>
+                      <p class="mt-1 text-sm text-gray-600 leading-snug max-w-[12rem]">Étiquette de retour incluse</p>
+                    </li>
+                    <li class="flex flex-col items-center text-center">
+                      <div class="relative">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center shadow-sm adna-dot-bg">
+                          <i class="fa-solid fa-vial"></i>
+                        </div>
+                        <span class="absolute -top-2 -right-2 text-xs font-semibold adna-dot-bg rounded-full px-1.5 py-0.5 border border-white">5</span>
+                      </div>
+                      <p class="mt-3 text-base font-medium leading-snug">Analyse & Rapport</p>
+                      <p class="mt-1 text-sm text-gray-600 leading-snug max-w-[12rem]">Accès à votre rapport en ligne</p>
+                    </li>
+                  </ol>
+                </div>
+                <!-- Mobile How it Works -->
+                <div class="md:hidden space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot-bg flex-shrink-0 font-bold">1</div>
+                        <div>
+                            <p class="font-semibold">Commandez</p>
+                            <p class="text-sm text-gray-600">Achat en ligne sécurisé</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot-bg flex-shrink-0 font-bold">2</div>
+                        <div>
+                            <p class="font-semibold">Recevez & Enregistrez</p>
+                            <p class="text-sm text-gray-600">Encodez la trousse dans votre portail</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot-bg flex-shrink-0 font-bold">3</div>
+                        <div>
+                            <p class="font-semibold">Prélevez</p>
+                            <p class="text-sm text-gray-600">Auto-prélèvement simple et indolore</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot-bg flex-shrink-0 font-bold">4</div>
+                        <div>
+                            <p class="font-semibold">Retour par la poste</p>
+                            <p class="text-sm text-gray-600">Étiquette de retour incluse</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-sm adna-dot-bg flex-shrink-0 font-bold">5</div>
+                        <div>
+                            <p class="font-semibold">Analyse & Rapport</p>
+                            <p class="text-sm text-gray-600">Accès à votre rapport en ligne</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR COMMITMENT -->
+        <section class="bg-adnà-bg py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl font-bold tracking-tight text-adnà-yellow sm:text-4xl">Notre engagement</h2>
+                        <p class="text-xl text-gray-800 font-semibold">
+                            La protection de votre vie privée est notre priorité : parce que rien n'est plus personnel que votre ADN.
+                        </p>
+                        <p class="text-gray-700">
+                            Nous nous engageons à promouvoir une approche plus humaine et plus basée sur la personnalisation des solutions de santé, en mettant l'accent sur la confidentialité, le ciblage et l'éducation.
+                        </p>
+                        <div class="space-y-5 pt-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 adna-dot-bg rounded-full h-10 w-10 flex items-center justify-center">
+                                    <i class="fa-solid fa-user-shield text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Non-commercialisation de vos données</h4>
+                                    <p class="text-sm text-gray-700">Vos données ne sont jamais partagées, vendues ou louées à des tiers.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 adna-dot-bg rounded-full h-10 w-10 flex items-center justify-center">
+                                    <i class="fa-solid fa-server text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Sécurité des serveurs avancée</h4>
+                                    <p class="text-sm text-gray-700">Nos serveurs sont protégés contre les intrusions et les fuites de données.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 adna-dot-bg rounded-full h-10 w-10 flex items-center justify-center">
+                                    <i class="fa-solid fa-trash-can text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Supprimez vos données</h4>
+                                    <p class="text-sm text-gray-700">Vous gardez le contrôle et pouvez modifier ou supprimer vos données à tout moment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl" style="background: radial-gradient(circle at top left, #E4EBE7, #CBD5E1);">
+                         <img src="https://placehold.co/800x800/F4F2EE/2F4858?text=Notre+Engagement" 
+                             alt="Personne méditant, symbolisant l'engagement et la tranquillité d'esprit" class="w-full h-full object-cover mix-blend-multiply">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNAL -->
+        <section class="bg-white py-16 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold tracking-tight text-adnà-yellow sm:text-4xl">Journal</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700">
+                        Restez informé des dernières nouvelles et découvertes en génétique.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Journal Post 1 -->
+                    <div class="card-container flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/e0e0e0/4b5563?text=Article+1" alt="Article sur les tests de paternité">
+                        </div>
+                        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-adnà-yellow">Filiation</p>
+                                <a href="#" class="block mt-2">
+                                    <p class="text-xl font-semibold text-gray-900">Tout ce qu'il faut savoir sur les tests de paternité</p>
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="text-sm font-semibold text-adnà-yellow hover:text-adnà-yellow-darker">Lire la suite &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Journal Post 2 -->
+                    <div class="card-container flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/e0e0e0/4b5563?text=Article+2" alt="Article sur le sport et l'ADN">
+                        </div>
+                        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-adnà-yellow">Bien-être</p>
+                                <a href="#" class="block mt-2">
+                                    <p class="text-xl font-semibold text-gray-900">Votre ADN: Le sport et l'indice de masse corporelle</p>
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="text-sm font-semibold text-adnà-yellow hover:text-adnà-yellow-darker">Lire la suite &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Journal Post 3 -->
+                    <div class="card-container flex flex-col rounded-lg shadow-lg overflow-hidden bg-white">
+                        <div class="flex-shrink-0">
+                            <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/e0e0e0/4b5563?text=Article+3" alt="Article sur la nutrigénétique">
+                        </div>
+                        <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-adnà-yellow">Nutrition</p>
+                                <a href="#" class="block mt-2">
+                                    <p class="text-xl font-semibold text-gray-900">Nutrigénétique: sommes-nous ce que nous mangeons?</p>
+                                </a>
+                            </div>
+                            <div class="mt-4">
+                                <a href="#" class="text-sm font-semibold text-adnà-yellow hover:text-adnà-yellow-darker">Lire la suite &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="bg-adnà-newsletter py-16 sm:py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Abonnez-vous à notre infolettre</h2>
+                <p class="text-lg text-gray-100 mb-8">Obtenez les dernières nouvelles à propos des services d'Adnà.</p>
+                <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-lg mx-auto">
+                    <label for="email-newsletter" class="sr-only">Votre courriel</label>
+                    <input type="email" id="email-newsletter" name="email" class="w-full sm:w-auto flex-grow px-5 py-3 rounded-full border-none shadow-sm placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-white" placeholder="Votre courriel" required>
+                    <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-full font-semibold btn-dark shadow-sm uppercase">Je m'abonne</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                    <h3 class="text-2xl font-bold text-adnà-yellow">Adnà</h3>
+                    <p class="text-sm text-gray-600 mt-2">Votre ADN a des réponses.</p>
+                     <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-black" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 tracking-wider uppercase">Tests ADN</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Filiation</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Origines</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Santé</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Bien-être</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 tracking-wider uppercase">Support</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Contactez-nous</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">FAQ</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Mode d'emploi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-gray-800 tracking-wider uppercase">Légal</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Confidentialité</a></li>
+                        <li><a href="#" class="text-sm text-gray-700 hover:text-black">Termes & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-span-2 md:col-span-4 lg:col-span-1">
+                    <h4 class="text-sm font-semibold text-gray-800 tracking-wider uppercase">Contact</h4>
+                     <ul class="mt-4 space-y-2 text-sm text-gray-700">
+                         <li>(514) 233-5456</li>
+                         <li>support@adnalacarte.com</li>
+                         <li>Québec, Canada</li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-200 pt-8 text-center">
+                <p class="text-sm text-gray-600">&copy; 2025 Adnà. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle script
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.querySelector('button[aria-controls="mobile-menu"]');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                    menuButton.setAttribute('aria-expanded', String(!isExpanded));
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
