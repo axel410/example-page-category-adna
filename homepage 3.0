@@ -1,0 +1,550 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Phone, 
+  ShoppingBag, 
+  User, 
+  Menu, 
+  X, 
+  MapPin, 
+  Truck, 
+  DollarSign, 
+  ShieldCheck, 
+  Activity, 
+  Dna, 
+  FileText,
+  Play,
+  ArrowRight
+} from 'lucide-react';
+
+const AdnaRedesign = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll for sticky header styling
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Brand Colors Configuration
+  const colors = {
+    primary: '#5F7A60',      // Sage Green
+    darkPrimary: '#2F3E30',  // Deep Forest Green
+    accent: '#C07E58',       // Terracotta/Clay
+    kitGreen: '#A3B164',     // Olive/Lime from packaging
+    bgLight: '#F9F8F6',      // Warm Alabaster
+    bgWhite: '#FFFFFF',
+    textMain: '#374151',
+  };
+
+  return (
+    <div className="min-h-screen font-sans text-gray-700 bg-white selection:bg-[#A3B164] selection:text-[#2F3E30]">
+      {/* Font Imports */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        html { scroll-behavior: smooth; }
+      `}</style>
+
+      {/* HEADER */}
+      <header 
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
+              <div className="w-10 h-10 bg-[#5F7A60] rounded-full flex items-center justify-center text-white">
+                <Dna size={24} />
+              </div>
+              <span className="text-3xl font-serif font-bold text-[#2F3E30] tracking-tight group-hover:text-[#5F7A60] transition-colors">
+                Adnà
+              </span>
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              {['Tests', "Mode d'emploi", 'À propos', 'Journal'].map((item) => (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase().replace(/ /g, '-')}`}
+                  className="text-sm font-medium text-gray-600 hover:text-[#5F7A60] transition-colors relative group"
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#5F7A60] transition-all group-hover:w-full"></span>
+                </a>
+              ))}
+            </nav>
+
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center space-x-6">
+              <a href="tel:5142335456" className="flex items-center space-x-2 text-[#2F3E30] group">
+                <div className="w-8 h-8 rounded-full bg-[#F4F1EE] flex items-center justify-center group-hover:bg-[#5F7A60] transition-colors">
+                  <Phone size={14} className="text-[#5F7A60] group-hover:text-white transition-colors" />
+                </div>
+                <span className="text-sm font-bold">(514) 233-5456</span>
+              </a>
+              
+              <div className="h-4 w-px bg-gray-300"></div>
+              
+              <div className="flex items-center space-x-4 text-gray-600">
+                <button className="hover:text-[#5F7A60] transition-colors font-medium text-sm">EN</button>
+                <button className="hover:text-[#5F7A60] transition-colors">
+                  <User size={20} />
+                </button>
+                <button className="hover:text-[#5F7A60] transition-colors relative">
+                  <ShoppingBag size={20} />
+                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#C07E58] rounded-full"></span>
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-gray-600 hover:text-[#5F7A60]"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-gray-100 shadow-xl py-4 px-4 flex flex-col space-y-4 animate-in slide-in-from-top-5">
+            {['Tests', "Mode d'emploi", 'À propos', 'Journal'].map((item) => (
+              <a 
+                key={item} 
+                href="#" 
+                className="text-lg font-serif font-medium text-[#2F3E30]"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+            <div className="pt-4 border-t border-gray-100">
+              <a href="tel:5142335456" className="flex items-center space-x-3 text-[#5F7A60] font-bold mb-4">
+                <Phone size={18} />
+                <span>(514) 233-5456</span>
+              </a>
+              <button className="w-full py-3 bg-[#2F3E30] text-white rounded-xl font-medium">
+                Mon Compte
+              </button>
+            </div>
+          </div>
+        )}
+      </header>
+
+      <main>
+        {/* HERO SECTION */}
+        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-[#F9F8F6]">
+          {/* Abstract Organic Background Shapes - Updated with Kit Green tones */}
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E8EBE6] rounded-l-[100px] opacity-60 hidden lg:block pointer-events-none transform translate-x-20"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A3B164] rounded-full mix-blend-multiply filter blur-3xl opacity-10 pointer-events-none animate-pulse"></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              
+              {/* Content */}
+              <div className="space-y-8 z-10">
+                <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                  <span className="w-2 h-2 rounded-full bg-[#A3B164] animate-pulse"></span>
+                  <span className="text-xs font-bold tracking-wide uppercase text-gray-500">Conçu au Québec</span>
+                </div>
+                
+                <h1 className="text-5xl lg:text-7xl font-serif font-medium text-[#2F3E30] leading-tight">
+                  Votre ADN a <br/>
+                  <span className="text-[#5F7A60] relative italic pr-2">
+                    des réponses.
+                    {/* Underline SVG - Updated color */}
+                    <svg className="absolute w-full h-3 -bottom-1 left-0 text-[#A3B164] opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
+                      <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                    </svg>
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-gray-600 max-w-lg leading-relaxed">
+                  Tests ADN à domicile fiables, rapides et confidentiels. Une science de pointe pour une tranquillité d'esprit absolue.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button className="px-8 py-4 bg-[#5F7A60] hover:bg-[#4A634B] text-white rounded-full font-semibold shadow-lg shadow-[#5F7A60]/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    Voir les tests
+                    <ArrowRight size={18} />
+                  </button>
+                  <button className="px-8 py-4 bg-white text-[#2F3E30] border-2 border-[#2F3E30]/10 hover:border-[#2F3E30] rounded-full font-semibold transition-all flex items-center justify-center gap-2">
+                    <Play size={18} className="fill-current" />
+                    Comment ça marche
+                  </button>
+                </div>
+              </div>
+
+              {/* Visual - Updated for Product Kit Image */}
+              <div className="relative z-10">
+                <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#5F7A60]/15 border-4 border-white group">
+                  <img 
+                    src="https://placehold.co/1200x900/F0F2EB/5F7A60?text=Replace+with+Kit+Image" 
+                    alt="Trousse de prélèvement Adnà" 
+                    className="w-full aspect-[4/3] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Floating Badge - Contextualized for the Kit */}
+                  <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur p-4 rounded-2xl shadow-lg flex items-center gap-4 max-w-xs border border-gray-100">
+                    <div className="w-12 h-12 rounded-full bg-[#A3B164] flex items-center justify-center text-white font-bold shadow-inner">
+                      <Dna size={20} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase font-bold tracking-wider">Tout inclus</p>
+                      <p className="text-sm font-serif font-semibold text-[#2F3E30]">Prélèvement simple & stérile</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Decorative dots/blobs adapted to the new kit colors */}
+                <div className="absolute -top-6 -right-6 grid grid-cols-4 gap-2 opacity-30">
+                  {[...Array(16)].map((_, i) => (
+                    <div key={i} className="w-2 h-2 bg-[#A3B164] rounded-full"></div>
+                  ))}
+                </div>
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#A3B164] rounded-full mix-blend-multiply filter blur-3xl opacity-20 -z-10"></div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* TRUST STRIP */}
+        <section className="bg-white border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+              
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 py-2">
+                <div className="w-12 h-12 rounded-full bg-[#F0FDF4] flex items-center justify-center text-[#5F7A60]">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-[#2F3E30] text-lg">Conçu au Québec</h3>
+                  <p className="text-sm text-gray-500">Laboratoire & service local</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 py-2">
+                <div className="w-12 h-12 rounded-full bg-[#FFF7ED] flex items-center justify-center text-[#C07E58]">
+                  <Truck size={24} />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-[#2F3E30] text-lg">Livraison Rapide</h3>
+                  <p className="text-sm text-gray-500">Expédié via Postes Canada</p>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center md:justify-start gap-4 px-4 py-2">
+                <div className="w-12 h-12 rounded-full bg-[#F4F1EE] flex items-center justify-center text-[#2F3E30]">
+                  <DollarSign size={24} />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-[#2F3E30] text-lg">Prix en $CAD</h3>
+                  <p className="text-sm text-gray-500">Aucuns frais cachés</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* POPULAR TESTS */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-[#5F7A60] font-bold tracking-wider uppercase text-sm">Nos Solutions</span>
+              <h2 className="mt-3 text-4xl font-serif font-bold text-[#2F3E30]">Nos tests les plus populaires</h2>
+              <p className="mt-4 text-gray-600 text-lg">
+                Commencez votre parcours vers la clarté avec nos analyses les plus demandées, réalisées selon les standards les plus stricts.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Product Card 1 */}
+              <div className="group bg-white rounded-2xl p-2 shadow-xl shadow-gray-200/50 border border-gray-100 hover:shadow-2xl hover:shadow-[#5F7A60]/10 transition-all duration-300 flex flex-col h-full">
+                <div className="relative h-56 overflow-hidden rounded-xl bg-[#F4F1EE]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Father and child"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-[#2F3E30] shadow-sm">
+                    Populaire
+                  </div>
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-serif font-bold text-[#2F3E30]">Test de Paternité</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm mb-6 flex-grow">
+                    Confirmez le lien biologique entre un père présumé et un enfant avec une certitude scientifique inégalée.
+                  </p>
+                  
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
+                    <div>
+                      <span className="block text-xs text-gray-400 uppercase">À partir de</span>
+                      <span className="text-2xl font-bold text-[#C07E58]">199 $</span>
+                    </div>
+                    <button className="w-12 h-12 rounded-full bg-[#2F3E30] group-hover:bg-[#5F7A60] text-white flex items-center justify-center transition-colors">
+                      <ShoppingBag size={20} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product Card 2 */}
+              <div className="group bg-white rounded-2xl p-2 shadow-xl shadow-gray-200/50 border border-gray-100 hover:shadow-2xl hover:shadow-[#5F7A60]/10 transition-all duration-300 flex flex-col h-full">
+                <div className="relative h-56 overflow-hidden rounded-xl bg-[#F4F1EE]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Mother and child"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-serif font-bold text-[#2F3E30]">Test de Maternité</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm mb-6 flex-grow">
+                    Vérifiez le lien biologique entre une mère présumée et un enfant. Idéal pour adoption ou FIV.
+                  </p>
+                  
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
+                    <div>
+                      <span className="block text-xs text-gray-400 uppercase">À partir de</span>
+                      <span className="text-2xl font-bold text-[#C07E58]">199 $</span>
+                    </div>
+                    <button className="w-12 h-12 rounded-full bg-[#2F3E30] group-hover:bg-[#5F7A60] text-white flex items-center justify-center transition-colors">
+                      <ShoppingBag size={20} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Product Card 3 */}
+              <div className="group bg-white rounded-2xl p-2 shadow-xl shadow-gray-200/50 border border-gray-100 hover:shadow-2xl hover:shadow-[#5F7A60]/10 transition-all duration-300 flex flex-col h-full">
+                <div className="relative h-56 overflow-hidden rounded-xl bg-[#F4F1EE]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Ancestry"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-2xl font-serif font-bold text-[#2F3E30]">Ascendance</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm mb-6 flex-grow">
+                    Découvrez vos origines ethniques et retracez votre histoire familiale à travers les continents.
+                  </p>
+                  
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
+                    <div>
+                      <span className="block text-xs text-gray-400 uppercase">À partir de</span>
+                      <span className="text-2xl font-bold text-[#C07E58]">149 $</span>
+                    </div>
+                    <button className="w-12 h-12 rounded-full bg-[#2F3E30] group-hover:bg-[#5F7A60] text-white flex items-center justify-center transition-colors">
+                      <ShoppingBag size={20} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section id="how-it-works" className="py-24 bg-[#F9F8F6] relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-20">
+              <h2 className="text-3xl font-serif font-bold text-[#2F3E30]">Simple. Rapide. Confidentiel.</h2>
+              <p className="mt-4 text-gray-600">Votre parcours de test en 4 étapes faciles.</p>
+            </div>
+
+            <div className="relative">
+              {/* Connecting Line (Desktop) */}
+              <div className="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-gray-200 border-t-2 border-dashed border-gray-300 z-0"></div>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+                {[
+                  { icon: ShoppingBag, title: "Commandez", desc: "Recevez votre trousse discrètement par la poste." },
+                  { icon: Dna, title: "Prélevez", desc: "Un simple frottis buccal indolore, fait à la maison." },
+                  { icon: Truck, title: "Renvoyez", desc: "Utilisez l'enveloppe prépayée incluse." },
+                  { icon: Activity, title: "Consultez", desc: "Accédez à vos résultats sécurisés en ligne." }
+                ].map((step, index) => (
+                  <div key={index} className="relative z-10 flex flex-col items-center text-center group">
+                    <div className="w-20 h-20 rounded-full bg-white border-4 border-[#F9F8F6] shadow-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <step.icon size={32} className="text-[#5F7A60]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#2F3E30] mb-2">{step.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed px-4">{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* COMMITMENT SECTION */}
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="order-2 lg:order-1">
+                <h2 className="text-4xl font-serif font-bold text-[#2F3E30] mb-6">Notre engagement envers votre vie privée</h2>
+                <p className="text-lg font-medium text-[#5F7A60] mb-6">
+                  Rien n'est plus personnel que votre ADN.
+                </p>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Nous nous engageons à protéger vos données avec les normes de sécurité les plus strictes. Vos informations génétiques vous appartiennent, et à vous seul.
+                </p>
+
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#FFF7ED] flex items-center justify-center text-[#C07E58]">
+                      <ShieldCheck size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2F3E30]">Données non partagées</h4>
+                      <p className="text-sm text-gray-500">Nous ne vendons jamais vos données à des tiers.</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#F0FDF4] flex items-center justify-center text-[#5F7A60]">
+                      <FileText size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2F3E30]">Contrôle total</h4>
+                      <p className="text-sm text-gray-500">Demandez la suppression de vos données à tout moment.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="order-1 lg:order-2 relative">
+                <div className="absolute inset-0 bg-[#5F7A60] rounded-[3rem] rotate-3 opacity-10 transform translate-x-4 translate-y-4"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                  alt="Scientist" 
+                  className="relative rounded-[3rem] shadow-2xl w-full object-cover aspect-square"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* NEWSLETTER */}
+        <section className="py-20 bg-[#5F7A60] relative overflow-hidden">
+          <svg className="absolute top-0 left-0 w-full h-full opacity-10" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+
+          <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 className="text-3xl font-serif font-bold text-white mb-4">Restez informé</h2>
+            <p className="text-[#DDE2C8] mb-8 max-w-xl mx-auto">
+              Rejoignez notre infolettre pour recevoir les dernières actualités sur la génétique et nos offres exclusives.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+              <input 
+                type="email" 
+                placeholder="Votre adresse courriel" 
+                className="flex-grow px-6 py-4 rounded-full border-none focus:ring-2 focus:ring-[#C07E58] bg-white/10 text-white placeholder-white/60 backdrop-blur-sm"
+              />
+              <button className="px-8 py-4 bg-[#2F3E30] hover:bg-[#C07E58] text-white font-bold rounded-full transition-colors shadow-lg">
+                S'abonner
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="bg-white pt-20 pb-10 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
+            <div className="col-span-1 lg:col-span-2">
+              <div className="flex items-center gap-2 mb-6">
+                 <div className="w-8 h-8 bg-[#5F7A60] rounded-full flex items-center justify-center text-white">
+                  <Dna size={18} />
+                </div>
+                <span className="text-2xl font-serif font-bold text-[#2F3E30]">Adnà</span>
+              </div>
+              <p className="text-gray-500 max-w-xs mb-6">
+                Laboratoire québécois dédié à rendre l'analyse génétique accessible, compréhensible et utile pour tous.
+              </p>
+              <div className="flex space-x-4">
+                {['facebook', 'twitter', 'instagram'].map((social) => (
+                  <a key={social} href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-[#5F7A60] hover:text-white transition-all">
+                    <span className="capitalize sr-only">{social}</span>
+                    <div className="w-4 h-4 bg-current rounded-sm"></div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-[#2F3E30] mb-6">Tests ADN</h4>
+              <ul className="space-y-4 text-gray-600">
+                <li><a href="#" className="hover:text-[#5F7A60]">Filiation</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">Ascendance</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">Santé & Bien-être</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">Animaux</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-[#2F3E30] mb-6">Support</h4>
+              <ul className="space-y-4 text-gray-600">
+                <li><a href="#" className="hover:text-[#5F7A60]">Contactez-nous</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">FAQ</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">Mode d'emploi</a></li>
+                <li><a href="#" className="hover:text-[#5F7A60]">Portail Client</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-[#2F3E30] mb-6">Contact</h4>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-center gap-2">
+                  <Phone size={16} className="text-[#5F7A60]" />
+                  (514) 233-5456
+                </li>
+                <li className="flex items-center gap-2">
+                  <MapPin size={16} className="text-[#5F7A60]" />
+                  Québec, QC
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+            <p>&copy; 2025 Adnà. Tous droits réservés.</p>
+            <div className="flex space-x-6">
+              <a href="#" className="hover:text-[#5F7A60]">Confidentialité</a>
+              <a href="#" className="hover:text-[#5F7A60]">Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default AdnaRedesign;
