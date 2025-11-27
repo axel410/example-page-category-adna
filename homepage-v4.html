@@ -248,9 +248,11 @@
                         <div class="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
                             
                             <!-- Slide 1: Pharmacogenetics (Was Slide 2) -->
+                            <!-- Added inline style transform:scale(1) to force start state, removed by JS to animate -->
                             <div class="slider-slide active" data-index="0">
                                 <img src="https://raw.githubusercontent.com/axel410/example-pages-adna/refs/heads/main/image/Adna-VisuelRapport-Accueil-PHARM.jpg" 
                                      alt="Rapport pharmacogénétique" 
+                                     style="transform: scale(1);"
                                      class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                                 <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg border border-white/50 max-w-sm transition-transform duration-500 hover:scale-105 cursor-default">
@@ -741,6 +743,14 @@
             let slideInterval = null;
             const INTERVAL_TIME = 6000; // 6 seconds
 
+            // Trigger the initial animation by removing the inline style constraint
+            setTimeout(() => {
+                const firstSlideImg = document.querySelector('.slider-slide[data-index="0"] img');
+                if (firstSlideImg) {
+                    firstSlideImg.style.transform = ''; // Removes inline scale(1), CSS takes over with transition
+                }
+            }, 50);
+
             // Function to update slide classes
             const updateSlides = (index) => {
                 slides.forEach((slide, i) => {
@@ -796,8 +806,6 @@
             resetTimer();
 
             // Event Listeners for Controls
-            // Important: We stop timer, perform action, then restart timer
-            // This prevents race conditions where the interval ticks right after a click
             
             nextBtn.addEventListener('click', () => {
                 stopTimer();
