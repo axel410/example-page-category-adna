@@ -1,345 +1,427 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Shield, Activity, Users, BookOpen, Microscope, Heart, Lock, MapPin, ArrowRight, Check } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnà - Votre ADN a des réponses</title>
+    <!-- Load Tailwind CSS via CDN for easy self-hosting -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        
+        /* Apply Inter font and base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+        /* Custom animation for the floating badge */
+        @keyframes bounce-slow {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-[#Fdfdfd] text-slate-800">
 
-  // Handle scroll for navbar styling
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    <!-- Banner Promo -->
+    <div class="bg-slate-900 text-white text-xs md:text-sm py-2 text-center px-4 font-medium tracking-wide">
+      En novembre, profitez de <span class="text-teal-400 font-bold">25 à 40% de rabais</span> sur tous nos tests de santé.
+    </div>
 
-  const products = [
-    {
-      title: "Santé et Bien-être",
-      description: "Optimisez votre mode de vie avec des informations sur la nutrition, le sport et les soins de la peau adaptées à vos gènes.",
-      icon: <Heart className="w-6 h-6 text-teal-600" />,
-      popular: true,
-      items: ["Nutrition", "Sport & Performance", "Soins de la peau", "Sommeil & Stress"]
-    },
-    {
-      title: "Filiation",
-      description: "Établissez des liens biologiques avec une précision de 99,9 %. Options rapides, confidentielles et reconnues.",
-      icon: <Users className="w-6 h-6 text-blue-600" />,
-      popular: false,
-      items: ["Test de Paternité", "Maternité", "Fraternité", "Grands-parents"]
-    },
-    {
-      title: "Ascendance",
-      description: "Découvrez vos origines et votre répartition ethnique. Retracez votre lignée à travers différentes périodes historiques.",
-      icon: <MapPin className="w-6 h-6 text-indigo-600" />,
-      popular: false,
-      items: ["Ascendance Globale", "Lignée Maternelle", "Lignée Paternelle"]
-    },
-    {
-      title: "Prédispositions Génétiques",
-      description: "Identifiez les prédispositions génétiques et comprenez comment votre corps métabolise certains médicaments.",
-      icon: <Microscope className="w-6 h-6 text-rose-600" />,
-      popular: false,
-      items: ["Prédispositions", "Pharmacogénétique", "Statut de Porteur"]
-    }
-  ];
+    <!-- Navigation -->
+    <nav id="main-nav" class="sticky top-0 w-full z-50 transition-all duration-300 border-b bg-white border-transparent py-5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 group cursor-pointer">
+                    <div class="bg-slate-900 text-white p-2 rounded-lg group-hover:bg-teal-600 transition-colors duration-300">
+                        <!-- Activity Icon (SVG) -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M22 12H18a4 4 0 0 0-4 4v2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9.58.5h0"/><path d="M12.5 16H8a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/></svg>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tighter text-slate-900">
+                        adn<span class="text-teal-600">à</span>
+                    </span>
+                </a>
 
-  return (
-    <div className="min-h-screen bg-[#Fdfdfd] font-sans text-slate-800 selection:bg-teal-100 selection:text-teal-900">
-      
-      {/* Banner Promo (Based on PDF content) */}
-      <div className="bg-slate-900 text-white text-xs md:text-sm py-2 text-center px-4 font-medium tracking-wide">
-        En novembre, profitez de <span className="text-teal-400 font-bold">25 à 40% de rabais</span> sur tous nos tests de santé.
-      </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#tests" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Tests</a>
+                    <a href="#mode-emploi" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Mode d'emploi</a>
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">À propos</a>
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Journal</a>
+                    <button class="bg-slate-900 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg hover:shadow-teal-600/20 transform hover:-translate-y-0.5">
+                      Commander
+                    </button>
+                </div>
 
-      {/* Navigation */}
-      <nav className={`sticky top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/90 backdrop-blur-md border-slate-200 shadow-sm py-3' : 'bg-white border-transparent py-5'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
-            <div className="flex items-center space-x-2 group cursor-pointer">
-              <div className="bg-slate-900 text-white p-2 rounded-lg group-hover:bg-teal-600 transition-colors duration-300">
-                <Activity className="w-5 h-5" />
-              </div>
-              <span className="text-2xl font-bold tracking-tighter text-slate-900">
-                adn<span className="text-teal-600">à</span>
-              </span>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-button" class="text-slate-800 p-2">
+                        <!-- Menu Icon (SVG) -->
+                        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                        <!-- Close Icon (SVG) - Initially Hidden -->
+                        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
             </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#tests" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Tests</a>
-              <a href="#mode-emploi" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Mode d'emploi</a>
-              <a href="#" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">À propos</a>
-              <a href="#" className="text-sm font-semibold text-slate-600 hover:text-teal-600 transition-colors">Journal</a>
-              <button className="bg-slate-900 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all shadow-lg hover:shadow-teal-600/20 transform hover:-translate-y-0.5">
-                Commander
-              </button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-800 p-2">
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl py-4 px-4 flex flex-col space-y-4">
-            <a href="#tests" className="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Tests</a>
-            <a href="#mode-emploi" className="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Mode d'emploi</a>
-            <a href="#" className="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">À propos</a>
-            <a href="#" className="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Journal</a>
-            <button className="w-full bg-teal-600 text-white py-4 rounded-lg font-bold mt-2">Commander maintenant</button>
-          </div>
-        )}
-      </nav>
+        <!-- Mobile Menu Overlay - Initially Hidden -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 shadow-xl py-4 px-4 flex flex-col space-y-4">
+            <a href="#tests" class="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Tests</a>
+            <a href="#mode-emploi" class="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Mode d'emploi</a>
+            <a href="#" class="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">À propos</a>
+            <a href="#" class="text-slate-800 font-semibold py-3 border-b border-slate-50 px-2">Journal</a>
+            <button class="w-full bg-teal-600 text-white py-4 rounded-lg font-bold mt-2">Commander maintenant</button>
+        </div>
+    </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="lg:grid lg:grid-cols-12 gap-16 items-center">
-            
-            {/* Left Content */}
-            <div className="lg:col-span-7 text-center lg:text-left z-10 relative">
-              <div className="inline-flex items-center space-x-2 bg-teal-50 border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 mb-8">
-                <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
-                <span className="text-xs font-bold uppercase tracking-widest">Conçu au Québec</span>
-              </div>
-              
-              <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-[1.1]">
-                Votre ADN a <br/>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">des réponses.</span>
-              </h1>
-              
-              <p className="text-xl text-slate-500 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Découvrez ce que vos gènes révèlent sur votre santé, vos origines et votre bien-être. 
-                Une approche humaine, accessible et sécurisée.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <button className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-lg transition-all shadow-xl shadow-teal-600/20 flex items-center justify-center group">
-                  Voir les tests
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl font-bold text-lg transition-all shadow-sm hover:shadow-md">
-                  Comment ça marche ?
-                </button>
-              </div>
-              
-              <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-slate-500 text-sm font-medium">
-                <div className="flex items-center">
-                  <Check className="w-5 h-5 text-teal-500 mr-2" />
-                  <span>Fiable à 99,9%</span>
-                </div>
-                <div className="flex items-center">
-                  <Check className="w-5 h-5 text-teal-500 mr-2" />
-                  <span>100% Confidentiel</span>
-                </div>
-                <div className="flex items-center">
-                  <Check className="w-5 h-5 text-teal-500 mr-2" />
-                  <span>Rapide</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image/Visual */}
-            <div className="hidden lg:block lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
-                 {/* Abstract representation of the "Kit" and "Lifestyle" */}
-                 <div className="bg-slate-100 aspect-[4/5] relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100"></div>
-                    {/* Decorative circles */}
-                    <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <!-- Hero Section -->
+    <section class="relative pt-16 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="lg:grid lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left z-10 relative">
+                    <div class="inline-flex items-center space-x-2 bg-teal-50 border border-teal-100 text-teal-800 rounded-full px-4 py-1.5 mb-8">
+                        <span class="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest">Conçu au Québec</span>
+                    </div>
                     
-                    {/* Content inside the card/image */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
-                       {/* DNA Helix Abstract */}
-                       <div className="w-full h-full border-2 border-white bg-white/50 backdrop-blur-sm rounded-2xl p-6 flex flex-col shadow-lg">
-                          <div className="flex items-center justify-between mb-8">
-                             <div className="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded uppercase">Rapport</div>
-                             <Activity className="text-teal-600 w-6 h-6" />
-                          </div>
-                          <div className="space-y-4 flex-1">
-                             <div className="h-4 bg-slate-200 rounded w-3/4"></div>
-                             <div className="h-4 bg-slate-200 rounded w-1/2"></div>
-                             <div className="mt-8 p-4 bg-teal-50 rounded-xl border border-teal-100">
-                                <div className="text-teal-800 font-bold text-lg mb-1">Sensibilité à la caféine</div>
-                                <div className="text-teal-600 text-sm">Métaboliseur rapide détecté</div>
-                             </div>
-                             <div className="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
-                                <div className="text-blue-800 font-bold text-lg mb-1">Type de fibres musculaires</div>
-                                <div className="text-blue-600 text-sm">Endurance élevée</div>
-                             </div>
-                          </div>
-                          <div className="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
-                             <div className="flex -space-x-2">
-                                <div className="w-8 h-8 rounded-full bg-slate-300 border-2 border-white"></div>
-                                <div className="w-8 h-8 rounded-full bg-slate-400 border-2 border-white"></div>
-                             </div>
-                             <div className="text-xs text-slate-400 font-medium">Analyse complétée</div>
-                          </div>
-                       </div>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight mb-8 leading-[1.1]">
+                        Votre ADN a <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">des réponses.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-slate-500 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Découvrez ce que vos gènes révèlent sur votre santé, vos origines et votre bien-être. 
+                        Une approche humaine, accessible et sécurisée.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                        <button class="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-lg transition-all shadow-xl shadow-teal-600/20 flex items-center justify-center group">
+                            Voir les tests
+                            <!-- ArrowRight Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"><path d="M5 12l14 0"/><path d="M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <button class="px-8 py-4 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl font-bold text-lg transition-all shadow-sm hover:shadow-md">
+                            Comment ça marche ?
+                        </button>
                     </div>
-                 </div>
-              </div>
-              
-              {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-50 flex items-center gap-4 animate-bounce duration-[3000ms]">
-                 <div className="bg-green-100 p-3 rounded-full text-green-600">
-                    <Shield className="w-6 h-6" />
-                 </div>
-                 <div>
-                    <div className="text-slate-900 font-bold">Données cryptées</div>
-                    <div className="text-slate-500 text-xs">Serveurs au Canada</div>
-                 </div>
-              </div>
+                    
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-slate-500 text-sm font-medium">
+                        <div class="flex items-center">
+                            <!-- Check Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-teal-500 mr-2"><path d="M20 6 9 17l-5-5"/></svg>
+                            <span>Fiable à 99,9%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- Check Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-teal-500 mr-2"><path d="M20 6 9 17l-5-5"/></svg>
+                            <span>100% Confidentiel</span>
+                        </div>
+                        <div class="flex items-center">
+                            <!-- Check Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-teal-500 mr-2"><path d="M20 6 9 17l-5-5"/></svg>
+                            <span>Rapide</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Image/Visual -->
+                <div class="hidden lg:block lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+                        <!-- Abstract representation of the "Kit" and "Lifestyle" -->
+                        <div class="bg-slate-100 aspect-[4/5] relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100"></div>
+                            <!-- Decorative circles -->
+                            <div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
+                            <div class="absolute bottom-[-10%] left-[-10%] w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+                            
+                            <!-- Content inside the card/image -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-8">
+                                <!-- DNA Helix Abstract -->
+                                <div class="w-full h-full border-2 border-white bg-white/50 backdrop-blur-sm rounded-2xl p-6 flex flex-col shadow-lg">
+                                    <div class="flex items-center justify-between mb-8">
+                                        <div class="bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded uppercase">Rapport</div>
+                                        <!-- Activity Icon (SVG) -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600 w-6 h-6"><path d="M22 12H18a4 4 0 0 0-4 4v2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9.58.5h0"/><path d="M12.5 16H8a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/></svg>
+                                    </div>
+                                    <div class="space-y-4 flex-1">
+                                        <div class="h-4 bg-slate-200 rounded w-3/4"></div>
+                                        <div class="h-4 bg-slate-200 rounded w-1/2"></div>
+                                        <div class="mt-8 p-4 bg-teal-50 rounded-xl border border-teal-100">
+                                            <div class="text-teal-800 font-bold text-lg mb-1">Sensibilité à la caféine</div>
+                                            <div class="text-teal-600 text-sm">Métaboliseur rapide détecté</div>
+                                        </div>
+                                        <div class="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                            <div class="text-blue-800 font-bold text-lg mb-1">Type de fibres musculaires</div>
+                                            <div class="text-blue-600 text-sm">Endurance élevée</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-auto pt-6 border-t border-slate-100 flex justify-between items-center">
+                                        <div class="flex -space-x-2">
+                                            <div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white"></div>
+                                            <div class="w-8 h-8 rounded-full bg-slate-400 border-2 border-white"></div>
+                                        </div>
+                                        <div class="text-xs text-slate-400 font-medium">Analyse complétée</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-50 flex items-center gap-4 animate-bounce-slow">
+                        <div class="bg-green-100 p-3 rounded-full text-green-600">
+                            <!-- Shield Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M20 13c0 5-2 9-5 11-2.2-.8-4.5-2-6-4-1.2-1.5-3.3-3.6-6-4 3 1 5 3 6 5 1.5 1 3.8 2.2 6 2.8 3-2 5-6 5-11V3l-9 4-9-4v10"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-slate-900 font-bold">Données cryptées</div>
+                            <div class="text-slate-500 text-xs">Serveurs au Canada</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* Product Catalog Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-100" id="tests">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-teal-600 font-bold tracking-wide uppercase text-sm mb-3">Nos Solutions</h2>
-            <p className="text-4xl font-extrabold text-slate-900 mb-6">
-              Une gamme complète <span className="font-serif italic text-slate-500">à la carte</span>
-            </p>
-            <p className="max-w-2xl text-lg text-slate-500 mx-auto">
-              Que ce soit pour vérifier un lien de parenté ou optimiser votre alimentation, payez uniquement pour les réponses dont vous avez besoin.
-            </p>
-          </div>
+    <!-- Product Catalog Section -->
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-100" id="tests">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-teal-600 font-bold tracking-wide uppercase text-sm mb-3">Nos Solutions</h2>
+                <p class="text-4xl font-extrabold text-slate-900 mb-6">
+                    Une gamme complète <span class="font-serif italic text-slate-500">à la carte</span>
+                </p>
+                <p class="max-w-2xl text-lg text-slate-500 mx-auto">
+                    Que ce soit pour vérifier un lien de parenté ou optimiser votre alimentation, payez uniquement pour les réponses dont vous avez besoin.
+                </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {products.map((product, idx) => (
-              <div key={idx} className="group flex flex-col bg-slate-50 rounded-2xl p-1 hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
-                <div className="flex-1 p-6 md:p-8">
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300">
-                      {product.icon}
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <!-- Card 1: Santé et Bien-être (Popular) -->
+                <div class="group flex flex-col bg-slate-50 rounded-2xl p-1 hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                    <div class="flex-1 p-6 md:p-8">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Heart Icon (SVG) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-teal-600"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </div>
+                            <span class="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">
+                                Populaire
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Santé et Bien-être</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Optimisez votre mode de vie avec des informations sur la nutrition, le sport et les soins de la peau adaptées à vos gènes.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Nutrition</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Sport & Performance</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Soins de la peau</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Sommeil & Stress</div>
+                        </div>
                     </div>
-                    {product.popular && (
-                      <span className="bg-teal-100 text-teal-800 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">
-                        Populaire
-                      </span>
-                    )}
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 leading-tight">{product.title}</h3>
-                  <p className="text-slate-500 text-sm mb-6 leading-relaxed">
-                    {product.description}
-                  </p>
-                  
-                  <div className="space-y-3">
-                    {product.items.map((item, i) => (
-                      <div key={i} className="flex items-center text-sm text-slate-600">
-                        <div className="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <a href="#" class="flex items-center justify-center w-full py-3 px-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all text-sm">
+                            En savoir plus
+                        </a>
+                    </div>
                 </div>
-                <div className="p-6 pt-0 mt-auto">
-                  <a href="#" className="flex items-center justify-center w-full py-3 px-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all text-sm">
-                    En savoir plus
-                  </a>
+
+                <!-- Card 2: Filiation -->
+                <div class="group flex flex-col bg-slate-50 rounded-2xl p-1 hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                    <div class="flex-1 p-6 md:p-8">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Users Icon (SVG) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-blue-600"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Filiation</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Établissez des liens biologiques avec une précision de 99,9 %. Options rapides, confidentielles et reconnues.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Test de Paternité</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Maternité</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Fraternité</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Grands-parents</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <a href="#" class="flex items-center justify-center w-full py-3 px-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all text-sm">
+                            En savoir plus
+                        </a>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
+
+                <!-- Card 3: Ascendance -->
+                <div class="group flex flex-col bg-slate-50 rounded-2xl p-1 hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                    <div class="flex-1 p-6 md:p-8">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300">
+                                <!-- MapPin Icon (SVG) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-indigo-600"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Ascendance</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Découvrez vos origines et votre répartition ethnique. Retracez votre lignée à travers différentes périodes historiques.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Ascendance Globale</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Lignée Maternelle</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Lignée Paternelle</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <a href="#" class="flex items-center justify-center w-full py-3 px-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all text-sm">
+                            En savoir plus
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Prédispositions Génétiques -->
+                <div class="group flex flex-col bg-slate-50 rounded-2xl p-1 hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                    <div class="flex-1 p-6 md:p-8">
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-700 group-hover:scale-110 transition-transform duration-300">
+                                <!-- Microscope Icon (SVG) -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-rose-600"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 9a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1z"/><path d="M5 22v-3l3-3"/><path d="M12 10V3"/><path d="M15 7H9"/></svg>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-tight">Prédispositions Génétiques</h3>
+                        <p class="text-slate-500 text-sm mb-6 leading-relaxed">
+                            Identifiez les prédispositions génétiques et comprenez comment votre corps métabolise certains médicaments.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Prédispositions</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Pharmacogénétique</div>
+                            <div class="flex items-center text-sm text-slate-600"><div class="w-1 h-1 bg-slate-400 rounded-full mr-3 group-hover:bg-teal-500 transition-colors"></div>Statut de Porteur</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 mt-auto">
+                        <a href="#" class="flex items-center justify-center w-full py-3 px-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all text-sm">
+                            En savoir plus
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </section>
+    </section>
 
-      {/* "Mode d'emploi" (How it works) */}
-      <section className="py-24 bg-slate-900 text-white" id="mode-emploi">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">En toute simplicité</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Recevez votre trousse à domicile, effectuez le prélèvement et découvrez vos résultats en quelques étapes.
-            </p>
-          </div>
+    <!-- "Mode d'emploi" (How it works) -->
+    <section class="py-24 bg-slate-900 text-white" id="mode-emploi">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">En toute simplicité</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    Recevez votre trousse à domicile, effectuez le prélèvement et découvrez vos résultats en quelques étapes.
+                </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            {/* Connecting Line (Desktop only) */}
-            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-slate-800 z-0"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop only) -->
+                <div class="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-slate-800 z-0"></div>
 
-            {[
-              { 
-                title: "Commandez en ligne", 
-                desc: "Choisissez votre test. Livraison rapide partout au Québec.",
-                icon: <Lock className="w-5 h-5" /> 
-              },
-              { 
-                title: "Recevez votre trousse", 
-                desc: "Activez votre trousse avec le code sécurisé inclus.",
-                icon: <BookOpen className="w-5 h-5" /> 
-              },
-              { 
-                title: "Retournez vos échantillons", 
-                desc: "Utilisez l'enveloppe préaffranchie pour le retour au laboratoire.",
-                icon: <MapPin className="w-5 h-5" /> 
-              },
-              { 
-                title: "Consultez vos résultats", 
-                desc: "Accédez à votre rapport complet sur notre portail sécurisé.",
-                icon: <Activity className="w-5 h-5" /> 
-              }
-            ].map((step, idx) => (
-              <div key={idx} className="relative z-10 flex flex-col items-center text-center group">
-                <div className="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-900 flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300 shadow-lg">
-                  <span className="text-2xl font-bold text-white">{idx + 1}</span>
+                <!-- Step 1: Commandez en ligne -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-900 flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300 shadow-lg">
+                        <span class="text-2xl font-bold text-white">1</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Commandez en ligne</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Choisissez votre test. Livraison rapide partout au Québec.</p>
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">{step.title}</h4>
-                <p className="text-slate-400 text-sm leading-relaxed px-4">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-16 text-center">
-            <a href="#" className="inline-flex items-center text-teal-400 font-bold hover:text-teal-300 transition-colors">
-              Voir la vidéo explicative <ChevronRight className="w-4 h-4 ml-1" />
-            </a>
-          </div>
-        </div>
-      </section>
+                
+                <!-- Step 2: Recevez votre trousse -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-900 flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300 shadow-lg">
+                        <span class="text-2xl font-bold text-white">2</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Recevez votre trousse</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Activez votre trousse avec le code sécurisé inclus.</p>
+                </div>
 
-      {/* Why Choose Adnà (Values) */}
-      <section className="py-24 bg-[#F5F7F6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Step 3: Retournez vos échantillons -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-900 flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300 shadow-lg">
+                        <span class="text-2xl font-bold text-white">3</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Retournez vos échantillons</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Utilisez l'enveloppe préaffranchie pour le retour au laboratoire.</p>
+                </div>
+
+                <!-- Step 4: Consultez vos résultats -->
+                <div class="relative z-10 flex flex-col items-center text-center group">
+                    <div class="w-24 h-24 bg-slate-800 rounded-full border-4 border-slate-900 flex items-center justify-center mb-6 group-hover:bg-teal-600 transition-colors duration-300 shadow-lg">
+                        <span class="text-2xl font-bold text-white">4</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Consultez vos résultats</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed px-4">Accédez à votre rapport complet sur notre portail sécurisé.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#" class="inline-flex items-center text-teal-400 font-bold hover:text-teal-300 transition-colors">
+                    Voir la vidéo explicative 
+                    <!-- ChevronRight Icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 ml-1"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Adnà (Values) -->
+    <section class="py-24 bg-[#F5F7F6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                 <h2 className="text-3xl font-bold text-slate-900 mb-6">Notre engagement</h2>
-                 <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+                 <h2 class="text-3xl font-bold text-slate-900 mb-6">Notre engagement</h2>
+                 <p class="text-slate-600 text-lg mb-8 leading-relaxed">
                    Nous cherchons à promouvoir une approche plus humaine et plus accessible, basée sur la personnalisation des solutions de santé, la prévention ciblée et l'éducation.
                  </p>
                  
-                 <div className="space-y-6">
-                    <div className="flex gap-4">
-                       <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-teal-600">
-                          <Lock className="w-6 h-6" />
+                 <div class="space-y-6">
+                    <div class="flex gap-4">
+                       <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-teal-600">
+                          <!-- Lock Icon (SVG) -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                        </div>
                        <div>
-                          <h4 className="text-lg font-bold text-slate-900">Confidentialité absolue</h4>
-                          <p className="text-slate-500 text-sm mt-1">
+                          <h4 class="text-lg font-bold text-slate-900">Confidentialité absolue</h4>
+                          <p class="text-slate-500 text-sm mt-1">
                              Vos données ne sont jamais partagées ou vendues. Vous avez le contrôle total pour supprimer vos données à tout moment.
                           </p>
                        </div>
                     </div>
-                    <div className="flex gap-4">
-                       <div className="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600">
-                          <MapPin className="w-6 h-6" />
+                    <div class="flex gap-4">
+                       <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-blue-600">
+                          <!-- MapPin Icon (SVG) -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                        </div>
                        <div>
-                          <h4 className="text-lg font-bold text-slate-900">Expertise locale</h4>
-                          <p className="text-slate-500 text-sm mt-1">
+                          <h4 class="text-lg font-bold text-slate-900">Expertise locale</h4>
+                          <p class="text-slate-500 text-sm mt-1">
                              Un service client basé ici, au Québec, et des analyses effectuées selon les normes canadiennes les plus strictes.
                           </p>
                        </div>
@@ -347,18 +429,18 @@ const App = () => {
                  </div>
               </div>
               
-              <div className="relative">
-                 <div className="aspect-square bg-slate-200 rounded-3xl overflow-hidden relative">
-                    <div className="absolute inset-0 bg-slate-400/20"></div>
-                    <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur p-6 rounded-xl shadow-lg">
-                       <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-slate-200 rounded-full overflow-hidden">
-                             {/* Placeholder for testimonial avatar */}
-                             <div className="w-full h-full bg-slate-300"></div>
+              <div class="relative">
+                 <div class="aspect-square bg-slate-200 rounded-3xl overflow-hidden relative">
+                    <div class="absolute inset-0 bg-slate-400/20"></div>
+                    <div class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur p-6 rounded-xl shadow-lg">
+                       <div class="flex items-center gap-4">
+                          <div class="w-12 h-12 bg-slate-200 rounded-full overflow-hidden">
+                             <!-- Placeholder for testimonial avatar -->
+                             <div class="w-full h-full bg-slate-300"></div>
                           </div>
                           <div>
-                             <p className="text-sm font-medium text-slate-900">"J'ai enfin compris pourquoi certains aliments ne me convenaient pas. Un outil indispensable !"</p>
-                             <p className="text-xs text-slate-500 mt-1">— Annah, Cliente Adnà</p>
+                             <p class="text-sm font-medium text-slate-900">"J'ai enfin compris pourquoi certains aliments ne me convenaient pas. Un outil indispensable !"</p>
+                             <p class="text-xs text-slate-500 mt-1">— Annah, Cliente Adnà</p>
                           </div>
                        </div>
                     </div>
@@ -366,91 +448,141 @@ const App = () => {
               </div>
            </div>
         </div>
-      </section>
+    </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto bg-teal-600 rounded-3xl overflow-hidden shadow-2xl relative text-center px-6 py-16 md:px-12">
-           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+    <!-- CTA Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-5xl mx-auto bg-teal-600 rounded-3xl overflow-hidden shadow-2xl relative text-center px-6 py-16 md:px-12">
+           <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
               <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
                  </pattern>
                  <rect width="100%" height="100%" fill="url(#grid)" />
               </svg>
            </div>
            
-           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Prenez soin de votre santé, à prix doux</h2>
-           <p className="text-teal-100 text-lg mb-10 max-w-2xl mx-auto relative z-10">
+           <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 relative z-10">Prenez soin de votre santé, à prix doux</h2>
+           <p class="text-teal-100 text-lg mb-10 max-w-2xl mx-auto relative z-10">
              Découvrez ce que vos gènes révèlent sur votre nutrition, votre peau, vos performances ou votre longévité.
            </p>
-           <button className="px-10 py-4 bg-white text-teal-800 font-bold rounded-xl hover:bg-slate-50 transition-transform hover:scale-105 shadow-lg relative z-10">
+           <button class="px-10 py-4 bg-white text-teal-800 font-bold rounded-xl hover:bg-slate-50 transition-transform hover:scale-105 shadow-lg relative z-10">
               Commander votre trousse
            </button>
         </div>
-      </section>
+    </section>
 
-      {/* Footer */}
-      <footer className="bg-white pt-16 pb-8 border-t border-slate-200 text-slate-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <!-- Footer -->
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-200 text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
               <div>
-                 <div className="flex items-center space-x-2 mb-6">
-                    <div className="bg-slate-900 text-white p-1.5 rounded">
-                      <Activity className="w-4 h-4" />
+                 <div class="flex items-center space-x-2 mb-6">
+                    <div class="bg-slate-900 text-white p-1.5 rounded">
+                      <!-- Activity Icon (SVG) -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M22 12H18a4 4 0 0 0-4 4v2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-9.58.5h0"/><path d="M12.5 16H8a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2z"/></svg>
                     </div>
-                    <span className="text-xl font-bold text-slate-900">adnà</span>
+                    <span class="text-xl font-bold text-slate-900">adnà</span>
                  </div>
-                 <p className="text-sm mb-6 leading-relaxed">
+                 <p class="text-sm mb-6 leading-relaxed">
                    Conçu au Québec — votre test ADN, rendu accessible. Fiable, rapide et confidentiel.
                  </p>
-                 <div className="text-sm font-bold text-slate-900">
+                 <div class="text-sm font-bold text-slate-900">
                     (514) 233-5458
                  </div>
               </div>
               
               <div>
-                 <h4 className="font-bold text-slate-900 mb-6">Tests Populaires</h4>
-                 <ul className="space-y-3 text-sm">
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Tout-en-un</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Test de Paternité</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Nutrition & Sport</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Ascendance</a></li>
+                 <h4 class="font-bold text-slate-900 mb-6">Tests Populaires</h4>
+                 <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Tout-en-un</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Test de Paternité</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Nutrition & Sport</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Ascendance</a></li>
                  </ul>
               </div>
 
               <div>
-                 <h4 className="font-bold text-slate-900 mb-6">Support Client</h4>
-                 <ul className="space-y-3 text-sm">
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Mode d'emploi</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">FAQ</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Activer ma trousse</a></li>
-                    <li><a href="#" className="hover:text-teal-600 transition-colors">Mon dossier</a></li>
+                 <h4 class="font-bold text-slate-900 mb-6">Support Client</h4>
+                 <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Mode d'emploi</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">FAQ</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Activer ma trousse</a></li>
+                    <li><a href="#" class="hover:text-teal-600 transition-colors">Mon dossier</a></li>
                  </ul>
               </div>
 
               <div>
-                 <h4 className="font-bold text-slate-900 mb-6">Infolettre</h4>
-                 <p className="text-sm mb-4">Obtenez les dernières nouvelles à propos des services d'Adnà.</p>
-                 <div className="flex gap-2">
-                    <input type="email" placeholder="Votre courriel" className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
-                    <button className="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-600 transition-colors">OK</button>
+                 <h4 class="font-bold text-slate-900 mb-6">Infolettre</h4>
+                 <p class="text-sm mb-4">Obtenez les dernières nouvelles à propos des services d'Adnà.</p>
+                 <div class="flex gap-2">
+                    <input type="email" placeholder="Votre courriel" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500" />
+                    <button class="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-600 transition-colors">OK</button>
                  </div>
               </div>
            </div>
            
-           <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
+           <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
               <p>&copy; 2024 Adnà. Tous droits réservés.</p>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                 <a href="#" className="hover:text-slate-600">Termes et conditions</a>
-                 <a href="#" className="hover:text-slate-600">Politique de confidentialité</a>
-                 <a href="#" className="hover:text-slate-600">Politique de retour</a>
+              <div class="flex space-x-6 mt-4 md:mt-0">
+                 <a href="#" class="hover:text-slate-600">Termes et conditions</a>
+                 <a href="#" class="hover:text-slate-600">Politique de confidentialité</a>
+                 <a href="#" class="hover:text-slate-600">Politique de retour</a>
               </div>
            </div>
         </div>
-      </footer>
-    </div>
-  );
-};
+    </footer>
 
-export default App;
+    <script>
+        // Vanilla JavaScript for handling sticky navigation and mobile menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.getElementById('main-nav');
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            // 1. Sticky Navigation Logic
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    // Scrolled state
+                    nav.classList.add('bg-white/90', 'backdrop-blur-md', 'border-slate-200', 'shadow-sm', 'py-3');
+                    nav.classList.remove('bg-white', 'border-transparent', 'py-5');
+                } else {
+                    // Top state
+                    nav.classList.add('bg-white', 'border-transparent', 'py-5');
+                    nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'border-slate-200', 'shadow-sm', 'py-3');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check on load
+
+            // 2. Mobile Menu Toggle Logic
+            menuButton.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                
+                if (isHidden) {
+                    // Menu is closed, show hamburger
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                } else {
+                    // Menu is open, show X
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                }
+            });
+            
+            // 3. Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Hide the menu
+                    mobileMenu.classList.add('hidden');
+                    // Reset the icon to hamburger
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
