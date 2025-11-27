@@ -123,11 +123,11 @@
             inset: 0;
             opacity: 0;
             transition: opacity 1000ms ease-in-out;
-            z-index: 10;
+            z-index: 10; /* Base Z-index */
         }
         .slider-slide.active {
             opacity: 1;
-            z-index: 20;
+            z-index: 20; /* Active slides on top */
         }
         
         /* Scale animation for active slide image */
@@ -137,22 +137,6 @@
         .slider-slide img {
             transition: transform 6000ms ease-out;
             transform: scale(1);
-        }
-
-        /* Progress Bar Animation */
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 999px;
-        }
-        .active .progress-bar {
-            width: 100%;
-            transition: width 6000ms linear;
-        }
-        .reset .progress-bar {
-            width: 0%;
-            transition: none;
         }
     </style>
 </head>
@@ -263,28 +247,8 @@
                         <!-- Slider Container -->
                         <div class="relative h-full w-full rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
                             
-                            <!-- Slide 1: Paternity (Main Priority) -->
+                            <!-- Slide 1: Pharmacogenetics (Was Slide 2) -->
                             <div class="slider-slide active" data-index="0">
-                                <img src="https://raw.githubusercontent.com/axel410/example-pages-adna/refs/heads/main/image/Screenshot-2024-03-14-at-6.48.23.jpg" 
-                                     alt="Trousse de test de paternité Adnà" 
-                                     class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                                <!-- Caption Overlay -->
-                                <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg border border-white/50 max-w-xs transition-transform duration-500 hover:scale-105 cursor-default">
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-adna-light/50 p-2 rounded-full text-adna-anchor">
-                                            <i class="fa-solid fa-child-reaching"></i>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Populaire</p>
-                                            <p class="font-semibold text-gray-900">Test de paternité - 199$</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Slide 2: Pharmacogenetics -->
-                            <div class="slider-slide" data-index="1">
                                 <img src="https://raw.githubusercontent.com/axel410/example-pages-adna/refs/heads/main/image/Adna-VisuelRapport-Accueil-PHARM.jpg" 
                                      alt="Rapport pharmacogénétique" 
                                      class="w-full h-full object-cover">
@@ -302,8 +266,8 @@
                                 </div>
                             </div>
 
-                            <!-- Slide 3: Nutrition -->
-                            <div class="slider-slide" data-index="2">
+                            <!-- Slide 2: Nutrition (Was Slide 3) -->
+                            <div class="slider-slide" data-index="1">
                                 <img src="https://raw.githubusercontent.com/axel410/example-pages-adna/refs/heads/main/image/Adna-VisuelRapport-Accueil-NUTRI.jpg" 
                                      alt="Rapport de nutrition Adnà" 
                                      class="w-full h-full object-cover">
@@ -316,6 +280,26 @@
                                         <div>
                                             <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Bien-être</p>
                                             <p class="font-semibold text-gray-900">Test de nutrition - 199$</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <!-- Slide 3: Paternity (Was Slide 1) -->
+                             <div class="slider-slide" data-index="2">
+                                <img src="https://raw.githubusercontent.com/axel410/example-pages-adna/refs/heads/main/image/Screenshot-2024-03-14-at-6.48.23.jpg" 
+                                     alt="Trousse de test de paternité Adnà" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                                <!-- Caption Overlay -->
+                                <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur px-6 py-4 rounded-2xl shadow-lg border border-white/50 max-w-xs transition-transform duration-500 hover:scale-105 cursor-default">
+                                    <div class="flex items-center gap-3">
+                                        <div class="bg-adna-light/50 p-2 rounded-full text-adna-anchor">
+                                            <i class="fa-solid fa-child-reaching"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Populaire</p>
+                                            <p class="font-semibold text-gray-900">Test de paternité - 199$</p>
                                         </div>
                                     </div>
                                 </div>
@@ -745,7 +729,7 @@
             }
         });
 
-        // --- Custom Image Slider Logic ---
+        // --- Custom Image Slider Logic (Robust Version) ---
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('.slider-slide');
             const dots = document.querySelectorAll('.slider-dot');
@@ -754,7 +738,7 @@
             const sliderContainer = document.getElementById('hero-slider');
             let currentSlide = 0;
             const totalSlides = slides.length;
-            let slideInterval;
+            let slideInterval = null;
             const INTERVAL_TIME = 6000; // 6 seconds
 
             // Function to update slide classes
@@ -762,7 +746,6 @@
                 slides.forEach((slide, i) => {
                     if (i === index) {
                         slide.classList.add('active');
-                        // Reset transforms for re-animation if needed
                     } else {
                         slide.classList.remove('active');
                     }
@@ -780,8 +763,21 @@
                 });
             };
 
-            // Initial State
-            updateSlides(currentSlide);
+            // Start Timer (Clear existing first to be safe)
+            const resetTimer = () => {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                }
+                slideInterval = setInterval(nextSlide, INTERVAL_TIME);
+            };
+
+            // Stop Timer
+            const stopTimer = () => {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            };
 
             // Next Slide Function
             const nextSlide = () => {
@@ -795,45 +791,42 @@
                 updateSlides(currentSlide);
             };
 
-            // Auto Play
-            const startSlideShow = () => {
-                slideInterval = setInterval(nextSlide, INTERVAL_TIME);
-            };
-
-            const stopSlideShow = () => {
-                clearInterval(slideInterval);
-            };
+            // Initial State
+            updateSlides(currentSlide);
+            resetTimer();
 
             // Event Listeners for Controls
+            // Important: We stop timer, perform action, then restart timer
+            // This prevents race conditions where the interval ticks right after a click
+            
             nextBtn.addEventListener('click', () => {
-                stopSlideShow();
+                stopTimer();
                 nextSlide();
-                startSlideShow();
+                resetTimer();
             });
 
             prevBtn.addEventListener('click', () => {
-                stopSlideShow();
+                stopTimer();
                 prevSlide();
-                startSlideShow();
+                resetTimer();
             });
 
             // Dot Navigation
             dots.forEach(dot => {
                 dot.addEventListener('click', (e) => {
-                    stopSlideShow();
+                    stopTimer();
                     const index = parseInt(e.target.getAttribute('data-slide'));
                     currentSlide = index;
                     updateSlides(currentSlide);
-                    startSlideShow();
+                    resetTimer();
                 });
             });
 
             // Pause on Hover
-            sliderContainer.addEventListener('mouseenter', stopSlideShow);
-            sliderContainer.addEventListener('mouseleave', startSlideShow);
-
-            // Start loop
-            startSlideShow();
+            sliderContainer.addEventListener('mouseenter', stopTimer);
+            
+            // Resume on Leave
+            sliderContainer.addEventListener('mouseleave', resetTimer);
         });
     </script>
 </body>
