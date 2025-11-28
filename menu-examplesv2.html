@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnà Navigation Concepts</title>
+    
+    <!-- Tailwind CSS (via CDN for standalone usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel (to compile JSX in browser) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Custom Font: Noto Sans for clean UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-[#E5E5E5]">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // --- Icon Components ---
+        const IconWrapper = ({ children, size = 24, className = "" }) => (
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width={size} 
+                height={size} 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className={className}
+            >
+                {children}
+            </svg>
+        );
+
+        const Phone = (props) => (
+            <IconWrapper {...props}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></IconWrapper>
+        );
+        const User = (props) => (
+            <IconWrapper {...props}><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></IconWrapper>
+        );
+        const ShoppingBag = (props) => (
+            <IconWrapper {...props}><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></IconWrapper>
+        );
+        const ChevronDown = (props) => (
+            <IconWrapper {...props}><polyline points="6 9 12 15 18 9"></polyline></IconWrapper>
+        );
+        const Dna = (props) => (
+            <IconWrapper {...props}><path d="M2 15c6.667-6 13.333 0 20-6"></path><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"></path><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"></path><path d="M17 6l-2.5-2.5"></path><path d="M14 8l-1-1"></path><path d="M7 18l2.5 2.5"></path><path d="M3.5 14.5l.5.5"></path><path d="M20 9l.5.5"></path><path d="M6.5 12.5l1 1"></path><path d="M16.5 10.5l1 1"></path><path d="M10 16l1.5 1.5"></path></IconWrapper>
+        );
+        const Activity = (props) => (
+            <IconWrapper {...props}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></IconWrapper>
+        );
+        const Grid = (props) => (
+            <IconWrapper {...props}><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></IconWrapper>
+        );
+        const ArrowRight = (props) => (
+            <IconWrapper {...props}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></IconWrapper>
+        );
+
+        // --- Data ---
+        const TestData = {
+          filiation: [
+            "Test de paternité",
+            "Test de maternité",
+            "Test de gémellité",
+            "Test de fraternité",
+            "Test de filiation grands-parents",
+            "Test de filiation oncle et tante"
+          ],
+          sante: [
+            "Test de prédispositions génétiques",
+            "Test pharmacogénétique",
+            "Test de sport & performance",
+            "Test de nutrition",
+            "Test de soins de la peau",
+            "Test de talent & personnalité",
+            "Test tout-en-un"
+          ],
+          autres: [
+            "Test d'ascendance",
+            "Test de Microbiote Intestinal",
+            "Test de Microbiote Buccal",
+            "Test de Biomarqueurs Bilan Global",
+            "Test de Biomarqueurs Bilan Hormonal+",
+            "Test de Biomarqueurs Bilan Métabolique+"
+          ]
+        };
+
+        // --- Shared Components ---
+
+        const Logo = ({ dark = false }) => (
+          <div className={`font-serif text-3xl font-bold tracking-tight ${dark ? 'text-white' : 'text-[#4A5D48]'}`}>
+            Adnà
+          </div>
+        );
+
+        const Utilities = ({ dark = false }) => (
+          <div className={`flex items-center gap-6 text-sm font-medium ${dark ? 'text-white' : 'text-[#4A5D48]'}`}>
+            <div className="hidden lg:flex items-center gap-2">
+              <Phone size={18} />
+              <span>(514) 233-5456</span>
+            </div>
+            <div className={`h-4 w-px ${dark ? 'bg-white/30' : 'bg-gray-300'}`}></div>
+            <div className="flex items-center gap-1 cursor-pointer hover:opacity-80">
+              <span>EN</span>
+            </div>
+            <User size={20} className="cursor-pointer hover:opacity-80" />
+            <div className="relative cursor-pointer hover:opacity-80">
+              <ShoppingBag size={20} />
+              <span className="absolute -top-1 -right-1 bg-[#C5A065] text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">
+                0
+              </span>
+            </div>
+          </div>
+        );
+
+        // --- Variation 1: Refined Classic (Keeping original) ---
+        const VariationMinimal = () => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          return (
+            <div className="w-full bg-[#F9F8F6] border-b border-gray-200 relative group font-sans">
+              <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+                <Logo />
+                <nav className="hidden md:flex items-center gap-8 text-[#4A5D48] font-medium">
+                  <button 
+                    className="flex items-center gap-1 hover:text-[#C5A065] transition-colors py-8 focus:outline-none"
+                    onMouseEnter={() => setIsMenuOpen(true)}
+                    onMouseLeave={() => setIsMenuOpen(false)}
+                  >
+                    Nos Tests <ChevronDown size={16} />
+                  </button>
+                  <a href="#" className="hover:text-[#C5A065] transition-colors">Comment ça marche</a>
+                  <a href="#" className="hover:text-[#C5A065] transition-colors">Témoignages</a>
+                  <a href="#" className="hover:text-[#C5A065] transition-colors">À propos</a>
+                  <a href="#" className="hover:text-[#C5A065] transition-colors">Journal</a>
+                </nav>
+                <Utilities />
+              </div>
+              <div 
+                className={`absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 transition-all duration-300 ease-in-out z-50 overflow-hidden ${isMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
+                onMouseEnter={() => setIsMenuOpen(true)}
+                onMouseLeave={() => setIsMenuOpen(false)}
+              >
+                <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-4 gap-8">
+                  <div>
+                    <h3 className="text-[#C5A065] font-serif text-lg mb-4">Filiation</h3>
+                    <ul className="space-y-3">
+                      {TestData.filiation.map((item, i) => (
+                        <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block">{item}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-[#C5A065] font-serif text-lg mb-4">Santé et bien-être</h3>
+                    <ul className="space-y-3">
+                      {TestData.sante.map((item, i) => (
+                        <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block">{item}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-[#C5A065] font-serif text-lg mb-4">Autres</h3>
+                    <ul className="space-y-3">
+                      {TestData.autres.map((item, i) => (
+                        <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block">{item}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="bg-[#F2F0E9] p-6 rounded-lg flex flex-col justify-center items-center text-center">
+                    <h4 className="font-serif text-[#4A5D48] text-xl mb-2">Besoin d'aide?</h4>
+                    <p className="text-sm text-gray-600 mb-6">Nos experts sont là pour vous guider vers le bon test.</p>
+                    <button className="bg-[#4A5D48] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#3a4a3a] transition-colors w-full">
+                      VOIR TOUS NOS TESTS
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // --- Variation 2: Modern Pill / Dark Menu (Keeping original) ---
+        const VariationPill = () => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          return (
+            <div className="w-full bg-white relative group font-sans border-b border-gray-100">
+              <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+                <div className="flex items-center gap-12">
+                  <Logo />
+                  <nav className="hidden md:flex items-center gap-6 text-gray-600 font-medium">
+                    <div 
+                      className="relative"
+                      onMouseEnter={() => setIsMenuOpen(true)}
+                      onMouseLeave={() => setIsMenuOpen(false)}
+                    >
+                      <button 
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-full transition-all duration-300 font-semibold text-sm ${isMenuOpen ? 'bg-[#4A5D48] text-white shadow-lg' : 'bg-[#F2F0E9] text-[#4A5D48] hover:bg-[#E6E2D6]'}`}
+                      >
+                        Voir les tests <ChevronDown size={14} />
+                      </button>
+                    </div>
+                    <a href="#" className="hover:text-[#4A5D48] transition-colors text-sm">Comment ça marche</a>
+                    <a href="#" className="hover:text-[#4A5D48] transition-colors text-sm">Témoignages</a>
+                    <a href="#" className="hover:text-[#4A5D48] transition-colors text-sm">À propos</a>
+                    <a href="#" className="hover:text-[#4A5D48] transition-colors text-sm">Journal</a>
+                  </nav>
+                </div>
+                <Utilities />
+              </div>
+              <div 
+                className={`absolute top-[96px] left-0 w-full bg-[#4A5D48] text-white shadow-2xl transition-all duration-300 ease-in-out z-50 overflow-hidden ${isMenuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
+                onMouseEnter={() => setIsMenuOpen(true)}
+                onMouseLeave={() => setIsMenuOpen(false)}
+              >
+                <div className="max-w-7xl mx-auto px-6 py-12">
+                   <div className="grid grid-cols-3 gap-12">
+                      <div>
+                        <div className="flex items-center gap-3 mb-6 border-b border-white/20 pb-4">
+                          <div className="p-2 bg-white/10 rounded-lg"><User size={20} /></div>
+                          <h3 className="font-serif text-xl">Filiation</h3>
+                        </div>
+                        <ul className="space-y-3">
+                          {TestData.filiation.map((item, i) => (
+                            <li key={i}><a href="#" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all text-sm block inline-block">{item}</a></li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-3 mb-6 border-b border-white/20 pb-4">
+                          <div className="p-2 bg-white/10 rounded-lg"><Dna size={20} /></div>
+                          <h3 className="font-serif text-xl">Santé et bien-être</h3>
+                        </div>
+                        <ul className="space-y-3">
+                          {TestData.sante.map((item, i) => (
+                            <li key={i}><a href="#" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all text-sm block inline-block">{item}</a></li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-3 mb-6 border-b border-white/20 pb-4">
+                          <div className="p-2 bg-white/10 rounded-lg"><Activity size={20} /></div>
+                          <h3 className="font-serif text-xl">Autres</h3>
+                        </div>
+                        <ul className="space-y-3">
+                          {TestData.autres.map((item, i) => (
+                            <li key={i}><a href="#" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all text-sm block inline-block">{item}</a></li>
+                          ))}
+                        </ul>
+                      </div>
+                   </div>
+                   <div className="mt-10 pt-8 border-t border-white/10 flex justify-between items-center">
+                      <span className="text-white/60 text-sm">Découvrez nos solutions complètes pour toute la famille.</span>
+                      <button className="text-white font-semibold underline underline-offset-4 hover:text-[#C5A065] transition-colors">
+                        Voir le catalogue complet &rarr;
+                      </button>
+                   </div>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // --- Variation 3: Utility Top Bar + Clean Main (Original Option C) ---
+        const VariationStacked = () => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          return (
+            <div className="w-full font-sans shadow-sm">
+              <div className="bg-[#4A5D48] text-white py-2 px-6">
+                <div className="max-w-7xl mx-auto flex justify-between items-center text-xs tracking-wide">
+                  <p className="hidden sm:block opacity-80">Livraison gratuite pour les commandes de +150$</p>
+                  <div className="flex items-center gap-6 ml-auto">
+                     <div className="flex items-center gap-2">
+                       <Phone size={14} /> <span>(514) 233-5456</span>
+                     </div>
+                     <div className="h-3 w-px bg-white/30"></div>
+                     <span>EN</span>
+                     <div className="h-3 w-px bg-white/30"></div>
+                     <span className="cursor-pointer">Mon Compte</span>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white border-b border-gray-100 relative">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                  <Logo />
+                  <nav className="hidden md:flex items-center gap-10">
+                     <button 
+                        className={`py-8 font-semibold flex items-center gap-2 border-b-2 transition-all ${isMenuOpen ? 'border-[#C5A065] text-[#4A5D48]' : 'border-transparent text-gray-700 hover:text-[#4A5D48]'}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      >
+                        Nos Tests <ChevronDown size={16} />
+                      </button>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Comment ça marche</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Témoignages</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">À propos</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Journal</a>
+                  </nav>
+                  <div className="flex items-center gap-4">
+                     <button className="flex items-center gap-2 bg-[#F2F0E9] hover:bg-[#E6E2D6] text-[#4A5D48] px-4 py-2 rounded-lg transition-colors">
+                        <ShoppingBag size={18} />
+                        <span className="font-bold text-sm">Panier (0)</span>
+                     </button>
+                  </div>
+                </div>
+                {isMenuOpen && (
+                  <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                     <div className="max-w-7xl mx-auto px-6 py-8 flex gap-12">
+                        <div className="w-1/4 bg-[#F9F8F6] p-6 rounded-lg">
+                           <h3 className="font-serif text-2xl text-[#4A5D48] mb-4">Populaire</h3>
+                           <div className="space-y-4">
+                              <div className="bg-white p-3 rounded shadow-sm hover:shadow-md cursor-pointer transition-all">
+                                <span className="text-xs font-bold text-[#C5A065] uppercase">Filiation</span>
+                                <p className="font-medium text-[#4A5D48]">Test de paternité</p>
+                              </div>
+                              <div className="bg-white p-3 rounded shadow-sm hover:shadow-md cursor-pointer transition-all">
+                                <span className="text-xs font-bold text-[#C5A065] uppercase">Santé</span>
+                                <p className="font-medium text-[#4A5D48]">Prédispositions génétiques</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div className="flex-1 grid grid-cols-3 gap-8 pt-2">
+                           <div>
+                              <h4 className="font-bold text-[#4A5D48] mb-4 flex items-center gap-2">
+                                <Grid size={16} /> Tous les tests
+                              </h4>
+                              <ul className="space-y-2 text-sm text-gray-600">
+                                 <li><a href="#" className="hover:text-[#C5A065]">Voir tout le catalogue</a></li>
+                                 <li><a href="#" className="hover:text-[#C5A065]">Promotions en cours</a></li>
+                                 <li><a href="#" className="hover:text-[#C5A065]">Nouveautés</a></li>
+                              </ul>
+                           </div>
+                           <div>
+                              <h4 className="font-bold text-[#4A5D48] mb-4">Par Catégorie</h4>
+                              <ul className="space-y-2 text-sm text-gray-600">
+                                 <li><a href="#" className="hover:text-[#C5A065]">Filiation & Famille</a></li>
+                                 <li><a href="#" className="hover:text-[#C5A065]">Santé & Bien-être</a></li>
+                                 <li><a href="#" className="hover:text-[#C5A065]">Origines & Ancestry</a></li>
+                                 <li><a href="#" className="hover:text-[#C5A065]">Animaux</a></li>
+                              </ul>
+                           </div>
+                           <div className="relative overflow-hidden rounded-lg bg-[#4A5D48] text-white p-6 flex flex-col justify-end min-h-[160px]">
+                              <div className="absolute top-0 right-0 p-4 opacity-20">
+                                <Dna size={100} />
+                              </div>
+                              <h4 className="relative z-10 font-serif text-xl mb-2">Guide Gratuit</h4>
+                              <p className="relative z-10 text-xs opacity-90 mb-4">Comprendre son ADN en 5 étapes simples.</p>
+                              <button className="relative z-10 text-xs font-bold underline decoration-white/50 hover:decoration-white">Télécharger</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        };
+
+        // --- Variation Stacked V2: Visual Icons Grid ---
+        const VariationStackedV2 = () => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          return (
+            <div className="w-full font-sans shadow-sm">
+              {/* Utility Bar */}
+              <div className="bg-[#4A5D48] text-white py-2 px-6">
+                <div className="max-w-7xl mx-auto flex justify-between items-center text-xs tracking-wide">
+                  <p className="hidden sm:block opacity-80">Offre Spéciale : 20% de rabais sur le test Ancestry</p>
+                  <div className="flex items-center gap-6 ml-auto">
+                     <div className="flex items-center gap-2">
+                       <Phone size={14} /> <span>(514) 233-5456</span>
+                     </div>
+                     <div className="h-3 w-px bg-white/30"></div>
+                     <span>EN</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Header */}
+              <div className="bg-white border-b border-gray-100 relative">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                  <Logo />
+                  <nav className="hidden md:flex items-center gap-10">
+                     <button 
+                        className={`py-8 font-semibold flex items-center gap-2 border-b-2 transition-all ${isMenuOpen ? 'border-[#C5A065] text-[#4A5D48]' : 'border-transparent text-gray-700 hover:text-[#4A5D48]'}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      >
+                        Nos Tests <ChevronDown size={16} />
+                      </button>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Comment ça marche</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Témoignages</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">À propos</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Journal</a>
+                  </nav>
+                  <div className="flex items-center gap-4">
+                     <button className="flex items-center gap-2 bg-[#F2F0E9] hover:bg-[#E6E2D6] text-[#4A5D48] px-4 py-2 rounded-lg transition-colors">
+                        <ShoppingBag size={18} />
+                        <span className="font-bold text-sm">Panier (0)</span>
+                     </button>
+                  </div>
+                </div>
+
+                {/* Mega Menu - 4 Columns Visual */}
+                {isMenuOpen && (
+                  <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 z-50 animate-in fade-in slide-in-from-top-2 duration-200 shadow-xl">
+                     <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-4 gap-8">
+                        {/* Column 1 */}
+                        <div>
+                           <div className="flex items-center gap-2 text-[#C5A065] mb-4">
+                              <User size={20} />
+                              <h3 className="font-serif text-lg font-bold">Filiation</h3>
+                           </div>
+                           <ul className="space-y-3">
+                              {TestData.filiation.map((item, i) => (
+                                <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block border-b border-gray-50 pb-2 last:border-0 hover:pl-2 transition-all">{item}</a></li>
+                              ))}
+                           </ul>
+                        </div>
+                        {/* Column 2 */}
+                        <div>
+                           <div className="flex items-center gap-2 text-[#C5A065] mb-4">
+                              <Dna size={20} />
+                              <h3 className="font-serif text-lg font-bold">Santé</h3>
+                           </div>
+                           <ul className="space-y-3">
+                              {TestData.sante.map((item, i) => (
+                                <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block border-b border-gray-50 pb-2 last:border-0 hover:pl-2 transition-all">{item}</a></li>
+                              ))}
+                           </ul>
+                        </div>
+                        {/* Column 3 */}
+                        <div>
+                           <div className="flex items-center gap-2 text-[#C5A065] mb-4">
+                              <Activity size={20} />
+                              <h3 className="font-serif text-lg font-bold">Autres</h3>
+                           </div>
+                           <ul className="space-y-3">
+                              {TestData.autres.map((item, i) => (
+                                <li key={i}><a href="#" className="text-gray-600 hover:text-[#4A5D48] text-sm block border-b border-gray-50 pb-2 last:border-0 hover:pl-2 transition-all">{item}</a></li>
+                              ))}
+                           </ul>
+                        </div>
+                        {/* Column 4 - Highlight */}
+                        <div className="bg-[#4A5D48] rounded-xl p-6 text-white flex flex-col justify-between">
+                           <div>
+                              <h4 className="font-serif text-xl mb-2">Besoin de conseils?</h4>
+                              <p className="text-sm opacity-90 mb-4">Nos généticiens sont disponibles pour répondre à vos questions avant achat.</p>
+                           </div>
+                           <div className="space-y-3">
+                              <button className="w-full bg-white text-[#4A5D48] py-2 rounded-lg font-bold text-sm hover:bg-gray-100 transition">Parler à un expert</button>
+                              <button className="w-full border border-white/30 hover:bg-white/10 text-white py-2 rounded-lg font-bold text-sm transition">Consulter la FAQ</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        };
+
+        // --- Variation Stacked V3: Featured Product + Clean List (No About) ---
+        const VariationStackedV3 = () => {
+          const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+          return (
+            <div className="w-full font-sans shadow-sm">
+              <div className="bg-[#4A5D48] text-white py-2 px-6">
+                <div className="max-w-7xl mx-auto flex justify-between items-center text-xs tracking-wide">
+                  <p className="hidden sm:block opacity-80">Livraison express disponible partout au Canada</p>
+                  <div className="flex items-center gap-6 ml-auto">
+                     <div className="flex items-center gap-2">
+                       <Phone size={14} /> <span>(514) 233-5456</span>
+                     </div>
+                     <div className="h-3 w-px bg-white/30"></div>
+                     <span>EN</span>
+                     <div className="h-3 w-px bg-white/30"></div>
+                     <span className="cursor-pointer">Connexion</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border-b border-gray-100 relative">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                  <Logo />
+                  {/* Removed 'À propos' */}
+                  <nav className="hidden md:flex items-center gap-12">
+                     <button 
+                        className={`py-8 font-semibold flex items-center gap-2 border-b-2 transition-all ${isMenuOpen ? 'border-[#C5A065] text-[#4A5D48]' : 'border-transparent text-gray-700 hover:text-[#4A5D48]'}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      >
+                        Nos Tests <ChevronDown size={16} />
+                      </button>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Comment ça marche</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Témoignages</a>
+                      <a href="#" className="text-gray-700 hover:text-[#4A5D48] font-medium">Journal</a>
+                  </nav>
+                  <div className="flex items-center gap-4">
+                     <button className="flex items-center gap-2 text-[#4A5D48] font-medium hover:text-[#C5A065] transition-colors">
+                        <User size={20} />
+                     </button>
+                     <button className="flex items-center gap-2 bg-[#F2F0E9] hover:bg-[#E6E2D6] text-[#4A5D48] px-4 py-2 rounded-lg transition-colors">
+                        <ShoppingBag size={18} />
+                        <span className="font-bold text-sm">0</span>
+                     </button>
+                  </div>
+                </div>
+
+                {/* Mega Menu - Split Layout with Hero */}
+                {isMenuOpen && (
+                  <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 z-50 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
+                     <div className="max-w-7xl mx-auto flex h-[450px]">
+                        {/* Left Side: Navigation Links */}
+                        <div className="w-2/3 p-10 bg-white grid grid-cols-3 gap-8 overflow-y-auto">
+                           <div>
+                              <h3 className="font-bold text-[#4A5D48] mb-4 uppercase text-xs tracking-wider">Filiation</h3>
+                              <ul className="space-y-3">
+                                 {TestData.filiation.map((item, i) => (
+                                    <li key={i}><a href="#" className="text-gray-500 hover:text-[#C5A065] text-sm block transition-colors">{item}</a></li>
+                                 ))}
+                              </ul>
+                           </div>
+                           <div>
+                              <h3 className="font-bold text-[#4A5D48] mb-4 uppercase text-xs tracking-wider">Santé</h3>
+                              <ul className="space-y-3">
+                                 {TestData.sante.map((item, i) => (
+                                    <li key={i}><a href="#" className="text-gray-500 hover:text-[#C5A065] text-sm block transition-colors">{item}</a></li>
+                                 ))}
+                              </ul>
+                           </div>
+                           <div>
+                              <h3 className="font-bold text-[#4A5D48] mb-4 uppercase text-xs tracking-wider">Autres</h3>
+                              <ul className="space-y-3">
+                                 {TestData.autres.map((item, i) => (
+                                    <li key={i}><a href="#" className="text-gray-500 hover:text-[#C5A065] text-sm block transition-colors">{item}</a></li>
+                                 ))}
+                              </ul>
+                           </div>
+                        </div>
+
+                        {/* Right Side: Featured Product Hero */}
+                        <div className="w-1/3 bg-[#F9F8F6] p-10 flex flex-col justify-center relative overflow-hidden group">
+                           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C5A065]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                           
+                           <span className="inline-block bg-[#C5A065] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-4 w-fit">Nouveauté</span>
+                           <h3 className="font-serif text-3xl text-[#4A5D48] mb-3">Microbiote Intestinal</h3>
+                           <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                              Découvrez comment vos bactéries intestinales influencent votre santé globale, votre humeur et votre digestion.
+                           </p>
+                           <div className="flex gap-4 items-center">
+                              <button className="bg-[#4A5D48] text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#3a4a3a] transition-all flex items-center gap-2 group-hover:gap-3">
+                                 Découvrir <ArrowRight size={16} />
+                              </button>
+                              <span className="font-serif text-xl text-[#4A5D48] font-bold">299$</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        };
+
+        const App = () => {
+          return (
+            <div className="min-h-screen bg-[#E5E5E5] py-12 px-4 font-sans">
+              <div className="max-w-7xl mx-auto space-y-16">
+                
+                <header className="text-center space-y-4 mb-12">
+                  <h1 className="text-3xl font-serif text-[#2D3A2D]">Navigation Design Explorations</h1>
+                  <p className="text-gray-600 max-w-2xl mx-auto">
+                    Exploring "Stacked Utility" variations. Hover/Click "Nos Tests" to interact.
+                  </p>
+                </header>
+
+                {/* Variation 1 */}
+                <section className="bg-white rounded-xl overflow-visible shadow-sm border border-gray-200">
+                  <div className="bg-gray-50 border-b border-gray-100 px-6 py-3 flex justify-between items-center">
+                     <div>
+                        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Option A: Refined Minimalist</h2>
+                        <p className="text-[10px] text-gray-400">Classic drop-down with clean typography.</p>
+                     </div>
+                  </div>
+                  <VariationMinimal />
+                  <div className="h-32 bg-gray-50 flex items-center justify-center text-gray-400 text-sm border-t border-gray-100">Content</div>
+                </section>
+
+                {/* Variation 2 */}
+                <section className="bg-white rounded-xl overflow-visible shadow-sm border border-gray-200">
+                  <div className="bg-gray-50 border-b border-gray-100 px-6 py-3 flex justify-between items-center">
+                    <div>
+                        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Option B: High Contrast & Pill Action</h2>
+                        <p className="text-[10px] text-gray-400">Dark mode menu overlay with pill-shaped trigger.</p>
+                     </div>
+                  </div>
+                  <VariationPill />
+                  <div className="h-32 bg-gray-50 flex items-center justify-center text-gray-400 text-sm border-t border-gray-100">Content</div>
+                </section>
+
+                {/* Variation 3 - Original Option C */}
+                <section className="bg-white rounded-xl overflow-visible shadow-sm border border-gray-200">
+                  <div className="bg-gray-50 border-b border-gray-100 px-6 py-3 flex justify-between items-center">
+                    <div>
+                        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider">Option C: Stacked Utility (Original)</h2>
+                        <p className="text-[10px] text-gray-400">Standard sidebar + popular products mix.</p>
+                     </div>
+                  </div>
+                  <VariationStacked />
+                  <div className="h-32 bg-gray-50 flex items-center justify-center text-gray-400 text-sm border-t border-gray-100">Content</div>
+                </section>
+
+                {/* NEW Variation Stacked V2 */}
+                <section className="bg-white rounded-xl overflow-visible shadow-sm border border-gray-200 ring-2 ring-[#C5A065]/20">
+                  <div className="bg-amber-50/50 border-b border-gray-100 px-6 py-3 flex justify-between items-center">
+                     <div>
+                        <h2 className="text-sm font-bold text-[#C5A065] uppercase tracking-wider">Option C.2: Visual Columns</h2>
+                        <p className="text-[10px] text-gray-500">Stacked utility with 4-column icon-driven menu layout.</p>
+                     </div>
+                     <span className="text-[10px] font-bold bg-[#C5A065] text-white px-2 py-1 rounded">NEW</span>
+                  </div>
+                  <VariationStackedV2 />
+                  <div className="h-32 bg-gray-50 flex items-center justify-center text-gray-400 text-sm border-t border-gray-100">Content</div>
+                </section>
+
+                {/* NEW Variation Stacked V3 */}
+                <section className="bg-white rounded-xl overflow-visible shadow-sm border border-gray-200 ring-2 ring-[#C5A065]/20">
+                  <div className="bg-amber-50/50 border-b border-gray-100 px-6 py-3 flex justify-between items-center">
+                     <div>
+                        <h2 className="text-sm font-bold text-[#C5A065] uppercase tracking-wider">Option C.3: Product Focus</h2>
+                        <p className="text-[10px] text-gray-500">Removed "À propos". Split layout with Featured Product hero card.</p>
+                     </div>
+                     <span className="text-[10px] font-bold bg-[#C5A065] text-white px-2 py-1 rounded">NEW</span>
+                  </div>
+                  <VariationStackedV3 />
+                  <div className="h-32 bg-gray-50 flex items-center justify-center text-gray-400 text-sm border-t border-gray-100">Content</div>
+                </section>
+
+              </div>
+            </div>
+          );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
